@@ -43,6 +43,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connexion\GJoueur.cs" />
+    <Compile Include="Connexion\Joueur.cs" />
+    <Compile Include="Controleur\FactoryCarte.cs" />
+    <Compile Include="Controleur\FactoryCarteAction.cs" />
+    <Compile Include="Controleur\FactoryCartePouvoir.cs" />
+    <Compile Include="Controleur\GCarte.cs" />
+    <Compile Include="Controleur\GDes.cs" />
+    <Compile Include="Controleur\GMonstre.cs" />
+    <Compile Include="Controleur\GPartie.cs" />
+    <Compile Include="Controleur\Joueur.cs" />
+    <Compile Include="Controleur\Partie.cs" />
+    <Compile Include="Controleur\Tour.cs" />
+    <Compile Include="Controleur\Utilitaire.cs" />
+    <Compile Include="Modele\ApplicationEffet.cs" />
+    <Compile Include="Modele\Carte.cs" />
+    <Compile Include="Modele\CarteAction.cs" />
+    <Compile Include="Modele\CartePouvoir.cs" />
+    <Compile Include="Modele\Des.cs" />
+    <Compile Include="Modele\Effet.cs" />
+    <Compile Include="Modele\EffetJeton.cs" />
+    <Compile Include="Modele\ICarte.cs" />
+    <Compile Include="Modele\Jeton.cs" />
+    <Compile Include="Modele\Monstre.cs" />
+    <Compile Include="Modele\NomMonstre.cs" />
+    <Compile Include="Modele\Plateau.cs" />
+    <Compile Include="Modele\ValeurDes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Reseau\HelperServeur.cs" />
+    <Compile Include="Reseau\Joueur.cs" />
+    <Compile Include="Vue\PlateauVisuel.cs" />
+    <Compile Include="Vue\VueMonstre.cs" />
+    <Compile Include="Vue\ZoneDes.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
