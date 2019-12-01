@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Serveur.Connexion{
+namespace ServeurKoT.Connexion{
     public class GJoueur {
 
         public GJoueur() {

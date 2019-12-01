@@ -1,5 +1,5 @@
 
-namespace Serveur.Modele{
+namespace ServeurKoT.Modele{
     public enum EffetJeton {
         Fumee,
         Minetisme,

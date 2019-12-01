@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Serveur.Modele{
+namespace ServeurKoT.Modele{
     public class Des {
 
         public Des() {
