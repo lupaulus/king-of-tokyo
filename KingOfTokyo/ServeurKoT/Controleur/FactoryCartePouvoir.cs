@@ -10,7 +10,7 @@ namespace ServeurKoT.Controleur{
         public FactoryCartePouvoir() {
         }
 
-        public void ajouterCarte() {
+        public override void ajouterCarte() {
             // TODO implement here
         }
 

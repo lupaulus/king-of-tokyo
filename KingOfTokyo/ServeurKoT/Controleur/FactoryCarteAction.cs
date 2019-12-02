@@ -10,9 +10,11 @@ namespace ServeurKoT.Controleur{
         public FactoryCarteAction() {
         }
 
-        public void ajouterCarte() {
+        public override void  ajouterCarte()
+        {
             // TODO implement here
         }
 
+        
     }
 }

@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connexion\PaquetDonnees.cs" />
+    <Compile Include="Connexion\Connecteur.cs" />
     <Compile Include="Connexion\GJoueur.cs" />
     <Compile Include="Connexion\Joueur.cs" />
     <Compile Include="Controleur\FactoryCarte.cs" />
@@ -74,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleLogger\SimpleLogger.csproj">
+      <Project>{cf8c9230-cc66-43df-8070-01eb53978b5e}</Project>
+      <Name>SimpleLogger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

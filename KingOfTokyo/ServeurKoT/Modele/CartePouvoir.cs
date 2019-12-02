@@ -10,6 +10,16 @@ namespace ServeurKoT.Modele{
         public CartePouvoir() {
         }
 
+        public override void ajouterCarte()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void appliquerEffet(HashSet<ApplicationEffet> appEffet, HashSet<Effet> effet, HashSet<int> listeAppEffet, HashSet<int> listeEffet)
+        {
+            throw new NotImplementedException();
+        }
+
         public void cartePouvoir() {
             // TODO implement here
         }
