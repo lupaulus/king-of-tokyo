@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9C7F5E9A-69B5-483D-A6E2-BEECC2C89D09}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ServeurKoT</RootNamespace>
+    <AssemblyName>ServeurKoT</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connexion\GJoueur.cs" />
+    <Compile Include="Connexion\Joueur.cs" />
+    <Compile Include="Controleur\FactoryCarte.cs" />
+    <Compile Include="Controleur\FactoryCarteAction.cs" />
+    <Compile Include="Controleur\FactoryCartePouvoir.cs" />
+    <Compile Include="Controleur\GCarte.cs" />
+    <Compile Include="Controleur\GDes.cs" />
+    <Compile Include="Controleur\GMonstre.cs" />
+    <Compile Include="Controleur\GPartie.cs" />
+    <Compile Include="Controleur\Joueur.cs" />
+    <Compile Include="Controleur\Partie.cs" />
+    <Compile Include="Controleur\Tour.cs" />
+    <Compile Include="Controleur\Utilitaire.cs" />
+    <Compile Include="Modele\ApplicationEffet.cs" />
+    <Compile Include="Modele\Carte.cs" />
+    <Compile Include="Modele\CarteAction.cs" />
+    <Compile Include="Modele\CartePouvoir.cs" />
+    <Compile Include="Modele\Des.cs" />
+    <Compile Include="Modele\Effet.cs" />
+    <Compile Include="Modele\EffetJeton.cs" />
+    <Compile Include="Modele\ICarte.cs" />
+    <Compile Include="Modele\Jeton.cs" />
+    <Compile Include="Modele\Monstre.cs" />
+    <Compile Include="Modele\NomMonstre.cs" />
+    <Compile Include="Modele\Plateau.cs" />
+    <Compile Include="Modele\ValeurDes.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
