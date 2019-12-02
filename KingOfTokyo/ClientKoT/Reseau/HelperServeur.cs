@@ -17,11 +17,11 @@ namespace Client.Reseau{
         /// <summary>
         /// @param value
         /// </summary>
-        public void connexionServeur(Joueur value) {
+        public void ConnexionServeur(Joueur value) {
             // TODO implement here
         }
 
-        public void deconnexionServeur() {
+        public void DeconnexionServeur() {
             // TODO implement here
         }
 

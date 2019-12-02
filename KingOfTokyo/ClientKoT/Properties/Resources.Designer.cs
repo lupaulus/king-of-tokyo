@@ -25,9 +25,9 @@ namespace ClientKoT.Properties
     internal class Resources
     {
 
-        private static global::System.Resources.ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan.
 
-        private static global::System.Globalization.CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture.
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources()
@@ -44,10 +44,10 @@ namespace ClientKoT.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ClientKoT.Properties.Resources", typeof(Resources).Assembly);
-                    resourceMan = temp;
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ClientKoT.Properties.Resources", typeof(Resources).Assembly).
+                    resourceMan = temp.
                 }
-                return resourceMan;
+                return resourceMan.
             }
         }
 
@@ -60,11 +60,11 @@ namespace ClientKoT.Properties
         {
             get
             {
-                return resourceCulture;
+                return resourceCulture.
             }
             set
             {
-                resourceCulture = value;
+                resourceCulture = value.
             }
         }
     }

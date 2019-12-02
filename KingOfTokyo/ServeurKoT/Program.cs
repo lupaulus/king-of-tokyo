@@ -21,10 +21,10 @@ namespace ServeurKoT
 
             // Lancement de l'application
             Logger.Log(Logger.Level.Info, "*** Serveur King Of Tokyo ***");
-            
+
 
             // Mise en place d'une connexion client
-            Socket SocketServeur = Connecteur.Start();
+            Serveur.Init("127.0.0.1", 13670);
 
 
 
