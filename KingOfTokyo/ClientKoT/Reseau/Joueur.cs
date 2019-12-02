@@ -10,7 +10,7 @@ namespace Client.Reseau{
         public Joueur() {
         }
 
-        private void pseudo;
+        private string pseudo;
 
     }
 }

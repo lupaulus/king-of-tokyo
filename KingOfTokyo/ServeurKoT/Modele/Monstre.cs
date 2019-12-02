@@ -1,4 +1,5 @@
 
+using ServeurKoT.Controleur;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,9 @@ namespace ServeurKoT.Modele{
 
         private static int POINT_ENERGIE_BASE = 0;
 
-        private static void POINT_VIE_BASE = 10;
+        private static int POINT_VIE_BASE = 10;
 
-        private HashSet<Cartes> effetCartes;
+        private HashSet<Carte> effetCartes;
 
 
 

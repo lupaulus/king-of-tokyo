@@ -10,9 +10,9 @@ namespace Client.Reseau{
         public HelperServeur() {
         }
 
-        private static void JOUEUR_MAX = 6;
+        private static int JOUEUR_MAX = 6;
 
-        private static void IP_SERVEUR;
+        private static string IP_SERVEUR;
 
         /// <summary>
         /// @param value
