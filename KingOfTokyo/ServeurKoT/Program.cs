@@ -12,6 +12,9 @@ namespace ServeurKoT
 {
     class Program
     {
+        private static string ADRESSE_SERVEUR = "127.0.0.1";
+        private static int PORT_SERVEUR = 13670;
+
         static void Main(string[] args)
         {
             // Mise en place du logger
@@ -24,7 +27,8 @@ namespace ServeurKoT
 
 
             // Mise en place d'une connexion client
-            Serveur.Init("127.0.0.1", 13670);
+            Serveur.Init(ADRESSE_SERVEUR, PORT_SERVEUR);
+            Serveur.Instance.StartServer();
 
 
 

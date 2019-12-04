@@ -29,7 +29,7 @@ namespace ServeurKoT.Connexion
         /// <summary>
         /// Port du serveur
         /// </summary>
-        private int Port = 13670;
+        private int localPort;
         /// <summary>
         /// Adresse IP du serveur
         /// </summary>
@@ -65,7 +65,7 @@ namespace ServeurKoT.Connexion
         #endregion Properties
 
         #region Ctor
-        public Serveur(string IpAdresse, int Port)
+        public Serveur(string ipAdresse, int port)
         {
             // **** Initialisation ******
             // Variable de sortie
@@ -73,10 +73,11 @@ namespace ServeurKoT.Connexion
             // Ensemble des clients
             ListClients = new List<TcpClient>();
             // Cast des clients
-            IPAddress localAddr = IPAddress.Parse(IpAdresse);
-
+            localAddrString = ipAdresse;
+            localPort = port;
+            IPAddress localAddr = IPAddress.Parse(ipAdresse);
             // TcpListener server = new TcpListener(port);
-            Server = new TcpListener(localAddr, Port);
+            Server = new TcpListener(localAddr, port);
             
         }
         #endregion Ctor
@@ -89,7 +90,7 @@ namespace ServeurKoT.Connexion
         /// <param name="Port">Port du serveur</param>
         public static void Init(string IpAdresse, int Port)
         {
-            Logger.Log(Logger.Level.Info, " Initialisation du serveur");
+            Logger.Log(Logger.Level.Info, "Initialisation du serveur");
             Serveur res = new Serveur(IpAdresse,Port);
             InstanceValue = res;
         }
@@ -99,6 +100,9 @@ namespace ServeurKoT.Connexion
 
         public void StartServer()
         {
+            Logger.Log(Logger.Level.Info, "Lancement du serveur  ");
+            Logger.Log(Logger.Level.Info, "Adresse : " + localAddrString);
+            Logger.Log(Logger.Level.Info, "Port : " + localPort);
             ServerLoop = new Thread(new ThreadStart(RunServer));
             ServerLoop.Start();
         }
@@ -119,38 +123,14 @@ namespace ServeurKoT.Connexion
                 Logger.Log(Logger.Level.Info,("Server is listening..."));
                 while (!Quit)
                 {
-
                     Logger.Log(Logger.Level.Info, "Waiting for a connection... ");
-
-                    // Perform a blocking call to accept requests.
-                    // You could also user server.AcceptSocket() here.
+                    // Méthode bloquante
                     TcpClient client = Server.AcceptTcpClient();
+                    // Ajout à la liste des clients
+                    ListClients.Add(client);
+                    // Start a thread to handle this client...
+                    new Thread(() => HandleClient(client)).Start();
 
-                    Console.WriteLine("Connected!");
-
-                    data = null;
-
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
-
-                    int i;
-
-                    // Loop to receive all the data sent by the client.
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        // Translate data bytes to a ASCII string.
-                        data = Encoding.ASCII.GetString(bytes, 0, i);
-                        Logger.Log(Logger.Level.Info,"Received: "+ data);
-
-                        // Process the data sent by the client.
-                        data = data.ToUpper();
-
-                        byte[] msg = Encoding.ASCII.GetBytes(data);
-
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-                        Logger.Log(Logger.Level.Info, "Sent: " + data);
-                    }
                 }
             }
             catch (SocketException E)
@@ -162,14 +142,12 @@ namespace ServeurKoT.Connexion
             Logger.Log(Logger.Level.Info, "Fermeture du serveur");
         }
 
-        public static void SendMessages(Socket serverSocket, EndPoint clientEP, string msg, string pseudo)
+        private void HandleClient(TcpClient client)
         {
-            // Encodage du string dans un buffer de bytes en ASCII
-            byte[] buffer = new PaquetDonnees(Commande.POST, CommandeType.REPONSE, msg, pseudo).GetBytes();
-
-            // Envoie du message aux clients
-            int nBytes = serverSocket.SendTo(buffer, 0, buffer.Length, SocketFlags.None, clientEP);
+            Console.WriteLine("Connected!");
         }
+
+        
 
     }
 }
