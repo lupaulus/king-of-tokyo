@@ -70,7 +70,6 @@
     <Compile Include="Modele\Monstre.cs" />
     <Compile Include="Modele\NomMonstre.cs" />
     <Compile Include="Modele\Plateau.cs" />
-    <Compile Include="Modele\ValeurDes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
