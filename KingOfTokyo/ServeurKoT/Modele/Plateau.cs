@@ -8,13 +8,14 @@ namespace ServeurKoT.Modele{
     public class Plateau {
 
         public Plateau() {
+
         }
 
-        private HashSet<Monstre> monstreEnVille;
+        private List<Monstre> monstreEnVille;
 
-        private HashSet<Monstre> monstreEnVie;
+        private List<Monstre> monstreEnVie;
 
-        private HashSet<Monstre> tousLesMonstres;
+        private List<Monstre> tousLesMonstres;
 
 
 
