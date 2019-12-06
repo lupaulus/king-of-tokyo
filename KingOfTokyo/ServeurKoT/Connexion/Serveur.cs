@@ -116,7 +116,6 @@ namespace ServeurKoT.Connexion
 
                 // Buffer for reading data
                 Byte[] bytes = new Byte[256];
-                String data = null;
 
                 // Liaison de la socket au point de communication
 

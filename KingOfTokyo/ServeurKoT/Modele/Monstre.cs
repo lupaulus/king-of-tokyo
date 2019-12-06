@@ -107,6 +107,15 @@ namespace ServeurKoT.Modele{
             listeCartes.Remove(carteValue);
         }
 
+        /// <summary>
+        /// Méthode qui ajoute le monstre mort dans la ville
+        /// </summary>
+        /// <param name="monstre"></param>
+        public bool monstreMort()
+        {
+            return pointVie == 0;
+        }
+
         #endregion Methods
 
     }

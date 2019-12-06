@@ -45,13 +45,19 @@ namespace ServeurKoT.Controleur{
             monstreEnVille.Remove(monstre);
         }
 
-        /// <summary>
-        /// Méthode qui ajoute le monstre mort dans la ville
-        /// </summary>
-        /// <param name="monstre"></param>
-        public bool monstreMort(Monstre monstre)
+        
+
+        public List<Monstre> ListeDesMonstreEnVie(List<Monstre> monstres)
         {
-            if(monstre.)
+            List<Monstre> res = new List<Monstre>();
+            foreach(Monstre monstre in monstres)
+            {
+                if(!monstre.monstreMort())
+                {
+                    res.Add(monstre);
+                }
+            }
+            return res;
         }
 
         public void frapperLaVille(int valueFrappe)

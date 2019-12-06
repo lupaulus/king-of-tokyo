@@ -45,7 +45,8 @@ namespace ServeurKoT.Controleur{
         #endregion Ctor
 
         public int CreerPartie(string nomPartie) {
-            Logger.Log(Logger.Level.Info, "Création de la partie : " + nomPartie);
+            Logger.Log(Logger.Level.Info, 
+                String.Format("Création de la partie : {0} ({1})", nomPartie, nextId));
             int res = nextId;
             Partie partie = new Partie(nextId, nomPartie);
             listeDesParties.Add(partie);
@@ -66,6 +67,8 @@ namespace ServeurKoT.Controleur{
         private void SupprimerPartie(int id) {
             Partie partie = TrouverPartie(id);
             listeDesParties.Remove(partie);
+            Logger.Log(Logger.Level.Info,
+                String.Format("Suppresion partie : {0} ({1})", partie.nomPartie, id));
         }
 
     }
