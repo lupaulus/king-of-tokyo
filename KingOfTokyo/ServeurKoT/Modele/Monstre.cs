@@ -8,17 +8,14 @@ using System.Text;
 namespace ServeurKoT.Modele{
     public class Monstre {
 
-        public Monstre(string nomDonne) {
-            nom = nomDonne;
-            pointVictoire = POINT_VICTOIRE_BASE;
-            pointVie = POINT_VIE_BASE;
-            energie = POINT_ENERGIE_BASE;
-        }
+        #region Properties
+       
 
-        public string nom { get; }
-        public int pointVie { get; set; } 
-        public int pointVictoire { get; set; }
-        public int energie { get; set; }
+        private int id;
+        private NomMonstre nom;
+        private int pointVie;
+        private int pointVictoire;
+        private int energie;
 
         private static int POINT_VIE_MIN = 0;
 
@@ -33,6 +30,25 @@ namespace ServeurKoT.Modele{
         private static int POINT_VIE_BASE = 10;
         private List<Carte> listeCartes { get; }
         private List<Carte> effetCartes { get; }
+        
+        #endregion Properties
+
+        #region Ctor
+        public Monstre(int idValue, NomMonstre nomValue)
+        {
+            id = idValue; 
+            nom = nomValue;
+            pointVictoire = POINT_VICTOIRE_BASE;
+            pointVie = POINT_VIE_BASE;
+            energie = POINT_ENERGIE_BASE;
+        }
+
+        #endregion Ctor
+
+        #region Methods
+
+        public int Id { get => id; }
+        public NomMonstre Nom { get => nom;}
 
         /// <summary>
         /// Méthode pour rétirer la vie hors combat
@@ -58,6 +74,8 @@ namespace ServeurKoT.Modele{
                 pointVie = POINT_VIE_MAX;
             }
         }
+
+        
         public void frapper(Monstre monstreAFrapper, int valeurDegat)
         {
             monstreAFrapper.seFaireFrapper(valeurDegat);
@@ -71,18 +89,22 @@ namespace ServeurKoT.Modele{
             // TODO implement here
         }
 
-        public void appliquerCarte() {
-            // TODO implement here
-        }
 
         public void choisirDes() {
             // TODO implement here
         }
 
-        public void achatCarte() {
-            // TODO implement here
+        public void achatCarte(Carte carteValue) {
+            listeCartes.Add(carteValue);
         }
 
+        public void utilisationCarte(Carte carteValue)
+        {
+            // TODO Application des effets
+            listeCartes.Remove(carteValue);
+        }
+
+        #endregion Methods
 
     }
 }

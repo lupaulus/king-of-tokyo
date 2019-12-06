@@ -54,7 +54,6 @@
     <Compile Include="Controleur\GDes.cs" />
     <Compile Include="Controleur\GMonstre.cs" />
     <Compile Include="Controleur\GPartie.cs" />
-    <Compile Include="Controleur\Joueur.cs" />
     <Compile Include="Controleur\Partie.cs" />
     <Compile Include="Controleur\Tour.cs" />
     <Compile Include="Controleur\Utilitaire.cs" />
@@ -69,7 +68,7 @@
     <Compile Include="Modele\Jeton.cs" />
     <Compile Include="Modele\Monstre.cs" />
     <Compile Include="Modele\NomMonstre.cs" />
-    <Compile Include="Modele\Plateau.cs" />
+    <Compile Include="Controleur\Plateau.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

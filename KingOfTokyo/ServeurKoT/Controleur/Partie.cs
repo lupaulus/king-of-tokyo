@@ -7,13 +7,30 @@ using System.Text;
 namespace ServeurKoT.Controleur{
     public class Partie {
 
-        public Partie() {
+        #region Properties
+
+        private int Id { get; }
+        public Plateau Plateau { get; }
+        private GMonstre GestionaryMonstre { get; }
+        private GDes GestionaryDes { get;  }
+        private GCarte GestionaryCarte { get;  }
+
+        #endregion Properties
+
+        #region Ctor
+        public Partie(int idValue) {
+            Id = idValue;
+            GestionaryMonstre = new GMonstre();
+            GestionaryDes = new GDes();
+            GestionaryCarte = new GCarte();
+            Plateau = new Plateau(GestionaryMonstre.getListeMonstre());
         }
 
-        private int id;
+        
 
+        #endregion Ctor
 
-
+        #region Methodes
 
         public void demarerPartie() {
             // TODO implement here
@@ -22,6 +39,9 @@ namespace ServeurKoT.Controleur{
         public void finirPartie() {
             // TODO implement here
         }
+
+        
+        #endregion Methodes
 
     }
 }
