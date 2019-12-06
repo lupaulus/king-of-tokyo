@@ -49,6 +49,9 @@ namespace ServeurKoT.Modele{
 
         public int Id { get => id; }
         public NomMonstre Nom { get => nom;}
+        public int PointVie { get => pointVie;}
+        public int PointVictoire { get => pointVictoire; }
+        public int Energie { get => energie; }
 
         /// <summary>
         /// Méthode pour rétirer la vie hors combat

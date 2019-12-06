@@ -1,4 +1,5 @@
 ﻿using ServeurKoT.Connexion;
+using ServeurKoT.Controleur;
 using SimpleLogger;
 using SimpleLogger.Logging.Handlers;
 using System;
@@ -29,6 +30,8 @@ namespace ServeurKoT
             // Mise en place d'une connexion client
             Serveur.Init(ADRESSE_SERVEUR, PORT_SERVEUR);
             Serveur.Instance.StartServer();
+
+            GPartie.Instance.CreerPartie("TEST1");
 
 
 

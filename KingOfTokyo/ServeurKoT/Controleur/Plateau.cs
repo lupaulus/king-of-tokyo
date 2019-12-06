@@ -19,13 +19,11 @@ namespace ServeurKoT.Controleur{
         public Plateau(List<Monstre> monstres) 
         {
             tousLesMonstres = new List<Monstre>(monstres);
-            monstreEnVie = new List<Monstre>(monstres);
         }
 
         private List<Monstre> monstreEnVille { get; }
 
-        private List<Monstre> monstreEnVie { get; }
-
+        private List<Monstre> monstreHorsVille { get; }
         private List<Monstre> tousLesMonstres { get; }
 
         
@@ -51,11 +49,18 @@ namespace ServeurKoT.Controleur{
         /// Méthode qui ajoute le monstre mort dans la ville
         /// </summary>
         /// <param name="monstre"></param>
-        public void monstreMort(Monstre monstre)
+        public bool monstreMort(Monstre monstre)
         {
-            monstreEnVie.Remove(monstre);
+            if(monstre.)
         }
 
+        public void frapperLaVille(int valueFrappe)
+        {
+            foreach(Monstre monstre in monstreEnVille)
+            {
+                monstre.seFaireFrapper(valueFrappe);
+            }
+        }
 
 
     }

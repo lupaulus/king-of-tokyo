@@ -9,17 +9,19 @@ namespace ServeurKoT.Controleur{
 
         #region Properties
 
-        private int Id { get; }
+        public int Id { get; }
+        public string nomPartie { get; }
         public Plateau Plateau { get; }
-        private GMonstre GestionaryMonstre { get; }
-        private GDes GestionaryDes { get;  }
-        private GCarte GestionaryCarte { get;  }
+        public GMonstre GestionaryMonstre { get; }
+        public GDes GestionaryDes { get;  }
+        public GCarte GestionaryCarte { get;  }
 
         #endregion Properties
 
         #region Ctor
-        public Partie(int idValue) {
+        public Partie(int idValue, string nom) {
             Id = idValue;
+            nomPartie = nom;
             GestionaryMonstre = new GMonstre();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
