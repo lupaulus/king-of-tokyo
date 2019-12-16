@@ -92,10 +92,7 @@ namespace ServeurKoT.Modele{
             // TODO implement here
         }
 
-
-        public void choisirDes() {
-            // TODO implement here
-        }
+       
 
         public void achatCarte(Carte carteValue) {
             listeCartes.Add(carteValue);

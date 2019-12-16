@@ -10,6 +10,7 @@ namespace ServeurKoT.Controleur{
         #region Properties
 
         public int Id { get; }
+        public int NombreDeJoueur { get; }
         public string nomPartie { get; }
         public Plateau Plateau { get; }
         public GMonstre GestionaryMonstre { get; }
@@ -19,10 +20,11 @@ namespace ServeurKoT.Controleur{
         #endregion Properties
 
         #region Ctor
-        public Partie(int idValue, string nom) {
+        public Partie(int idValue, string nom, int nbrJoueur) {
             Id = idValue;
             nomPartie = nom;
-            GestionaryMonstre = new GMonstre();
+            NombreDeJoueur = nbrJoueur; 
+            GestionaryMonstre = new GMonstre(nbrJoueur);
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
             Plateau = new Plateau(GestionaryMonstre.getListeMonstre());
@@ -34,12 +36,13 @@ namespace ServeurKoT.Controleur{
 
         #region Methodes
 
-        public void demarerPartie() {
-            // TODO implement here
+        public void DemarerPartie() {
+            // Choix du premier Joueur à jouer
+
         }
 
-        public void finirPartie() {
-            // TODO implement here
+        public void FinirPartie() {
+            // Renvoyer le gagnant.
         }
 
         

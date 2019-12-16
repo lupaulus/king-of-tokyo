@@ -9,14 +9,31 @@ namespace ServeurKoT.Controleur
 {
     public class GMonstre
     {
-        private int nextId; 
+        #region Properties
+        /// <summary>
+        /// Variable de gestion des ID
+        /// </summary>
+        private int nextId;
+        /// <summary>
+        /// Nombre de joueur dans la partie
+        /// </summary>
+        private int NombreJoueur;
+        /// <summary>
+        /// Liste des montres dans la partie
+        /// </summary>
         private List<Monstre> listeMonstre;
-        public GMonstre()
+        #endregion Properties
+
+        #region Ctor
+        public GMonstre(int nbrJoueur)
         {
             nextId = 1;
+            NombreJoueur = nbrJoueur;
             listeMonstre = new List<Monstre>();
         }
+        #endregion Ctor
 
+        #region Methods
         public void ajouterMonstre(NomMonstre nom)
         {
             Monstre monstre = new Monstre(nextId,nom);
@@ -33,8 +50,6 @@ namespace ServeurKoT.Controleur
         {
             return new List<Monstre>(listeMonstre);
         }
-
-
-
+        #endregion Methods
     }
 }
