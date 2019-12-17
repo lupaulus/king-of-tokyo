@@ -14,4 +14,5 @@ jobs:
       - name: Build DotNET35
         run: |
            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-           .\MSBuild.exe $Env:GITHUB_WORKSPACE\king-of-tokyo
+           .\MSBuild.exe $Env:GITHUB_WORKSPACE\KingOfTokyo\KingOfTokyo.sln
+
