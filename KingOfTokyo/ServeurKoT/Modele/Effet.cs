@@ -1,6 +1,7 @@
 
 namespace ServeurKoT.Modele{
-    public enum Effet {
+    public enum Effet
+    {
         PointDeVie,
         Energie,
         PointDeVictoire

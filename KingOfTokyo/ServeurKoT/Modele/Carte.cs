@@ -8,14 +8,24 @@ using System.Text;
 namespace ServeurKoT.Modele{
     public abstract class Carte : FactoryCarte {
 
-        public Carte() {
+        #region Properties
+
+        private string Nom;
+
+        private int CoutEnEnergie;
+
+        private string Description;
+
+        #endregion Properties
+
+        #region Ctor
+        public Carte(string nom, int coutEnergie, string description) 
+        {
+            Nom = nom;
+            CoutEnEnergie = coutEnergie;
+            Description = description;
         }
-
-        private string nom;
-
-        private int coutEnEnergie;
-
-        private string description;
+        #endregion Ctor
 
 
 

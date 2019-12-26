@@ -14,7 +14,7 @@ namespace ServeurKoT.Modele{
         /// @param listeAppEffet 
         /// @param listeEffet
         /// </summary>
-        void appliquerEffet(HashSet<ApplicationEffet> appEffet, HashSet<Effet> effet, HashSet<int> listeAppEffet, HashSet<int> listeEffet);
+        void AppliquerEffet(HashSet<ApplicationEffet> appEffet, HashSet<Effet> effet, HashSet<int> listeAppEffet, HashSet<int> listeEffet);
 
     }
 }

@@ -5,15 +5,43 @@ using System.Linq;
 using System.Text;
 
 namespace ServeurKoT.Modele{
-    public class Des {
+    
+    #region Enum
+    public enum ValeurDes
+    {
+        Un,
+        Deux,
+        Trois,
+        Energie,
+        Soin,
+        Baffe
+    }
+    #endregion Enum
 
-        public Des() {
+    public class Des
+    {
+        /// <summary>
+        /// Propriéte identifiant le dés
+        /// </summary>
+        public int Id { get; private set; }
+        /// <summary>
+        /// Propriété representant la valeur du dés
+        /// </summary>
+        public ValeurDes Value { get; private set; }
+        
+        /// <summary>
+        /// Constructeur d'un dés générer automatiquement sa valeur
+        /// </summary>
+        public Des(int id)
+        {
+            Id = id;
+            Roll();
         }
 
-        private ValeurDes value;
-
-
-
-
+        public void Roll()
+        {
+            Random rand = new Random();
+            Value = (ValeurDes) rand.Next(0, 5);
+        }
     }
 }
