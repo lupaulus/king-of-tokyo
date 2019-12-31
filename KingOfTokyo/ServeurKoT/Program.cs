@@ -31,7 +31,7 @@ namespace ServeurKoT
             Serveur.Init(ADRESSE_SERVEUR, PORT_SERVEUR);
             Serveur.Instance.StartServer();
 
-            GPartie.Instance.CreerPartie("TEST1");
+            GPartie.Instance.CreerPartie("TEST1",6);
 
 
 

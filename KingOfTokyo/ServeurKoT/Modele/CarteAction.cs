@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ServeurKoT.Modele{
     public class CarteAction : Carte , ICarte {
@@ -12,10 +13,6 @@ namespace ServeurKoT.Modele{
             
         }
 
-        public override void AjouterCarte()
-        {
-            throw new NotImplementedException();
-        }
 
         public void AppliquerEffet(HashSet<ApplicationEffet> appEffet, HashSet<Effet> effet, HashSet<int> listeAppEffet, HashSet<int> listeEffet)
         {
@@ -23,5 +20,14 @@ namespace ServeurKoT.Modele{
         }
 
 
+    }
+
+    [Serializable()]
+    [XmlRoot("CarteActionCollection")]
+    public class CarteActionCollection
+    {
+        [XmlArray("Cartes")]
+        [XmlArrayItem("CarteAction", typeof(CarteAction))]
+        public CarteAction[] Cartes { get; set; }
     }
 }

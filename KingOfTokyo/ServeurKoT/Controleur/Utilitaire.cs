@@ -10,7 +10,8 @@ namespace ServeurKoT.Controleur{
         public Utilitaire() {
         }
 
-        private static string CHEMIN_XML_CARTE;
+        public static string CHEMIN_XML_CARTE_ACTION = Environment.CurrentDirectory + "\\XML_CA.xml";
+        public static string CHEMIN_XML_CARTE_POUVOIR = Environment.CurrentDirectory + "\\XML_CP.xml";
 
     }
 }

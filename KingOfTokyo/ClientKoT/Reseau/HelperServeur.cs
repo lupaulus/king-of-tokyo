@@ -9,17 +9,37 @@ using System.Text;
 namespace Client.Reseau{
     public class HelperServeur {
 
-        public HelperServeur() {
+        private static int JOUEUR_MAX = 6;
+        private static HelperServeur instance = null;
+        private static readonly object padlock = new object();
+
+        public static void Init(Joueur value, string hostName, int portNum)
+        {
+            instance = new HelperServeur(value,hostName,portNum);
         }
 
-        private static int JOUEUR_MAX = 6;
+        public static HelperServeur Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        throw new NullReferenceException();
+                    }
+                    return instance;
+                }
+            }
+        }
 
-        private static string IP_SERVEUR;
+
+        
 
         /// <summary>
         /// @param value
         /// </summary>
-        public void ConnexionServeur(Joueur value, string hostName, int portNum) {
+        public HelperServeur(Joueur value, string hostName, int portNum) {
             try
             {
                 Logger.Log(Logger.Level.Info, " Initialisation de la connexion vers le serveur");
@@ -60,5 +80,26 @@ namespace Client.Reseau{
             // retourne le nombre de joueur actuel dans la partie
             return NbJoueurs;
         }
+
+        // Monstre 
+
+        public List<int> LancerDes()
+        {
+            return new List<int>();
+        }
+
+        public void GarderDes(List<int> idDesGarder)
+        {
+
+        }
+
+        public void DonnerBaffes(List<int> idMonstres,List<int> nbrBaffes)
+        {
+
+        }
+
+
+
+
     }
 }
