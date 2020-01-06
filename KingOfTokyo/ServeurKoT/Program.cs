@@ -20,8 +20,8 @@ namespace ServeurKoT
         {
             // Mise en place du logger
             Logger.LoggerHandlerManager
-            .AddHandler(new ConsoleLoggerHandler())
-            .AddHandler(new FileLoggerHandler());
+            .AddHandler(new ConsoleLoggerHandler());
+            //.AddHandler(new FileLoggerHandler());
 
             // Lancement de l'application
             Logger.Log(Logger.Level.Info, "*** Serveur King Of Tokyo ***");
@@ -31,7 +31,7 @@ namespace ServeurKoT
             Serveur.Init(ADRESSE_SERVEUR, PORT_SERVEUR);
             Serveur.Instance.StartServer();
 
-            GPartie.Instance.CreerPartie("TEST1");
+            GPartie.Instance.CreerPartie("TEST1",6);
 
 
 

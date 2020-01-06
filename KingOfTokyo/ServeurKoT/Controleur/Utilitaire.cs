@@ -10,7 +10,5 @@ namespace ServeurKoT.Controleur{
         public Utilitaire() {
         }
 
-        private static string CHEMIN_XML_CARTE;
-
     }
 }

@@ -4,26 +4,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ServeurKoT.Modele{
-    public abstract class Carte : FactoryCarte {
+    public abstract class Carte {
 
         #region Properties
 
-        private string Nom;
 
-        private int CoutEnEnergie;
+        protected string Nom { get; set; }
 
-        private string Description;
+        protected int CoutEnEnergie { get; set; }
+
+        protected string Description { get; set; }
+
+        protected string CheminImgCarte { get; set; }
 
         #endregion Properties
 
         #region Ctor
-        public Carte(string nom, int coutEnergie, string description) 
+        public Carte(string nom, int coutEnergie, string description, string cheminImg) 
         {
             Nom = nom;
             CoutEnEnergie = coutEnergie;
             Description = description;
+            CheminImgCarte = cheminImg;
         }
         #endregion Ctor
 

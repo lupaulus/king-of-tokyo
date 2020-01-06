@@ -5,6 +5,7 @@ namespace ServeurKoT.Modele{
         SurMoi,
         ToutLeMonde,
         EnVille,
-        HorsVille
+        HorsVille,
+        SurAutreMonstre
     }
 }
