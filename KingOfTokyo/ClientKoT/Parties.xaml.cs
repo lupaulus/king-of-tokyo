@@ -23,6 +23,23 @@ namespace ClientKoT
         public Parties()
         {
             InitializeComponent();
+
+
+            // Binding du nombre de joueurs dans une partie
+            GridViewColumn gvc1 = new GridViewColumn
+            {
+                DisplayMemberBinding = new Binding("NbJoueurs"),
+                Header = "NbJoueurs",
+                Width = 200
+            };
+
+            // Binding du nombre du nom des parties
+            GridViewColumn gvc2 = new GridViewColumn
+            {
+                DisplayMemberBinding = new Binding("NomPartie"),
+                Header = "NomPartie",
+                Width = 200
+            };
         }
     }
 }

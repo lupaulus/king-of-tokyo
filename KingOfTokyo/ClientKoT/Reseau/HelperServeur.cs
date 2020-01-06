@@ -28,12 +28,12 @@ namespace Client.Reseau{
 
                 byte[] bytes = new byte[1024];
                 int bytesRead = ns.Read(bytes, 0, bytes.Length);
-                
-                Logger.Log(Logger.Level.Info,Encoding.ASCII.GetString(bytes, 0, bytesRead));
 
-                
+                Logger.Log(Logger.Level.Info, Encoding.ASCII.GetString(bytes, 0, bytesRead));
 
-            }catch(Exception e)
+
+
+            } catch (Exception e)
             {
                 Logger.Log(Logger.Level.Error, e.ToString());
             }
@@ -43,5 +43,22 @@ namespace Client.Reseau{
             // TODO implement here
         }
 
+        public void ReadListeParties() {
+            // Renvoie la liste des parties: Nom; Nb joueurs;
+        }
+
+        public void NomDuJoueur() {
+            // Obtenu à partir du formulaire dans Menu.xaml
+        }
+
+        public string IpDuServeur() {
+            // retourne l'ip du serveur
+            return IpServeur;
+        }
+
+        public int NombreJoueurs() {
+            // retourne le nombre de joueur actuel dans la partie
+            return NbJoueurs;
+        }
     }
 }

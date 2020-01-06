@@ -15,9 +15,10 @@
                     <MenuItem Header="_Créer une partie" />
                     <MenuItem Header="_Changer de pseudo" />
                     <Separator />
-                    <MenuItem Header="_Se déconnecter" />
+                    <MenuItem Header="_Se déconnecter du serveur" />
                 </MenuItem>
             </Menu>
+            <Rectangle Fill="White" />
         </DockPanel>
         
         <!-- Form -->

@@ -9,6 +9,18 @@
       Title="King of Strasbourg - Plateau">
 
     <Grid>
-        
+        <!-- Onglets -->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Menu">
+                    <MenuItem Header="_Quitter la partie" />
+                    <Separator />
+                    <MenuItem Header="_Se déconnecter du serveur" />
+                </MenuItem>
+            </Menu>
+            <Rectangle Fill="White" />
+        </DockPanel>
+
+        <!-- Plateau -->
     </Grid>
 </Page>

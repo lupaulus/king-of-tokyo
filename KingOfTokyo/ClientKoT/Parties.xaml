@@ -4,11 +4,46 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClientKoT"
+      xmlns:reseau="clr-namespace:Client.Reseau"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Parties">
 
     <Grid>
-        
+        <!-- Onglets -->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Menu">
+                    <MenuItem Header="_Créer une partie" />
+                    <MenuItem Header="_Changer de pseudo" />
+                    <Separator />
+                    <MenuItem Header="_Se déconnecter du serveur" />
+                </MenuItem>
+            </Menu>
+            <Rectangle Fill="White" />
+        </DockPanel>
+
+        <!-- Liste -->
+        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,30,0,0" Name="ListePartiesHeader" Text="Liste des parties sur le serveur :" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
+        <Button Content="Créer une partie" Height="20" HorizontalAlignment="Center" Margin="0,80,0,0" Name="buttonCréerPartie" VerticalAlignment="Top" Width="100" Click="ButtonCreerPartie_Click"/>
+
+        <ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600"><!-- A FIX avec la source de data dans la balise ListView::> ItemsSource="{Binding Source={reseau:HelperServeur ListeParties }}"-->
+            <ListView.View HorizontalAlignment="Center" Margin="0,200,0,0" Name="vueListe" VerticalAlignment="top">
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Nom">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=NbJoueurs}" Header="Nb Joueurs" Width="200"/> <!-- A FIX avec nom réel-->
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=NomPartie}" Width="200"> <!-- A FIX avec nom réel-->
+                        <GridViewColumnHeader>Nom
+                            <GridViewColumnHeader.ContextMenu>
+                                <ContextMenu  MenuItem.Click="NomCM_Click" Name="NomCM">
+                                    <MenuItem Header="Ascending" />
+                                    <MenuItem Header="Descending" />
+                                </ContextMenu>
+                            </GridViewColumnHeader.ContextMenu>
+                        </GridViewColumnHeader>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Action" Width="200"/><!--Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie-->
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
