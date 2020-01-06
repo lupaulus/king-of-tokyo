@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ClientKoT"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Menu">
+      Title="King of Stasbourg - Menu">
     <Grid>
         <!-- Onglets -->
         <DockPanel>
@@ -35,7 +35,7 @@
         <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,260,0,0" Name="textBlock4" Text="Port" VerticalAlignment="Top" />
         <TextBox Height="20" HorizontalAlignment="Center" Margin="0,230,0,0" Name="textBoxIP" VerticalAlignment="Top" Width="247" />
         <TextBox Height="20" HorizontalAlignment="Center" Margin="0,260,0,0" Name="textBoxPort" VerticalAlignment="Top" Width="247" />
-        <Button Content="Se connecter" Height="23" HorizontalAlignment="Center" Margin="0,300,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
+        <Button Content="Se connecter" Height="23" HorizontalAlignment="Center" Margin="0,300,0,0" Name="buttonConnect" VerticalAlignment="Top" Width="104" Click="ButtonConnect_Click"/>
         <TextBlock Height="20" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="0,250,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
     </Grid>
 </Page>
