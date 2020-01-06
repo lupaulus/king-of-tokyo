@@ -1,0 +1,41 @@
+﻿<Page x:Class="ClientKoT.Menu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientKoT"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Menu">
+    <Grid>
+        <!-- Onglets -->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Menu">
+                    <MenuItem Header="_Créer une partie" />
+                    <MenuItem Header="_Changer de pseudo" />
+                    <Separator />
+                    <MenuItem Header="_Se déconnecter" />
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        
+        <!-- Form -->
+        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,50,0,0" Name="PseudoHeader" Text="Choix d'un pseudonyme:" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
+        <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,70,0,0" Name="textBlockPseudoHeader" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
+            Entrer un pseudonyme à utiliser en jeu:
+        </TextBlock>
+        <TextBox Height="20" HorizontalAlignment="Center" Margin="0,100,0,0" Name="textBoxPseudo" VerticalAlignment="Top" Width="247" />
+        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,180,0,0" Name="ServHeader" Text="Connexion à un serveur:" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
+        <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,200,0,0" Name="textBlockServHeader" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
+            Entrer l'IP et le port du serveur:
+        </TextBlock>
+        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,230,0,0" Name="textBlock3" Text="IP" VerticalAlignment="Top" />
+        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,260,0,0" Name="textBlock4" Text="Port" VerticalAlignment="Top" />
+        <TextBox Height="20" HorizontalAlignment="Center" Margin="0,230,0,0" Name="textBoxIP" VerticalAlignment="Top" Width="247" />
+        <TextBox Height="20" HorizontalAlignment="Center" Margin="0,260,0,0" Name="textBoxPort" VerticalAlignment="Top" Width="247" />
+        <Button Content="Se connecter" Height="23" HorizontalAlignment="Center" Margin="0,300,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
+        <TextBlock Height="20" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="0,250,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
+    </Grid>
+</Page>
