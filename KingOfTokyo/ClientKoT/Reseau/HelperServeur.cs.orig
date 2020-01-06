@@ -63,6 +63,7 @@ namespace Client.Reseau{
             // TODO implement here
         }
 
+<<<<<<< HEAD
         public void ReadListeParties() {
             // Renvoie la liste des parties: Nom; Nb joueurs;
         }
@@ -73,15 +74,14 @@ namespace Client.Reseau{
 
         public string IpDuServeur() {
             // retourne l'ip du serveur
-            string ip = "127.0.0.1";
-            return ip;
+            return IpServeur;
         }
 
         public int NombreJoueurs() {
             // retourne le nombre de joueur actuel dans la partie
-            int nbJoueurs = 0;
-            return nbJoueurs;
+            return NbJoueurs;
         }
+=======
 
         // Monstre 
 
@@ -103,5 +103,6 @@ namespace Client.Reseau{
 
 
 
+>>>>>>> Gestion des cartes améliorer
     }
 }
