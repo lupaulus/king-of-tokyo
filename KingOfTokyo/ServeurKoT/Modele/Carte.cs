@@ -11,21 +11,24 @@ namespace ServeurKoT.Modele{
 
         #region Properties
 
-        [XmlElement("Nom")]
-        private string Nom;
-        [XmlElement("CoutEnEnergie")]
-        private int CoutEnEnergie;
-        [XmlElement("Description")]
-        private string Description;
+
+        protected string Nom { get; set; }
+
+        protected int CoutEnEnergie { get; set; }
+
+        protected string Description { get; set; }
+
+        protected string CheminImgCarte { get; set; }
 
         #endregion Properties
 
         #region Ctor
-        public Carte(string nom, int coutEnergie, string description) 
+        public Carte(string nom, int coutEnergie, string description, string cheminImg) 
         {
             Nom = nom;
             CoutEnEnergie = coutEnergie;
             Description = description;
+            CheminImgCarte = cheminImg;
         }
         #endregion Ctor
 

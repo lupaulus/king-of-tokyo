@@ -23,8 +23,8 @@ namespace ServeurKoT.Controleur{
             FactoryCarteAction factoryCarteAction = new FactoryCarteAction();
             FactoryCartePouvoir factoryCartePouvoir = new FactoryCartePouvoir();
 
-            List<Carte> list = factoryCarteAction.AjouterCarte(Utilitaire.CHEMIN_XML_CARTE_ACTION);
-            list.AddRange(factoryCartePouvoir.AjouterCarte(Utilitaire.CHEMIN_XML_CARTE_POUVOIR));
+            List<Carte> list = factoryCarteAction.AjouterCarte();
+            list.AddRange(factoryCartePouvoir.AjouterCarte());
 
             //C'est sale mamene
             ListDesCartes = (Stack<Carte>) list.Cast<Carte>();

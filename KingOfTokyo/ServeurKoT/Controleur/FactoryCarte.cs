@@ -10,7 +10,7 @@ namespace ServeurKoT.Controleur{
 
         public FactoryCarte() {}
 
-        public abstract List<Carte> AjouterCarte(string filename);
+        public abstract List<Carte> AjouterCarte();
 
     }
 }
