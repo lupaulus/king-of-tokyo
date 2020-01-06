@@ -18,7 +18,6 @@
                     <MenuItem Header="_Se déconnecter" />
                 </MenuItem>
             </Menu>
-            <TextBox AcceptsReturn="True" />
         </DockPanel>
         
         <!-- Form -->
@@ -26,13 +25,14 @@
         <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,70,0,0" Name="textBlockPseudoHeader" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
             Entrer un pseudonyme à utiliser en jeu:
         </TextBlock>
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="220,100,0,0" Name="textBlock1" Text="Pseudo" VerticalAlignment="Top" />
         <TextBox Height="20" HorizontalAlignment="Center" Margin="0,100,0,0" Name="textBoxPseudo" VerticalAlignment="Top" Width="247" />
         <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,180,0,0" Name="ServHeader" Text="Connexion à un serveur:" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
         <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,200,0,0" Name="textBlockServHeader" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
             Entrer l'IP et le port du serveur:
         </TextBlock>
-        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,230,0,0" Name="textBlock3" Text="IP" VerticalAlignment="Top" />
-        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,260,0,0" Name="textBlock4" Text="Port" VerticalAlignment="Top" />
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="220,230,0,0" Name="textBlock2" Text="IP" VerticalAlignment="Top" />
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="220,260,0,0" Name="textBlock3" Text="Port" VerticalAlignment="Top" />
         <TextBox Height="20" HorizontalAlignment="Center" Margin="0,230,0,0" Name="textBoxIP" VerticalAlignment="Top" Width="247" />
         <TextBox Height="20" HorizontalAlignment="Center" Margin="0,260,0,0" Name="textBoxPort" VerticalAlignment="Top" Width="247" />
         <Button Content="Se connecter" Height="23" HorizontalAlignment="Center" Margin="0,300,0,0" Name="buttonConnect" VerticalAlignment="Top" Width="104" Click="ButtonConnect_Click"/>

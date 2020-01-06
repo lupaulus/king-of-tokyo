@@ -60,6 +60,7 @@ namespace ClientKoT
                 string pseudo = textBoxPseudo.Text;
                 string ip = textBoxIP.Text;
                 int port = int.Parse(textBoxPort.Text);
+                // TODO NEXT
             }
         }
     }
