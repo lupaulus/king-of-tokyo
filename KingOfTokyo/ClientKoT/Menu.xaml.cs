@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,7 +61,8 @@ namespace ClientKoT
                 string pseudo = textBoxPseudo.Text;
                 string ip = textBoxIP.Text;
                 int port = int.Parse(textBoxPort.Text);
-                // TODO NEXT
+                Joueur joueur = new Joueur(pseudo);
+                HelperServeur.Init(joueur, ip, port);
             }
         }
     }

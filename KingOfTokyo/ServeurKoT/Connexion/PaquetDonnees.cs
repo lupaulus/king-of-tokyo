@@ -24,15 +24,15 @@ namespace ServeurKoT.Connexion
         public CommandeType commandeType;       // type (Requête/Réponse)
         public int dataSize;                    // taille de la donnée
         public String data;                     // données de la commande
-        public String pseudo;                   // Pseudo du joueur
+        public Joueur joueur;                   // Pseudo du joueur
 
-        public PaquetDonnees(Commande commande, CommandeType type, String pseudo, String data)
+        public PaquetDonnees(Commande commande, CommandeType type, Joueur j, string data)
         {
             this.commande = commande;
             this.commandeType = type;
             this.dataSize = data.Length;
             this.data = data;
-            this.pseudo = pseudo;
+            this.joueur = j;
         }
 
         public PaquetDonnees(byte[] buffer)
