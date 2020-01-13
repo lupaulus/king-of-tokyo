@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 
 namespace ServeurKoT.Connexion
@@ -17,3 +18,13 @@ namespace ServeurKoT.Connexion
         }
     }
 }
+||||||| merged common ancestors
+=======
+﻿namespace ServeurKoT.Connexion
+{
+    public class StreamObject
+    {
+        public int Length { get; internal set; }
+    }
+}
+>>>>>>> Avancement de l'envoi de paquets génériques

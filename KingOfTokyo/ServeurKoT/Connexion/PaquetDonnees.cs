@@ -22,8 +22,6 @@ namespace ServeurKoT.Connexion
         /// Taille du Buffer
         /// </summary>
         public const int bufferSize = 1500;
-
-        /// Position des différents éléments dans le buffer
         private const int positionCommande = 0;
         private const int positionCommandeType = 1;
         private const int positionJoueur = 2;
