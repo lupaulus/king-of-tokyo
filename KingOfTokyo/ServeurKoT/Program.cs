@@ -20,8 +20,8 @@ namespace ServeurKoT
         {
             // Mise en place du logger
             Logger.LoggerHandlerManager
-            .AddHandler(new ConsoleLoggerHandler());
-            //.AddHandler(new FileLoggerHandler());
+            .AddHandler(new ConsoleLoggerHandler())
+            .AddHandler(new FileLoggerHandler());
 
             // Lancement de l'application
             Logger.Log(Logger.Level.Info, "*** Serveur King Of Tokyo ***");
