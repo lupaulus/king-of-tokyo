@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using SimpleLogger.Logging.Formatters;
 
 namespace SimpleLogger.Logging.Handlers
@@ -9,6 +10,7 @@ namespace SimpleLogger.Logging.Handlers
         private readonly string _fileName;
         private readonly string _directory;
         private readonly ILoggerFormatter _loggerFormatter;
+        private static ReaderWriterLockSlim _readWriteLock = new ReaderWriterLockSlim();
 
         public FileLoggerHandler() : this(CreateFileName()) { }
 
@@ -36,8 +38,28 @@ namespace SimpleLogger.Logging.Handlers
                     directoryInfo.Create();
             }
 
-            using (var writer = new StreamWriter(File.Open(Path.Combine(_directory, _fileName), FileMode.Append)))
+
+            _readWriteLock.EnterWriteLock();
+            StreamWriter writer = null;
+
+            try
+            {
+                // Append text to the file
+                writer = new StreamWriter(File.Open(Path.Combine(_directory, _fileName), FileMode.Append));
                 writer.WriteLine(_loggerFormatter.ApplyFormat(logMessage));
+                writer.Close();
+            }
+            finally
+            {
+                // Release lock
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+
+            }
+            _readWriteLock.ExitWriteLock();
+
         }
 
         private static string CreateFileName()
