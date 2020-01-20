@@ -1,34 +1,33 @@
 
+using ServeurKoT.Controleur;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace ServeurKoT.Connexion
 {
+    [Serializable()]
     public class Joueur
     {
-
-        public Joueur()
-        {
-        }
-
         private int id;
 
-        private String adresseIP;
+        private string adresseIP;
 
-        private String pseudo;
+        private string pseudo;
 
-
-
-        /// <summary>
-        /// @param adresseIP 
-        /// @param pseudo
-        /// </summary>
-        public void Client(String adresseIP, String pseudo)
+        public Joueur(int id, string adresseIP, string pseudo)
         {
-            // TODO implement here
+            this.id = id;
+            this.adresseIP = adresseIP;
+            this.pseudo = pseudo;
         }
+
+        
+
 
         public void passerTour()
         {
@@ -40,14 +39,14 @@ namespace ServeurKoT.Connexion
             // TODO implement here
         }
 
-        internal static Joueur FromBytes(byte v)
+        public static Joueur FromBytes(byte[] v)
         {
-            throw new NotImplementedException();
+            return Utilitaire.Deserializer<Joueur>(v);
         }
 
-        internal byte IntoBytes()
+        public byte[] IntoBytes()
         {
-            throw new NotImplementedException();
+            return Utilitaire.Serializer(this);
         }
     }
 }

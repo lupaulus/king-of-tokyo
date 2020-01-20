@@ -20,7 +20,7 @@ namespace ServeurKoT.Connexion
         public ConnexionServeur(byte[] b)
         {
             this.joueur = Joueur.FromBytes(b);
-            this.check = true;
+            this.check = (bool)b[10];
         }
 
 
