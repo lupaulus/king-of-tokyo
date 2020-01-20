@@ -41,10 +41,24 @@ namespace ClientKoT
                 Width = 200
             };
         }
+<<<<<<< HEAD
 
         private void ButtonCreerPartie_Click(object sender, RoutedEventArgs e)
         {
 
         }
+||||||| merged common ancestors
+=======
+
+        private void ButtonCreerPartie_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void NomCM_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+>>>>>>> Debut tcp
     }
 }
