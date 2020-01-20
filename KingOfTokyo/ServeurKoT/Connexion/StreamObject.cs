@@ -2,18 +2,40 @@
 
 namespace ServeurKoT.Connexion
 {
-    public class StreamObject
+    public abstract class StreamObject
     {
-        public int Length { get; internal set; }
+        public int Length { get; set; }
+        protected Joueur joueur { get; set; }
 
-        internal static StreamObject FromBytes(byte v)
+        public StreamObject()
         {
-            throw new NotImplementedException();
+            joueur = null;
         }
 
-        internal byte IntoBytes()
+        public static StreamObject FromBytes(byte[] b, CommandeType type)
         {
-            throw new NotImplementedException();
+            StreamObject res;
+            switch(type)
+            {
+                case CommandeType.CONNEXIONSERVEUR:
+                    res = new ConnexionServeur(b);
+                    break;
+                case CommandeType.CONNEXIONPARTIE:
+                    res = new ConnexionPartie(b);
+                    break;
+                case CommandeType.ACTIONPARTIE:
+                    res = new ActionPartie(b);
+                    break;
+                case CommandeType.ACTIONTOUR:
+                    res = new ActionTour(b);
+                    break;
+                default:
+                    throw new Exception("PAQUET INCONNU");
+            }
+            return res;
         }
+
+        public abstract byte IntoBytes();
+
     }
 }
