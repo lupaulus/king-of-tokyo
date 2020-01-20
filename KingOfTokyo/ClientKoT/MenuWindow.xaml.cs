@@ -22,6 +22,8 @@ namespace ClientKoT
         public MenuWindow()
         {
             InitializeComponent();
+            //this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.85);
+            //this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.85);
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)

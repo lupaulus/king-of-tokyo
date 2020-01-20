@@ -9,7 +9,7 @@ using System.Text;
 namespace Client.Reseau{
     public class HelperServeur {
 
-        private static int JOUEUR_MAX = 6;
+        //private static int JOUEUR_MAX = 6;
         private static HelperServeur instance = null;
         private static readonly object padlock = new object();
 

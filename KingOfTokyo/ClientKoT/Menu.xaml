@@ -10,7 +10,7 @@
     <Grid>
         <Rectangle>
             <Rectangle.Fill>
-                <ImageBrush ImageSource="../ClientKoT/obj/images/santa_pepe.png" />
+                <ImageBrush ImageSource="images/santa_pepe.png" />
                 <!-- Background à changer ici avec image definitive -->
             </Rectangle.Fill>
         </Rectangle>
