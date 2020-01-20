@@ -42,7 +42,7 @@ namespace Client.Reseau{
         public HelperServeur(Joueur value, string hostName, int portNum) {
             try
             {
-                Logger.Log(Logger.Level.Info, " Initialisation de la connexion vers le serveur");
+                Logger.Log(Logger.Level.Info, "Initialisation de la connexion vers le serveur");
                 TcpClient client = new TcpClient(hostName, portNum);
                 NetworkStream ns = client.GetStream();
 
