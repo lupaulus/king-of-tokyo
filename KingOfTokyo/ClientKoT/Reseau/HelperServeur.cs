@@ -66,7 +66,7 @@ namespace Client.Reseau{
         public void ReadListeParties() {
             // Renvoie la liste des parties: Nom; Nb joueurs;
         }
-
+        
         public void NomDuJoueur() {
             // Obtenu à partir du formulaire dans Menu.xaml
         }

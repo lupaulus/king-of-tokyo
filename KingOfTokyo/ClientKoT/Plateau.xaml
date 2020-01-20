@@ -5,22 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClientKoT"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1024"
       Title="King of Strasbourg - Plateau">
 
     <Grid>
-        <!-- Onglets -->
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_Menu">
-                    <MenuItem Header="_Quitter la partie" />
-                    <Separator />
-                    <MenuItem Header="_Se déconnecter du serveur" />
-                </MenuItem>
-            </Menu>
-            <Rectangle Fill="White" />
-        </DockPanel>
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="../ClientKoT/obj/images/santa_pepe.png" />
+                <!-- Background à changer ici avec image definitive -->
+            </Rectangle.Fill>
+        </Rectangle>
 
         <!-- Plateau -->
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Canvas Width="800" Height="450">
+                <!-- Tokyo City -->
+                <Ellipse Fill="Red" Width="100" Height="100" Canvas.Left="229" Canvas.Top="170" RenderTransformOrigin="-0.32,0.408"/>
+                <TextBlock Canvas.Left="252" Canvas.Top="217" RenderTransformOrigin="3.287,11.002" Foreground="White">tokyo city</TextBlock>
+                <!-- Tokyo Bay -->
+                <Ellipse Fill="Blue" Width="100" Height="100" Canvas.Left="450" Canvas.Top="170" RenderTransformOrigin="-0.32,0.408"/>
+                <TextBlock Canvas.Left="476" Canvas.Top="217" RenderTransformOrigin="3.287,11.002" Foreground="White">tokyo bay</TextBlock>
+            </Canvas>
+        </Viewbox>
     </Grid>
 </Page>
