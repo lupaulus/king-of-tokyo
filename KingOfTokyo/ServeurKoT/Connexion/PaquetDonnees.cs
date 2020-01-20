@@ -13,7 +13,7 @@ namespace ServeurKoT.Connexion
         POST, GET, HELP, QUIT, STOPSERVEUR, SUBSCRIBE, UNSUBSCRIBE
     };
 
-    public enum CommandeType { REQUETE, REPONSE };
+    public enum CommandeType { SERVEURCONNEXION, CONNEXIONSERVEUR, CONNEXIONPARTIE, ACTIONPARTIE, ACTIONTOUR };
     #endregion Enum
 
     class PaquetDonnees
@@ -22,11 +22,11 @@ namespace ServeurKoT.Connexion
         /// Taille du Buffer
         /// </summary>
         public const int bufferSize = 1500;
+
+        /// Position des différents éléments dans le buffer
         private const int positionCommande = 0;
         private const int positionCommandeType = 1;
-        private const int positionJoueur = 2;
         private const int positionStreamObject = 3;
-
 
         public Commande commande;               // commande
         public CommandeType commandeType;       // type (Requête/Réponse)
@@ -39,7 +39,6 @@ namespace ServeurKoT.Connexion
         {
             this.commande = commande;
             this.commandeType = type;
-            this.joueur = j;
             this.dataSize = data.Length;
             this.data = data;
             
@@ -49,8 +48,7 @@ namespace ServeurKoT.Connexion
         {
             this.commande = (Commande)buffer[0];
             this.commandeType = (CommandeType)buffer[1];
-            this.joueur = Joueur.FromBytes(buffer[2]);
-            this.data = StreamObject.FromBytes(buffer[3]);
+            this.data = StreamObject.FromBytes(buffer,commandeType);
         }
 
 
