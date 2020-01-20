@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientKoT"
         mc:Ignorable="d"
-        Title="King of Strasbourg" Height="768" Width="1024" Source="Menu.xaml">
+        Title="King of Paris" Height="768" Width="1024" Source="MenuWindow.xaml" WindowStartupLocation="CenterScreen">
 </NavigationWindow>
