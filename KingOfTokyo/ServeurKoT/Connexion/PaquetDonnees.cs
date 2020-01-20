@@ -18,8 +18,12 @@ namespace ServeurKoT.Connexion
 
     class PaquetDonnees
     {
-        
+        /// <summary>
+        /// Taille du Buffer
+        /// </summary>
         public const int bufferSize = 1500;
+
+        /// Position des différents éléments dans le buffer
         private const int positionCommande = 0;
         private const int positionCommandeType = 1;
         private const int positionJoueur = 2;
@@ -47,8 +51,8 @@ namespace ServeurKoT.Connexion
         {
             this.commande = (Commande)buffer[0];
             this.commandeType = (CommandeType)buffer[1];
-            this.joueur = (Joueur)buffer[2];
-            this.data = (StreamObject)buffer[3];
+            this.joueur = Joueur.FromBytes(buffer[2]);
+            this.data = StreamObject.FromBytes(buffer[3]);
         }
 
 
@@ -58,8 +62,8 @@ namespace ServeurKoT.Connexion
 
             buffer[0] = (byte)commande;
             buffer[1] = (byte)commandeType;
-            buffer[2] = (byte)joueur;
-            buffer[3] = (byte)data;
+            buffer[2] = joueur.IntoBytes();
+            buffer[3] = data.IntoBytes();
 
 
             return buffer;

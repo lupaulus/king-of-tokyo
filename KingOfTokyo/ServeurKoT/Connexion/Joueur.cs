@@ -40,5 +40,14 @@ namespace ServeurKoT.Connexion
             // TODO implement here
         }
 
+        internal static Joueur FromBytes(byte v)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal byte IntoBytes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
