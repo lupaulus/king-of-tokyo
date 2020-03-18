@@ -21,10 +21,10 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ServeurKoT
-          path: $Env:GITHUB_WORKSPACE\KingOfTokyo\ServeurKoT\bin
+          path: KingOfTokyo\ServeurKoT\bin
       - name: Upload Client
         uses: actions/upload-artifact@v1
         with:
           name: ClientKoT
-          path: $Env:GITHUB_WORKSPACE\KingOfTokyo\ClientKoT\bin
+          path: KingOfTokyo\ClientKoT\bin
 
