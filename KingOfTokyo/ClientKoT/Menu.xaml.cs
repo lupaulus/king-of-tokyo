@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,11 +56,14 @@ namespace ClientKoT
                 textBoxPort.Select(0, textBoxPort.Text.Length);
                 textBoxPort.Focus();
             }
-
-            string pseudo = textBoxPseudo.Text;
-            string ip = textBoxIP.Text;
-            int port = int.Parse(textBoxPort.Text);
-            // TODO: Validations -> ip = ipduserv() -> port = ... etc
+            else
+            {
+                string pseudo = textBoxPseudo.Text;
+                string ip = textBoxIP.Text;
+                int port = int.Parse(textBoxPort.Text);
+                Joueur joueur = new Joueur(pseudo);
+                HelperServeur.Init(joueur, ip, port);
+            }
         }
     }
 }

@@ -9,12 +9,7 @@
       Title="King of Strasbourg - Plateau">
 
     <Grid>
-        <Rectangle>
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="../ClientKoT/obj/images/santa_pepe.png" />
-                <!-- Background à changer ici avec image definitive -->
-            </Rectangle.Fill>
-        </Rectangle>
+
 
         <!-- Plateau -->
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -44,6 +44,11 @@ namespace ClientKoT
 
         private void ButtonCreerPartie_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void NomCM_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

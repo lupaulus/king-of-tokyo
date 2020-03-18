@@ -7,10 +7,13 @@ using System.Text;
 namespace Client.Reseau{
     public class Joueur {
 
-        public Joueur() {
+        private string pseudo;
+        public Joueur(string ps) 
+        {
+            pseudo = ps;
         }
 
-        private string pseudo;
+        
 
     }
 }

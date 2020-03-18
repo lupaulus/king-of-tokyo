@@ -119,10 +119,10 @@ namespace ServeurKoT.Connexion
 
                 // Liaison de la socket au point de communication
 
-                Logger.Log(Logger.Level.Info,("Server is listening..."));
+                Logger.Log(Logger.Level.Info,("Serveur à l'écoute des connexions..."));
                 while (!Quit)
                 {
-                    Logger.Log(Logger.Level.Info, "Waiting for a connection... ");
+                    Logger.Log(Logger.Level.Info, "Dans l'attente d'une connexion... ");
                     // Méthode bloquante
                     TcpClient client = Server.AcceptTcpClient();
                     // Ajout à la liste des clients
@@ -143,7 +143,8 @@ namespace ServeurKoT.Connexion
 
         private void HandleClient(TcpClient client)
         {
-            Console.WriteLine("Connected!");
+
+            Logger.Log(Logger.Level.Info,"Client Connecté");
         }
 
         
