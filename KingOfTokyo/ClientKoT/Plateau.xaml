@@ -9,6 +9,12 @@
       Title="King of Strasbourg - Plateau">
 
     <Grid>
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="images/santa_pepe.png" />
+                <!-- Background à changer ici avec image definitive -->
+            </Rectangle.Fill>
+        </Rectangle>
 
 
         <!-- Plateau -->

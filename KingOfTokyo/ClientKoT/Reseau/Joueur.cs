@@ -12,8 +12,5 @@ namespace Client.Reseau{
         {
             pseudo = ps;
         }
-
-        
-
     }
 }

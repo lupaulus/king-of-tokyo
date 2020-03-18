@@ -68,7 +68,8 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FF3580BF">
-        <StackPanel x:Name="StackPanelMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5">
+        <StackPanel x:Name="StackPanelMenu" Width="250" HorizontalAlignment="Left" Margin="-250 50
+                    0 0" RenderTransformOrigin="0.5,0.5">
             <StackPanel.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -159,14 +160,13 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <!-- Ici on pourrait afficher les pages différentes la dedans -->
             <!-- Ici on pourrait afficher les pages différentes la dedans -->
 
-                <!-- <Frame Source="Menu.xaml"/> A voir si cela fonctionne comme ça sinon il faudra reprendre le code pour chaque page--> 
-
+                <!-- <Frame Source="Menu.xaml"/> A voir si cela fonctionne comme ça sinon il faudra reprendre le code pour chaque page-->
 
 
             </StackPanel>
-            
+
             <Grid Grid.Column="1" Background="#FF3580BF">
-                <Image Height="150" VerticalAlignment="Top" Source="../ClientKoT/obj/images/parisfixed.jpg" Stretch="UniformToFill"/>
+                <Image Height="150" VerticalAlignment="Top" Source="images/parisfixed.jpg" Stretch="UniformToFill"/>
                 <TextBlock Text="King of Paris" Foreground="White" FontSize="28" FontFamily="Nirmala UI Semilight" Margin="10 100" VerticalAlignment="Top"/>
                 <StackPanel Margin="5 150">
                     <TextBlock TextWrapping="Wrap" Margin="10" Foreground="#FFFBFBFB" FontSize="14" TextAlignment="Justify">Quel jeu fantastique, tellement de plaisir de passer mon temps à jouer à ce chef-d'oeuvre. Les développeurs sont vraiment des génies et en plus ils sont GENTILS.</TextBlock>
@@ -199,7 +199,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         </Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10">
             <Button x:Name="ButtonClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonClose_Click">
-                <materialDesign:PackIcon Kind="Power"/>
+                <materialDesign:PackIcon Kind="Power" Foreground="#ffffff"/>
             </Button>
         </StackPanel>
     </Grid>
