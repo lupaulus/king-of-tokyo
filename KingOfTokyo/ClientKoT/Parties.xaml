@@ -12,7 +12,7 @@
     <Grid>
         <Rectangle>
                 <Rectangle.Fill>
-                    <ImageBrush ImageSource="../ClientKoT/obj/images/santa_pepe.png" />
+                    <ImageBrush ImageSource="images/santa_pepe.png" />
                     <!-- Background à changer ici avec image definitive -->
                 </Rectangle.Fill>
         </Rectangle>
@@ -21,11 +21,11 @@
         <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,30,0,0" Name="ListePartiesHeader" Text="Liste des parties sur le serveur :" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
         <Button Content="Créer une partie" Height="20" HorizontalAlignment="Center" Margin="0,80,0,0" Name="buttonCréerPartie" VerticalAlignment="Top" Width="100" Click="ButtonCreerPartie_Click"/>
 
-        <ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600" ItemsSource="{Binding reseau:HelperServeur ReadListeParties}">
+        <!--<ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600" ItemsSource="{Binding reseau:HelperServeur ReadListeParties}">
             <ListView.View HorizontalAlignment="Center" Margin="0,200,0,0" Name="vueListe" VerticalAlignment="top">
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Nom">
-                    <GridViewColumn DisplayMemberBinding="{Binding reseau:HelperServeur ReadListeParties.NbJoueurs}" Header="Nb Joueurs" Width="200"/> <!-- A FIX avec nom réel-->
-                    <GridViewColumn DisplayMemberBinding="{Binding reseau:HelperServeur ReadListeParties.Nom}" Width="200"> <!-- A FIX avec nom réel-->
+                    <GridViewColumn DisplayMemberBinding="{Binding reseau:HelperServeur ReadListeParties.NbJoueurs}" Header="Nb Joueurs" Width="200"/> A FIX avec nom réel
+                    <GridViewColumn DisplayMemberBinding="{Binding reseau:HelperServeur ReadListeParties.Nom}" Width="200">  A FIX avec nom réel
                         <GridViewColumnHeader>Nom
                             <GridViewColumnHeader.ContextMenu>
                                 <ContextMenu  MenuItem.Click="NomCM_Click" Name="NomCM">
@@ -35,11 +35,10 @@
                             </GridViewColumnHeader.ContextMenu>
                         </GridViewColumnHeader>
                     </GridViewColumn>
-                    <GridViewColumn Header="Action" Width="200"/><!--Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie-->
+                    <GridViewColumn Header="Action" Width="200"/>Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie
                 </GridView>
             </ListView.View>
-<<<<<<< HEAD
-||||||| merged common ancestors
+        </ListView> -->
         <ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600"><!-- A FIX avec la source de data dans la balise ListView::> ItemsSource="{Binding Source={reseau:HelperServeur ListeParties }}"-->
             <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Nom">
                 <GridViewColumn DisplayMemberBinding="{Binding Path=NbJoueurs}" Header="Nb Joueurs" Width="200"/>
