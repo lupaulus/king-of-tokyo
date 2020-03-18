@@ -8,5 +8,10 @@
         {
             this.b = b;
         }
+
+        public override byte IntoBytes()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
