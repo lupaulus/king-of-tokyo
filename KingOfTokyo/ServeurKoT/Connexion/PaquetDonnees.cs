@@ -58,7 +58,7 @@ namespace ServeurKoT.Connexion
 
             buffer[0] = (byte)commande;
             buffer[1] = (byte)commandeType;
-            buffer[2] = joueur.IntoBytes();
+            buffer[2] = joueur.IntoBytes()[0];
             buffer[3] = data.IntoBytes();
 
 

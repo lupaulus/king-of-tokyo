@@ -20,15 +20,14 @@ namespace ServeurKoT.Connexion
         public ConnexionServeur(byte[] b)
         {
             this.joueur = Joueur.FromBytes(b);
-            this.check = (bool)b[10];
+            this.check = Boolean.Parse(b[10].ToString());
         }
 
 
 
         public override byte IntoBytes()
         {
-            byte 
-            return
+            return new byte();
         }
     }
 }
