@@ -38,6 +38,7 @@
                     <GridViewColumn Header="Action" Width="200"/><!--Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie-->
                 </GridView>
             </ListView.View>
+<<<<<<< HEAD
 ||||||| merged common ancestors
         <ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600"><!-- A FIX avec la source de data dans la balise ListView::> ItemsSource="{Binding Source={reseau:HelperServeur ListeParties }}"-->
             <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Nom">
@@ -57,6 +58,48 @@
                 <GridViewColumn Header="Action" Width="200"/>
                 <!--Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie-->
             </GridView>
+=======
+        <ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600"><!-- A FIX avec la source de data dans la balise ListView::> ItemsSource="{Binding Source={reseau:HelperServeur ListeParties }}"-->
+            <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Nom">
+                <GridViewColumn DisplayMemberBinding="{Binding Path=NbJoueurs}" Header="Nb Joueurs" Width="200"/>
+                <!-- A FIX avec nom réel-->
+                <GridViewColumn DisplayMemberBinding="{Binding Path=NomPartie}" Width="200">
+                    <!-- A FIX avec nom réel-->
+                    <GridViewColumnHeader>Nom
+                        <GridViewColumnHeader.ContextMenu>
+                            <ContextMenu  MenuItem.Click="NomCM_Click" Name="NomCM">
+                                <MenuItem Header="Ascending" />
+                                <MenuItem Header="Descending" />
+                            </ContextMenu>
+                        </GridViewColumnHeader.ContextMenu>
+                    </GridViewColumnHeader>
+                </GridViewColumn>
+                <GridViewColumn Header="Action" Width="200"/>
+                <!--Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie-->
+            </GridView>
+>>>>>>> Debut tcp
+||||||| merged common ancestors
+=======
+||||||| merged common ancestors
+        <ListView HorizontalAlignment="Center" Margin="0,80,0,0" Height="300" Width="600"><!-- A FIX avec la source de data dans la balise ListView::> ItemsSource="{Binding Source={reseau:HelperServeur ListeParties }}"-->
+            <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Nom">
+                <GridViewColumn DisplayMemberBinding="{Binding Path=NbJoueurs}" Header="Nb Joueurs" Width="200"/>
+                <!-- A FIX avec nom réel-->
+                <GridViewColumn DisplayMemberBinding="{Binding Path=NomPartie}" Width="200">
+                    <!-- A FIX avec nom réel-->
+                    <GridViewColumnHeader>Nom
+                        <GridViewColumnHeader.ContextMenu>
+                            <ContextMenu  MenuItem.Click="NomCM_Click" Name="NomCM">
+                                <MenuItem Header="Ascending" />
+                                <MenuItem Header="Descending" />
+                            </ContextMenu>
+                        </GridViewColumnHeader.ContextMenu>
+                    </GridViewColumnHeader>
+                </GridViewColumn>
+                <GridViewColumn Header="Action" Width="200"/>
+                <!--Aucune idée comment insérer un btn rejoindre par ligne de la liste. Il faut link les btn avec les id partie-->
+            </GridView>
+>>>>>>> fb53fe27883a94ebc5ff8b51c32bdc0e11ef7eec
         </ListView>
     </Grid>
 </Page>

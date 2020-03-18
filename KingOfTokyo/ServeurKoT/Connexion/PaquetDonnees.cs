@@ -23,12 +23,21 @@ namespace ServeurKoT.Connexion
         /// </summary>
         public const int bufferSize = 1500;
 
+<<<<<<< HEAD
+        /// Position des différents éléments dans le buffer
+        private const int positionCommande = 0;
+        private const int positionCommandeType = 1;
+        private const int positionStreamObject = 3;
+
+||||||| merged common ancestors
+=======
         /// Position des différents éléments dans le buffer
         private const int positionCommande = 0;
         private const int positionCommandeType = 1;
         private const int positionStreamObject = 3;
 
 
+>>>>>>> fb53fe27883a94ebc5ff8b51c32bdc0e11ef7eec
         public Commande commande;               // commande
         public CommandeType commandeType;       // type (Requête/Réponse)
         public Joueur joueur;                   // Joueur
