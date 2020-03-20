@@ -16,13 +16,13 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                    <TextBlock Text="Choix du serveur" Margin="10" VerticalAlignment="Center"/>
+                    <TextBlock Text="Acceuil" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="AccountSearch" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                    <TextBlock Text="Liste des parties" Margin="10" VerticalAlignment="Center"/>
+                    <TextBlock Text="Liste des serveurs" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
@@ -52,15 +52,18 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" x:Name="ButtonMenu" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Click="ButtonMenu_Click">
+                <Button Grid.Column="0" x:Name="ButtonMenu" Width="30" Height="30" Margin="15" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ButtonMenu_Click">
                     <materialDesign:PackIcon Kind="Menu" Foreground="#ffffff"/>
                 </Button>
-                <Label Grid.Column="1" x:Name="LabelTitre" VerticalAlignment="Top" HorizontalAlignment="Center" Content="King of Tokyo"></Label>
-                <Button Grid.Column="2" x:Name="ButtonClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonClose_Click">
-                    <materialDesign:PackIcon Kind="Power" Foreground="#ffffff"/>
+                <Label Grid.Column="1" x:Name="LabelTitre" VerticalAlignment="Top" HorizontalAlignment="Center" Content="King of Tokyo"/>
+                <Button Grid.Column="2" x:Name="ButtonClose" Width="30" Height="30" Margin="15" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonClose_Click">
+                    <materialDesign:PackIcon Kind="Power" Foreground="#bc0000"/>
                 </Button>
             </Grid>
-            
+            <ContentControl x:Name="ContentPrincipal" Grid.Row="1"/>
+
+
+
         </Grid>
     </Grid>
 </Window>

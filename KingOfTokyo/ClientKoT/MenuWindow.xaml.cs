@@ -31,7 +31,7 @@ namespace ClientKoT
 
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            // Collapse et ouvrir menu
         }
     }
 }

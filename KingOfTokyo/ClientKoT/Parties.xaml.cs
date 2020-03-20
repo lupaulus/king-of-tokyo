@@ -18,7 +18,7 @@ namespace ClientKoT
     /// <summary>
     /// Interaction logic for Parties.xaml
     /// </summary>
-    public partial class Parties : Page
+    public partial class Parties : UserControl
     {
         public Parties()
         {

@@ -18,7 +18,7 @@ namespace ClientKoT
     /// <summary>
     /// Interaction logic for Plateau.xaml
     /// </summary>
-    public partial class Plateau : Page
+    public partial class Plateau : UserControl
     {
         public Plateau()
         {
