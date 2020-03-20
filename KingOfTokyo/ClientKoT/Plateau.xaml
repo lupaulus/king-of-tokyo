@@ -5,18 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClientKoT"
       mc:Ignorable="d" 
-      d:DesignHeight="768" d:DesignWidth="1024"
       Title="King of Strasbourg - Plateau">
 
     <Grid>
-        <Rectangle>
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="images/santa_pepe.png" />
-                <!-- Background à changer ici avec image definitive -->
-            </Rectangle.Fill>
-        </Rectangle>
-
-
         <!-- Plateau -->
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
             <Canvas Width="800" Height="450">
@@ -28,5 +19,12 @@
                 <TextBlock Canvas.Left="476" Canvas.Top="217" RenderTransformOrigin="3.287,11.002" Foreground="White">tokyo bay</TextBlock>
             </Canvas>
         </Viewbox>
+        
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="images/santa_pepe.png" />
+                <!-- Background à changer ici avec image definitive -->
+            </Rectangle.Fill>
+        </Rectangle>
     </Grid>
 </Page>
