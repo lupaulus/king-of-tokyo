@@ -12,26 +12,26 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0">
-            <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5">
+        <ListView Grid.Column="0" SelectionChanged="MenuSelectionChanged">
+            <ListViewItem x:Name="listViewItem" Tag="0" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                     <TextBlock Text="Acceuil" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+            <ListViewItem x:Name="listViewItem1" Tag="1" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="AccountSearch" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                     <TextBlock Text="Liste des serveurs" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+            <ListViewItem x:Name="listViewItem2" Tag="2" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="assignment" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                     <TextBlock Text="Règles du jeu" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+            <ListViewItem x:Name="listViewItem3"  Tag="3" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="Gamepad" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                     <TextBlock Text="Plateau de jeu" Margin="10" VerticalAlignment="Center"/>

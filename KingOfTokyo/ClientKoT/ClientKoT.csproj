@@ -73,6 +73,9 @@
     <Compile Include="MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Acceuil.xaml.cs">
+      <DependentUpon>Acceuil.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parties.xaml.cs">
       <DependentUpon>Parties.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
     <Page Include="MenuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Acceuil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Parties.xaml">
       <SubType>Designer</SubType>

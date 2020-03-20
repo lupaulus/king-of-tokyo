@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,12 @@ namespace ClientKoT
     /// </summary>
     public partial class MenuWindow : Window
     {
+        private UserControl controlPrincipal;
+
         public MenuWindow()
         {
             InitializeComponent();
+            this.ContentPrincipal.Content = new Acceuil();
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -33,5 +37,32 @@ namespace ClientKoT
         {
             // Collapse et ouvrir menu
         }
+
+        /// <summary>
+        /// Gestion de la sélection dans le menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(e.AddedItems.Count > 0)
+            {
+                ListViewItem viewItem = (ListViewItem)e.AddedItems[0];
+                switch (int.Parse(viewItem.Tag.ToString()))
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
     }
 }
