@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClientKoT.Reseau
+namespace Client.Reseau
 {
     class ConnexionServeur : StreamObject
     {
@@ -19,7 +19,7 @@ namespace ClientKoT.Reseau
 
         public ConnexionServeur(byte[] b)
         {
-            this.joueur = Joueur.FromBytes(b);
+            this.joueur = (Joueur) StreamObject.FromBytes(b,CommandeType.CONNEXIONSERVEUR);
             this.check = Boolean.Parse(b[10].ToString());
         }
 

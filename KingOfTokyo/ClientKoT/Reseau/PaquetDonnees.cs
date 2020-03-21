@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClientKoT.Reseau
+namespace Client.Reseau
 {
     #region Enum
     public enum Commande

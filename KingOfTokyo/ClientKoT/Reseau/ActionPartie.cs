@@ -1,4 +1,4 @@
-﻿namespace ClientKoT.Reseau
+﻿namespace Client.Reseau
 {
     internal class ActionPartie : StreamObject
     {

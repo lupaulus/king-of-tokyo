@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 
-namespace ClientKoT.Reseau
+namespace Client.Reseau
 {
     public class HelperServeur {
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ClientKoT.Reseau{
+namespace Client.Reseau{
     public class GJoueur {
 
         public GJoueur() {

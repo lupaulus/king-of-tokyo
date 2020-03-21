@@ -1,6 +1,6 @@
 using System;
 
-namespace ClientKoT.Reseau
+namespace Client.Reseau
 {
     public abstract class StreamObject
     {

@@ -13,7 +13,7 @@
             <ColumnDefinition x:Name="c1" Width="15*"/>
             <ColumnDefinition x:Name="c2" Width="85*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" SelectionChanged="MenuSelectiofnChanged">
+        <ListView Grid.Column="0" SelectionChanged="MenuSelectionChanged">
             <ListViewItem x:Name="listViewItem" Tag="0" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
@@ -44,8 +44,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="90*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>

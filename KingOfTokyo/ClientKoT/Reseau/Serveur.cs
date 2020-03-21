@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ClientKoT.Reseau
+namespace Client.Reseau
 {
     class Serveur
     {
