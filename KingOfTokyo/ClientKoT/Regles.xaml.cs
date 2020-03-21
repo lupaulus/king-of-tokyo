@@ -23,33 +23,11 @@ namespace ClientKoT
         public Regles()
         {
             InitializeComponent();
+            pdfWebViewer.Navigate(new Uri("about:blank"));
+            pdfWebViewer.Navigate("https://ludos.brussels/ludo-cocof/opac_css/doc_num.php?explnum_id=918");
 
-
-            // Binding du nombre de joueurs dans une partie
-            GridViewColumn gvc1 = new GridViewColumn
-            {
-                DisplayMemberBinding = new Binding("NbJoueurs"),
-                Header = "NbJoueurs",
-                Width = 200
-            };
-
-            // Binding du nombre du nom des parties
-            GridViewColumn gvc2 = new GridViewColumn
-            {
-                DisplayMemberBinding = new Binding("NomPartie"),
-                Header = "NomPartie",
-                Width = 200
-            };
-        }
-
-        private void ButtonCreerPartie_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void NomCM_Click(object sender, RoutedEventArgs e)
-        {
-
+            // Pour chez moi. Il faut IE + addon Adobe.
+            // pdfWebViewer.Navigate(new Uri("file:///D:/Projet%20POO/king-of-tokyo/rules/rules_short.pdf"));
         }
     }
 }
