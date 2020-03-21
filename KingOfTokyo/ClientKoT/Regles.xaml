@@ -9,9 +9,7 @@
       d:DesignHeight="768" d:DesignWidth="1024">
 
     <Grid>
-
-        <!-- Liste -->
-        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,30,0,0" Name="ListePartiesHeader" Text="Liste des parties sur le serveur :" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" />
-        <Button Content="Créer une partie" Height="20" HorizontalAlignment="Center" Margin="0,80,0,0" Name="buttonCréerPartie" VerticalAlignment="Top" Width="100" Click="ButtonCreerPartie_Click" />
+        <WebBrowser x:Name="pdfWebViewer"></WebBrowser>
+        
     </Grid>
 </UserControl>

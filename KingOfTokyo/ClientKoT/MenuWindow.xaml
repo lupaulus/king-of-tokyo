@@ -9,8 +9,8 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 
     <Grid Background="#FF3580BF" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition x:Name="c1" Width="15*"/>
+            <ColumnDefinition x:Name="c2" Width="85*"/>
         </Grid.ColumnDefinitions>
         <ListView Grid.Column="0" SelectionChanged="MenuSelectionChanged">
             <ListViewItem x:Name="listViewItem" Tag="0" Height="60" RenderTransformOrigin="0.5,0.5">
@@ -43,8 +43,8 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>

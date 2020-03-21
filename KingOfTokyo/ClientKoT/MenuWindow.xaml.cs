@@ -21,6 +21,7 @@ namespace ClientKoT
     public partial class MenuWindow : Window
     {
         private UserControl controlPrincipal;
+        private bool collapse = false; // eval l'état du menu
 
         public MenuWindow()
         {
@@ -29,14 +30,26 @@ namespace ClientKoT
             this.ContentPrincipal.Content = controlPrincipal;
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
             // Collapse et ouvrir menu
+            if(collapse)
+            {
+                this.c1.Width = new GridLength(15, GridUnitType.Star);
+                this.c2.Width = new GridLength(85, GridUnitType.Star);
+                collapse = false;
+            }
+            else
+            {
+                this.c1.Width = new GridLength(0, GridUnitType.Star);
+                this.c2.Width = new GridLength(100, GridUnitType.Star);
+                collapse = true;
+            }
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         /// <summary>
