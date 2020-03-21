@@ -16,13 +16,26 @@ using System.Windows.Shapes;
 namespace ClientKoT
 {
     /// <summary>
-    /// Interaction logic for Plateau.xaml
+    /// Interaction logic for Parties.xaml
     /// </summary>
-    public partial class Plateau : UserControl
+    public partial class Acceuil : UserControl
     {
-        public Plateau()
+        public Acceuil()
         {
             InitializeComponent();
+
+
+       
+        }
+
+        private void ButtonCreerPartie_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void NomCM_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

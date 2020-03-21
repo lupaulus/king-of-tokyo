@@ -18,9 +18,9 @@ namespace ClientKoT
     /// <summary>
     /// Interaction logic for Parties.xaml
     /// </summary>
-    public partial class Parties : UserControl
+    public partial class Regles : UserControl
     {
-        public Parties()
+        public Regles()
         {
             InitializeComponent();
 

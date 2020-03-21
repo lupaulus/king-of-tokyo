@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,13 @@ namespace ClientKoT
     /// </summary>
     public partial class MenuWindow : Window
     {
+        private UserControl controlPrincipal;
+
         public MenuWindow()
         {
             InitializeComponent();
-            //this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.85);
-            //this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.85);
+            controlPrincipal = new Acceuil();
+            this.ContentPrincipal.Content = controlPrincipal;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -31,16 +34,45 @@ namespace ClientKoT
             Application.Current.Shutdown();
         }
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
-            ButtonCloseMenu.Visibility = Visibility.Visible;
+            // Collapse et ouvrir menu
         }
 
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Gestion de la sélection dans le menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            if(e.AddedItems.Count > 0)
+            {
+                ListViewItem viewItem = (ListViewItem)e.AddedItems[0];
+                switch (int.Parse(viewItem.Tag.ToString()))
+                {
+                    case 0: //Acceuil
+                        controlPrincipal = new Acceuil();
+                        this.ContentPrincipal.Content = controlPrincipal;
+                        break;
+                    case 1: // Connexion Serveur
+                        controlPrincipal = new Parties();
+                        this.ContentPrincipal.Content = controlPrincipal;
+                        break;
+                    case 2: // Regles
+                        controlPrincipal = new Regles();
+                        this.ContentPrincipal.Content = controlPrincipal;
+                        break;
+                    case 3: // Plateau
+                        controlPrincipal = new Plateau();
+                        this.ContentPrincipal.Content = controlPrincipal;
+                        break;
+                    default:
+
+                        break;
+                }
+            }
         }
+
     }
 }
