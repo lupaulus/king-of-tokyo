@@ -25,7 +25,8 @@ namespace ClientKoT
         public MenuWindow()
         {
             InitializeComponent();
-            this.ContentPrincipal.Content = new Acceuil();
+            controlPrincipal = new Acceuil();
+            this.ContentPrincipal.Content = controlPrincipal;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -50,15 +51,24 @@ namespace ClientKoT
                 ListViewItem viewItem = (ListViewItem)e.AddedItems[0];
                 switch (int.Parse(viewItem.Tag.ToString()))
                 {
-                    case 1:
+                    case 0: //Acceuil
+                        controlPrincipal = new Acceuil();
+                        this.ContentPrincipal.Content = controlPrincipal;
                         break;
-                    case 2:
+                    case 1: // Connexion Serveur
+                        controlPrincipal = new Parties();
+                        this.ContentPrincipal.Content = controlPrincipal;
                         break;
-                    case 3:
+                    case 2: // Regles
+                        controlPrincipal = new Regles();
+                        this.ContentPrincipal.Content = controlPrincipal;
                         break;
-                    case 4:
+                    case 3: // Plateau
+                        controlPrincipal = new Plateau();
+                        this.ContentPrincipal.Content = controlPrincipal;
                         break;
                     default:
+
                         break;
                 }
             }
