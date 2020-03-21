@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServeurKoT.Connexion
+namespace ClientKoT.Reseau
 {
     #region Enum
     public enum Commande
@@ -12,7 +12,7 @@ namespace ServeurKoT.Connexion
         POST, GET, HELP, QUIT, STOPSERVEUR, SUBSCRIBE, SUBSCRIBEv2, UNSUBSCRIBE
     };
 
-    public enum CommandeType { REQUETE, REPONSE };
+    public enum CommandeType { REQUETE, REPONSE, ACTIONTOUR, ACTIONPARTIE, CONNEXIONPARTIE, CONNEXIONSERVEUR };
     #endregion Enum
     class PaquetDonnees
     {

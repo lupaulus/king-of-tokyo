@@ -6,7 +6,8 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 
-namespace Client.Reseau{
+namespace ClientKoT.Reseau
+{
     public class HelperServeur {
 
         //private static int JOUEUR_MAX = 6;
@@ -33,8 +34,18 @@ namespace Client.Reseau{
             }
         }
 
+        internal List<Serveur> GetListeServeurParDefaut()
+        {
+            throw new NotImplementedException();
+        }
 
-        
+        internal object GetListePartieParDefaut()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
 
         /// <summary>
         /// @param value
@@ -57,6 +68,11 @@ namespace Client.Reseau{
             {
                 Logger.Log(Logger.Level.Error, e.ToString());
             }
+        }
+
+        internal void CreePartie()
+        {
+            throw new NotImplementedException();
         }
 
         public void DeconnexionServeur() {

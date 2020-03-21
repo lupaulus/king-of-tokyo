@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Client.Reseau{
+namespace ClientKoT.Reseau
+{
     public class Joueur {
 
         private string pseudo;
