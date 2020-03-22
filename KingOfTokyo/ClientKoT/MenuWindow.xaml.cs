@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace ClientKoT
         public MenuWindow()
         {
             InitializeComponent();
+
+            // Initialisation connexion serveur
+            HelperServeur.Init(new Joueur("test"), "127.0.0.1", 1664);
+
+
             controlPrincipal = new Acceuil();
             this.ContentPrincipal.Content = controlPrincipal;
         }

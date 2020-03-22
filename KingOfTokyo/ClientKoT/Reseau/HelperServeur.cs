@@ -34,10 +34,6 @@ namespace Client.Reseau
             }
         }
 
-        internal List<Serveur> GetListeServeurParDefaut()
-        {
-            throw new NotImplementedException();
-        }
 
         internal object GetListePartieParDefaut()
         {

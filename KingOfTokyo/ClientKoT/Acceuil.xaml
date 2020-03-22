@@ -9,10 +9,15 @@
       d:DesignHeight="768" d:DesignWidth="1024">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
-        <!-- Liste -->
-        <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,30,0,0" Name="ListePartiesHeader" Text="Liste des parties sur le serveur :" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" />
-        <Button Content="Créer une partie" Height="20" HorizontalAlignment="Center" Margin="0,80,0,0" Name="buttonCréerPartie" VerticalAlignment="Top" Width="100" Click="ButtonCreerPartie_Click" />
+        <Label Grid.Row="0" Grid.Column="0" Content="Acceuil"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="King of Tokyo" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

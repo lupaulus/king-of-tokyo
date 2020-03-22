@@ -28,7 +28,6 @@ namespace ClientKoT
         {
             InitializeComponent();
             
-            listServeur = HelperServeur.Instance.GetListeServeurParDefaut();
             // Binding du nombre de joueurs dans une partie
             GridViewColumn gvc1 = new GridViewColumn
             {
