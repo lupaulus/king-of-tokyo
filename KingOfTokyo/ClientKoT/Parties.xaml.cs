@@ -61,7 +61,7 @@ namespace ClientKoT
             }
 
             // Creation du serveur dans la liste
-            listServeur.Add(new HelperServeur(txtNom, txtAdresse, 13670));
+            listServeur.Add(new HelperServeur(txtNom, txtAdresse, 13670)); // Serveur par defaut
             MessageBox.Show("Serveur ajouté", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             lvServeur.Items.Refresh();
         }

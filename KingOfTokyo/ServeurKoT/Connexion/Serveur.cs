@@ -1,43 +1,48 @@
 ﻿using SimpleLogger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ServeurKoT.Connexion
 {
-    class Serveur
+    internal class Serveur
     {
         #region Properties
-        private TcpListener Server; 
+
+        private TcpListener Server;
+
         /// <summary>
         /// Thread principal du serveur
         /// </summary>
         private Thread ServerLoop;
+
         /// <summary>
         /// Variable globale pour arreter le Thread
         /// </summary>
         private bool Quit;
+
         /// <summary>
         /// Liste des clients
         /// </summary>
         private List<TcpClient> ListClients;
+
         /// <summary>
         /// Port du serveur
         /// </summary>
         private int localPort;
+
         /// <summary>
         /// Adresse IP du serveur
         /// </summary>
         private string localAddrString;
+
         /// <summary>
         /// Mutex
         /// </summary>
         private static readonly object Instancelock = new object();
+
         /// <summary>
         /// Instance Value
         /// </summary>
@@ -65,6 +70,7 @@ namespace ServeurKoT.Connexion
         #endregion Properties
 
         #region Ctor
+
         public Serveur(string ipAdresse, int port)
         {
             // **** Initialisation ******
@@ -78,8 +84,8 @@ namespace ServeurKoT.Connexion
             IPAddress localAddr = IPAddress.Parse(ipAdresse);
             // TcpListener server = new TcpListener(port);
             Server = new TcpListener(localAddr, port);
-            
         }
+
         #endregion Ctor
 
         /// <summary>
@@ -91,12 +97,9 @@ namespace ServeurKoT.Connexion
         public static void Init(string IpAdresse, int Port)
         {
             Logger.Log(Logger.Level.Info, "Initialisation du serveur");
-            Serveur res = new Serveur(IpAdresse,Port);
+            Serveur res = new Serveur(IpAdresse, Port);
             InstanceValue = res;
         }
-
-        
-
 
         public void StartServer()
         {
@@ -119,7 +122,7 @@ namespace ServeurKoT.Connexion
 
                 // Liaison de la socket au point de communication
 
-                Logger.Log(Logger.Level.Info,("Serveur à l'écoute des connexions..."));
+                Logger.Log(Logger.Level.Info, ("Serveur à l'écoute des connexions..."));
                 while (!Quit)
                 {
                     Logger.Log(Logger.Level.Info, "Dans l'attente d'une connexion... ");
@@ -129,7 +132,6 @@ namespace ServeurKoT.Connexion
                     ListClients.Add(client);
                     // Start a thread to handle this client...
                     new Thread(() => HandleClient(client)).Start();
-
                 }
             }
             catch (SocketException E)
@@ -143,11 +145,29 @@ namespace ServeurKoT.Connexion
 
         private void HandleClient(TcpClient client)
         {
+            NetworkStream stream = client.GetStream();
+            Logger.Log(Logger.Level.Info, "Client Connecté");
+            // Buffer for reading data
+            Byte[] bytes = new Byte[1024];
+            String data = null;
+            int i;
 
-            Logger.Log(Logger.Level.Info,"Client Connecté");
+            // Loop to receive all the data sent by the client.
+            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                // Translate data bytes to a ASCII string.
+                data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                Console.WriteLine("Received: {0}", data);
+
+                // Process the data sent by the client.
+                data = data.ToUpper();
+
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+
+                // Send back a response.
+                stream.Write(msg, 0, msg.Length);
+                Console.WriteLine("Sent: {0}", data);
+            }
         }
-
-        
-
     }
 }

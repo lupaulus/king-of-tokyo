@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Client.Reseau
 {
@@ -40,7 +41,10 @@ namespace Client.Reseau
         /// </summary>
         private static int JOUEUR_MAX = 6;
 
-        private TcpClient client;
+        private TcpClient ClientTCP;
+
+        private Thread ClientThread;
+        private bool StopClient = false;
 
         public HelperServeur(string name, string hostName, int portNum)
         {
@@ -53,16 +57,22 @@ namespace Client.Reseau
             
         }
 
+        private void RunClient()
+        { 
+
+            ClientTCP = new TcpClient(Adresse, Port);
+            while(true)
+            {
+                NetworkStream ns = ClientTCP.GetStream();
+                byte[] bytes = new byte[1024];
+                int bytesRead = ns.Read(bytes, 0, bytes.Length);
+            }
+        }
+
         public void InitConnexion()
         {
-            Logger.Log(Logger.Level.Info, "Initialisation de la connexion vers le serveur");
-            client = new TcpClient(Adresse, Port);
-            NetworkStream ns = client.GetStream();
-
-            byte[] bytes = new byte[1024];
-            int bytesRead = ns.Read(bytes, 0, bytes.Length);
-
-            Logger.Log(Logger.Level.Info, Encoding.ASCII.GetString(bytes, 0, bytesRead));
+            ClientThread = new Thread(new ThreadStart(RunClient));
+            ClientThread.Start();
         }
 
         internal object GetListePartieParDefaut()
