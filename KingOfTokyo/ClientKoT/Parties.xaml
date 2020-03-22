@@ -38,28 +38,36 @@
             <Label Grid.Column="0" Grid.Row="1" Content="Adresse Serveur" />
 
             <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Name="tbAdresseServeur" MinWidth="150"  MinHeight="20" MaxWidth="250" MaxHeight="30" />
-            <Button Grid.Column="1" Grid.Row="2"  Content="Ajouter Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnCreerPartie"  Click="ButtonCreerPartie_Click" />
-
+            <Button Grid.Column="1" Grid.Row="2"  Content="Ajouter Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnCreerPartie"  Click="ButtonCreerServeur_Click" />
         </Grid>
         <!-- Liste -->
-        
 
-        <Label Grid.Column="1" Grid.Row="1" Margin="10" Content="Liste des Serveur"/>
-        <ListView Grid.Column="1" Grid.Row="1" Margin="10" Name="lvParties">
-            <ListView.Resources>
-                <Style TargetType="{x:Type GridViewColumnHeader}">
-                    <Setter Property="HorizontalContentAlignment" Value="Left" />
-                </Style>
-            </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding Nom}" />
-                    <GridViewColumn Header="Serveur adresse" Width="150" DisplayMemberBinding="{Binding Adresse}" />
-                    <GridViewColumn Header="Nombre de Joueur" Width="150" DisplayMemberBinding="{Binding NbrJoueur}" />
-                    <GridViewColumn Header="Etat" Width="30" DisplayMemberBinding="{Binding Etat}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
+            <Label  Grid.Row="0" Margin="10" Content="Liste des Serveur"/>
+            <ListView Grid.Row="1" Margin="10" Name="lvServeur">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding Nom}" />
+                        <GridViewColumn Header="Serveur adresse" Width="150" DisplayMemberBinding="{Binding Adresse}" />
+                        <GridViewColumn Header="Nombre de Joueur" Width="150" DisplayMemberBinding="{Binding NbrJoueur}" />
+                        <GridViewColumn Header="Etat" Width="30" DisplayMemberBinding="{Binding Etat}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Grid.Row="2"  Content="Connexion Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnConnexionServeur"  Click="ButtonConnexion_Click" />
+        </Grid>
+        
 
     </Grid>
 </UserControl>

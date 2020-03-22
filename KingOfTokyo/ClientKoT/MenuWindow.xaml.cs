@@ -27,13 +27,9 @@ namespace ClientKoT
         public MenuWindow()
         {
             InitializeComponent();
-
-            // Initialisation connexion serveur
-            HelperServeur.Init(new Joueur("test"), "127.0.0.1", 1664);
-
-
             controlPrincipal = new Acceuil();
             this.ContentPrincipal.Content = controlPrincipal;
+
         }
 
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
