@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,41 +17,72 @@ using System.Windows.Shapes;
 
 namespace ClientKoT
 {
+
     /// <summary>
     /// Interaction logic for Parties.xaml
     /// </summary>
     public partial class Parties : UserControl
     {
+        private List<HelperServeur> listServeur { get; set; }
+
         public Parties()
         {
+
             InitializeComponent();
 
+            listServeur = new List<HelperServeur>();
+            //Serveur Add serveur par défaut
 
             // Binding du nombre de joueurs dans une partie
-            GridViewColumn gvc1 = new GridViewColumn
-            {
-                DisplayMemberBinding = new Binding("NbJoueurs"),
-                Header = "NbJoueurs",
-                Width = 200
-            };
+            listServeur.Add(new HelperServeur("localhost", "127.0.0.1", 13670));
+            lvServeur.ItemsSource = listServeur;
 
-            // Binding du nombre du nom des parties
-            GridViewColumn gvc2 = new GridViewColumn
-            {
-                DisplayMemberBinding = new Binding("NomPartie"),
-                Header = "NomPartie",
-                Width = 200
-            };
+
+
+
         }
 
-        private void ButtonCreerPartie_Click(object sender, RoutedEventArgs e)
+        private void ButtonCreerServeur_Click(object sender, RoutedEventArgs e)
         {
+            // Récupération des champs
+            string txtAdresse = tbAdresseServeur.Text.Trim();
+            string txtNom = tbNomServeur.Text.Trim();
+
+            // Verification des champs
+            if (txtAdresse.Equals(String.Empty))
+            {
+                MessageBox.Show("Erreur saisie Adresse", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if (txtNom.Equals(String.Empty))
+            {
+                MessageBox.Show("Erreur saisie Nom", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Creation du serveur dans la liste
+            listServeur.Add(new HelperServeur(txtNom, txtAdresse, 13670));
+            MessageBox.Show("Serveur ajouté", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            lvServeur.Items.Refresh();
+        }
+
+        private void ButtonConnexion_Click(object sender, RoutedEventArgs e)
+        {
+            if(lvServeur.SelectedItem == null)
+            {
+                MessageBox.Show("Merci de selectionner un serveur", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            HelperServeur val = (HelperServeur)lvServeur.SelectedItem;
+            try
+            {
+                val.InitConnexion();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erreur Connexion : {ex.ToString()}", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             
-        }
-
-        private void NomCM_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

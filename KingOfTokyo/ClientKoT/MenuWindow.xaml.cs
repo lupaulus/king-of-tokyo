@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace ClientKoT
             InitializeComponent();
             controlPrincipal = new Acceuil();
             this.ContentPrincipal.Content = controlPrincipal;
+
         }
 
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)

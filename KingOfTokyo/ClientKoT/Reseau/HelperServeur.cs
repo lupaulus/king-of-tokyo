@@ -6,57 +6,74 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 
-namespace Client.Reseau{
+namespace Client.Reseau
+{
     public class HelperServeur {
 
-        //private static int JOUEUR_MAX = 6;
-        private static HelperServeur instance = null;
-        private static readonly object padlock = new object();
-
-        public static void Init(Joueur value, string hostName, int portNum)
-        {
-            instance = new HelperServeur(value,hostName,portNum);
-        }
-
-        public static HelperServeur Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        throw new NullReferenceException();
-                    }
-                    return instance;
-                }
-            }
-        }
-
-
-        
+        public enum EtatServeur { OK, FULL , OUT }
 
         /// <summary>
-        /// @param value
+        /// Nom du serveur
         /// </summary>
-        public HelperServeur(Joueur value, string hostName, int portNum) {
-            try
-            {
-                Logger.Log(Logger.Level.Info, "Initialisation de la connexion vers le serveur");
-                TcpClient client = new TcpClient(hostName, portNum);
-                NetworkStream ns = client.GetStream();
+        public string Nom { get; private set; }
+        /// <summary>
+        /// Addresse de l'hote
+        /// </summary>
+        public string Adresse { get; private set; }
+        /// <summary>
+        /// Port de l'hote
+        /// </summary>
+        public int Port { get; private set; }
+        
+        /// <summary>
+        /// Nombre de joueur actuellement
+        /// </summary>
+        public int NbrJoueur {get; private set;}
 
-                byte[] bytes = new byte[1024];
-                int bytesRead = ns.Read(bytes, 0, bytes.Length);
+        /// <summary>
+        /// Etat du serveur actuellement
+        /// </summary>
+        public EtatServeur Etat { get; private set; }
 
-                Logger.Log(Logger.Level.Info, Encoding.ASCII.GetString(bytes, 0, bytesRead));
+        /// <summary>
+        /// Nombre de joueur max.
+        /// </summary>
+        private static int JOUEUR_MAX = 6;
+
+        private TcpClient client;
+
+        public HelperServeur(string name, string hostName, int portNum)
+        {
+            this.Nom = name;
+            this.Adresse = hostName;
+            this.Port = portNum;
+
+            this.NbrJoueur = 0;
+            this.Etat = EtatServeur.OK;
+            
+        }
+
+        public void InitConnexion()
+        {
+            Logger.Log(Logger.Level.Info, "Initialisation de la connexion vers le serveur");
+            client = new TcpClient(Adresse, Port);
+            NetworkStream ns = client.GetStream();
+
+            byte[] bytes = new byte[1024];
+            int bytesRead = ns.Read(bytes, 0, bytes.Length);
+
+            Logger.Log(Logger.Level.Info, Encoding.ASCII.GetString(bytes, 0, bytesRead));
+        }
+
+        internal object GetListePartieParDefaut()
+        {
+            throw new NotImplementedException();
+        }
 
 
-
-            } catch (Exception e)
-            {
-                Logger.Log(Logger.Level.Error, e.ToString());
-            }
+        internal void CreePartie()
+        {
+            throw new NotImplementedException();
         }
 
         public void DeconnexionServeur() {
@@ -71,11 +88,6 @@ namespace Client.Reseau{
             // Obtenu à partir du formulaire dans Menu.xaml
         }
 
-        public string IpDuServeur() {
-            // retourne l'ip du serveur
-            string ip = "127.0.0.1";
-            return ip;
-        }
 
         public int NombreJoueurs() {
             // retourne le nombre de joueur actuel dans la partie
