@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows;
 
 namespace Client.Reseau
 {
     public class HelperServeur {
 
+        public string PseudoJoueur;
         public enum EtatServeur { OK, FULL , OUT }
 
         /// <summary>
@@ -49,11 +51,24 @@ namespace Client.Reseau
         private Thread ClientThread;
         private bool StopClient = false;
 
-        private string messageReaded;
-        private string messageToSend;
+        private volatile string _messageReaded;
+        private volatile string _messageToSend;
 
-        public HelperServeur(string name, string hostName, int portNum)
+        public string MessageReaded
         {
+            get { return _messageReaded; }
+            set { _messageReaded = value; }
+        }
+
+        public string MessageToSend
+        {
+            get { return _messageToSend; }
+            set { _messageToSend = value; }
+        }
+
+        public HelperServeur(string pseudo, string name, string hostName, int portNum)
+        {
+            this.PseudoJoueur = pseudo;
             this.Nom = name;
             this.Adresse = hostName;
             this.Port = portNum;
@@ -61,36 +76,51 @@ namespace Client.Reseau
             this.NbrJoueur = 0;
             this.Etat = EtatServeur.OK;
 
-
+            PaquetDonnees startConnection = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONSERVEUR, PseudoJoueur,
+                new ConnexionServeur());
+            _messageToSend = startConnection.ToString();
         }
 
         private void RunClient()
         { 
-            ClientTCP = new TcpClient(Adresse, Port);
-            NetworkStream stream = ClientTCP.GetStream();
-            while (true)
+            try
             {
-                // Translate the Message into ASCII.
-                Byte[] data = Encoding.ASCII.GetBytes(messageToSend);
-                // Send the message to the connected TcpServer. 
-                stream.Write(data, 0, data.Length);
-                Debug.WriteLine("Sent: {0}", messageToSend);
-                // Bytes Array to receive Server Response.
-                data = new Byte[256];
-                messageReaded = String.Empty;
-                // Read the Tcp Server Response Bytes.
-                Int32 bytes = stream.Read(data, 0, data.Length);
-                messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
-                Debug.WriteLine("Received: {0}", messageReaded);
-                Thread.Sleep(500);
+                ClientTCP = new TcpClient(Adresse, Port);
+                NetworkStream stream = ClientTCP.GetStream();
+                while (true)
+                {
+                    // Translate the Message into ASCII.
+                    Byte[] data = Encoding.ASCII.GetBytes(_messageToSend);
+                    // Send the message to the connected TcpServer. 
+                    stream.Write(data, 0, data.Length);
+                    Debug.WriteLine("Sent: {0}", _messageToSend);
+                    // Bytes Array to receive Server Response.
+                    data = new Byte[BYTES_SIZE];
+                    _messageReaded = String.Empty;
+                    // Read the Tcp Server Response Bytes.
+                    Int32 bytes = stream.Read(data, 0, data.Length);
+                    _messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
+                    Debug.WriteLine("Received: {0}", _messageReaded);
+
+                    Thread.Sleep(500);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Erreur Thread Connexion : {ex.ToString()}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                ClientTCP?.Close();
             }
+            
         } 
 
 
         public void InitConnexion()
         {
+            // Lancement thread
             ClientThread = new Thread(new ThreadStart(RunClient));
             ClientThread.Start();
+            
+
+
         }
 
         internal object GetListePartieParDefaut()

@@ -6,7 +6,7 @@
 
         public ActionPartie(string s)
         {
-            this.b = s;
+            
         }
 
         public override byte IntoString()

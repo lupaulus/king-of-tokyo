@@ -34,12 +34,8 @@ namespace ClientKoT
             //Serveur Add serveur par défaut
 
             // Binding du nombre de joueurs dans une partie
-            listServeur.Add(new HelperServeur("localhost", "127.0.0.1", 13670));
+            listServeur.Add(new HelperServeur("J1","localhost", "127.0.0.1", 13670));
             lvServeur.ItemsSource = listServeur;
-
-
-
-
         }
 
         private void ButtonCreerServeur_Click(object sender, RoutedEventArgs e)
@@ -61,7 +57,7 @@ namespace ClientKoT
             }
 
             // Creation du serveur dans la liste
-            listServeur.Add(new HelperServeur(txtNom, txtAdresse, 13670)); // Serveur par defaut
+            listServeur.Add(new HelperServeur("J1",txtNom, txtAdresse, 13670)); // Serveur par defaut
             MessageBox.Show("Serveur ajouté", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             lvServeur.Items.Refresh();
         }
