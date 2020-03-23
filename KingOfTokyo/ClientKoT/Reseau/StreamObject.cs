@@ -12,22 +12,22 @@ namespace Client.Reseau
             joueur = null;
         }
 
-        public static StreamObject FromString(string b, CommandeType type)
+        public static StreamObject FromString(string s, CommandeType type)
         {
             StreamObject res;
             switch(type)
             {
                 case CommandeType.CONNEXIONSERVEUR:
-                    res = new ConnexionServeur(b);
+                    res = new ConnexionServeur(s);
                     break;
                 case CommandeType.CONNEXIONPARTIE:
-                    res = new ConnexionPartie(b);
+                    res = new ConnexionPartie(s);
                     break;
                 case CommandeType.ACTIONPARTIE:
-                    res = new ActionPartie(b);
+                    res = new ActionPartie(s);
                     break;
                 case CommandeType.ACTIONTOUR:
-                    res = new ActionTour(b);
+                    res = new ActionTour(s);
                     break;
                 default:
                     throw new Exception("PAQUET INCONNU");

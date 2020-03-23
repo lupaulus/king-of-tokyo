@@ -4,7 +4,7 @@
     {
         private byte[] b;
 
-        public ActionTour(byte[] b)
+        public ActionTour(string s)
         {
             this.b = b;
         }

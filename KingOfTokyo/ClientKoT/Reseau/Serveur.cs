@@ -95,8 +95,6 @@ namespace Client.Reseau
             InstanceValue = res;
         }
 
-        
-
 
         public void StartServer()
         {

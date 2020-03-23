@@ -4,9 +4,9 @@
     {
         private byte[] b;
 
-        public ActionPartie(byte[] b)
+        public ActionPartie(string s)
         {
-            this.b = b;
+            this.b = s;
         }
 
         public override byte IntoString()

@@ -17,10 +17,10 @@ namespace Client.Reseau
             
         }
 
-        public ConnexionServeur(byte[] b)
+        public ConnexionServeur(string s)
         {
-            this.joueur = (Joueur) StreamObject.FromString(b,CommandeType.CONNEXIONSERVEUR);
-            this.check = Boolean.Parse(b[10].ToString());
+            this.joueur = (Joueur) StreamObject.FromString(s,CommandeType.CONNEXIONSERVEUR);
+            this.check = Boolean.Parse(s[10].ToString());
         }
 
 

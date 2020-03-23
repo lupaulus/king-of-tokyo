@@ -4,9 +4,9 @@
     {
         private byte[] b;
 
-        public ConnexionPartie(byte[] b)
+        public ConnexionPartie(string s)
         {
-            this.b = b;
+            this.b = s;
         }
 
         public override byte IntoString()
