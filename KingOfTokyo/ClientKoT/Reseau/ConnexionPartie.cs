@@ -9,7 +9,7 @@
             this.b = b;
         }
 
-        public override byte IntoBytes()
+        public override byte IntoString()
         {
             throw new System.NotImplementedException();
         }

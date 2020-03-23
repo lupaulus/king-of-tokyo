@@ -12,7 +12,7 @@ namespace Client.Reseau
             joueur = null;
         }
 
-        public static StreamObject FromBytes(byte[] b, CommandeType type)
+        public static StreamObject FromString(string b, CommandeType type)
         {
             StreamObject res;
             switch(type)
@@ -35,7 +35,7 @@ namespace Client.Reseau
             return res;
         }
 
-        public abstract byte IntoBytes();
+        public abstract byte IntoString();
 
     }
 }

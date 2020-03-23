@@ -14,7 +14,7 @@ namespace Client.Reseau
             pseudo = ps;
         }
 
-        public override byte IntoBytes()
+        public override byte IntoString()
         {
             return new byte();
         }

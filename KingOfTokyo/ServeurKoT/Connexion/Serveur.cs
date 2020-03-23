@@ -47,6 +47,8 @@ namespace ServeurKoT.Connexion
         /// Instance Value
         /// </summary>
         private static Serveur InstanceValue = null;
+        private byte[] bytesReaded;
+        private byte[] byteToWrite;
 
         /// <summary>
         /// Singleton instance value
@@ -66,6 +68,8 @@ namespace ServeurKoT.Connexion
                 }
             }
         }
+
+        public int BYTES_SIZE = 256;
 
         #endregion Properties
 
@@ -118,7 +122,7 @@ namespace ServeurKoT.Connexion
                 Server.Start();
 
                 // Buffer for reading data
-                Byte[] bytes = new Byte[256];
+                Byte[] bytes = new Byte[BYTES_SIZE];
 
                 // Liaison de la socket au point de communication
 
@@ -145,28 +149,32 @@ namespace ServeurKoT.Connexion
 
         private void HandleClient(TcpClient client)
         {
-            NetworkStream stream = client.GetStream();
+            
             Logger.Log(Logger.Level.Info, "Client Connecté");
-            // Buffer for reading data
-            Byte[] bytes = new Byte[1024];
-            String data = null;
+
+            var stream = client.GetStream();
+            string imei = String.Empty;
+            string data = null;
+            Byte[] bytes = new Byte[BYTES_SIZE];
             int i;
-
-            // Loop to receive all the data sent by the client.
-            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            try
             {
-                // Translate data bytes to a ASCII string.
-                data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                Console.WriteLine("Received: {0}", data);
-
-                // Process the data sent by the client.
-                data = data.ToUpper();
-
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
-
-                // Send back a response.
-                stream.Write(msg, 0, msg.Length);
-                Console.WriteLine("Sent: {0}", data);
+                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                {
+                    string hex = BitConverter.ToString(bytes);
+                    data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    Logger.Log(Logger.Level.Debug,$"{Thread.CurrentThread.ManagedThreadId}: Received: {data}");
+                    string str = "Hey Device!";
+                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
+                    stream.Write(reply, 0, reply.Length);
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {data}");
+                    Thread.Sleep(500);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: {0}", e.ToString());
+                client.Close();
             }
         }
     }

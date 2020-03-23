@@ -2,6 +2,7 @@
 using SimpleLogger;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -36,6 +37,8 @@ namespace Client.Reseau
         /// </summary>
         public EtatServeur Etat { get; private set; }
 
+        private const int BYTES_SIZE = 256;
+
         /// <summary>
         /// Nombre de joueur max.
         /// </summary>
@@ -46,6 +49,9 @@ namespace Client.Reseau
         private Thread ClientThread;
         private bool StopClient = false;
 
+        private string messageReaded;
+        private string messageToSend;
+
         public HelperServeur(string name, string hostName, int portNum)
         {
             this.Nom = name;
@@ -54,20 +60,32 @@ namespace Client.Reseau
 
             this.NbrJoueur = 0;
             this.Etat = EtatServeur.OK;
-            
+
+
         }
 
         private void RunClient()
         { 
-
             ClientTCP = new TcpClient(Adresse, Port);
-            while(true)
+            NetworkStream stream = ClientTCP.GetStream();
+            while (true)
             {
-                NetworkStream ns = ClientTCP.GetStream();
-                byte[] bytes = new byte[1024];
-                int bytesRead = ns.Read(bytes, 0, bytes.Length);
+                // Translate the Message into ASCII.
+                Byte[] data = Encoding.ASCII.GetBytes(messageToSend);
+                // Send the message to the connected TcpServer. 
+                stream.Write(data, 0, data.Length);
+                Debug.WriteLine("Sent: {0}", messageToSend);
+                // Bytes Array to receive Server Response.
+                data = new Byte[256];
+                messageReaded = String.Empty;
+                // Read the Tcp Server Response Bytes.
+                Int32 bytes = stream.Read(data, 0, data.Length);
+                messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
+                Debug.WriteLine("Received: {0}", messageReaded);
+                Thread.Sleep(500);
             }
-        }
+        } 
+
 
         public void InitConnexion()
         {
