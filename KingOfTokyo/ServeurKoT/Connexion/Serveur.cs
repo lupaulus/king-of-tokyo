@@ -1,47 +1,69 @@
 ﻿using SimpleLogger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ServeurKoT.Connexion
 {
-    class Serveur
+    internal class Serveur
     {
         #region Properties
-        private TcpListener Server; 
+
+        private TcpListener Server;
+
         /// <summary>
         /// Thread principal du serveur
         /// </summary>
         private Thread ServerLoop;
+
         /// <summary>
         /// Variable globale pour arreter le Thread
         /// </summary>
         private bool Quit;
+
         /// <summary>
         /// Liste des clients
         /// </summary>
         private List<TcpClient> ListClients;
+
         /// <summary>
         /// Port du serveur
         /// </summary>
         private int localPort;
+
         /// <summary>
         /// Adresse IP du serveur
         /// </summary>
         private string localAddrString;
+
         /// <summary>
         /// Mutex
         /// </summary>
         private static readonly object Instancelock = new object();
+
         /// <summary>
         /// Instance Value
         /// </summary>
         private static Serveur InstanceValue = null;
+
+        private volatile string _messageReaded;
+        private volatile string _messageToSend;
+
+        public string MessageReaded
+        {
+            get { return _messageReaded; }
+            set { _messageReaded = value; }
+        }
+
+        public string MessageToSend
+        {
+            get { return _messageToSend; }
+            set { _messageToSend = value; }
+        }
+
 
         /// <summary>
         /// Singleton instance value
@@ -62,9 +84,12 @@ namespace ServeurKoT.Connexion
             }
         }
 
+        public int BYTES_SIZE = 256;
+
         #endregion Properties
 
         #region Ctor
+
         public Serveur(string ipAdresse, int port)
         {
             // **** Initialisation ******
@@ -78,8 +103,8 @@ namespace ServeurKoT.Connexion
             IPAddress localAddr = IPAddress.Parse(ipAdresse);
             // TcpListener server = new TcpListener(port);
             Server = new TcpListener(localAddr, port);
-            
         }
+
         #endregion Ctor
 
         /// <summary>
@@ -91,12 +116,9 @@ namespace ServeurKoT.Connexion
         public static void Init(string IpAdresse, int Port)
         {
             Logger.Log(Logger.Level.Info, "Initialisation du serveur");
-            Serveur res = new Serveur(IpAdresse,Port);
+            Serveur res = new Serveur(IpAdresse, Port);
             InstanceValue = res;
         }
-
-        
-
 
         public void StartServer()
         {
@@ -115,11 +137,11 @@ namespace ServeurKoT.Connexion
                 Server.Start();
 
                 // Buffer for reading data
-                Byte[] bytes = new Byte[256];
+                Byte[] bytes = new Byte[BYTES_SIZE];
 
                 // Liaison de la socket au point de communication
 
-                Logger.Log(Logger.Level.Info,("Serveur à l'écoute des connexions..."));
+                Logger.Log(Logger.Level.Info, ("Serveur à l'écoute des connexions..."));
                 while (!Quit)
                 {
                     Logger.Log(Logger.Level.Info, "Dans l'attente d'une connexion... ");
@@ -129,7 +151,6 @@ namespace ServeurKoT.Connexion
                     ListClients.Add(client);
                     // Start a thread to handle this client...
                     new Thread(() => HandleClient(client)).Start();
-
                 }
             }
             catch (SocketException E)
@@ -143,11 +164,46 @@ namespace ServeurKoT.Connexion
 
         private void HandleClient(TcpClient client)
         {
+            
+            Logger.Log(Logger.Level.Info, "Client Connecté");
+            
+            var stream = client.GetStream();
+            Byte[] bytes = new Byte[BYTES_SIZE];
+            int i;
+            try
+            {
+                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                {
+                    string hex = BitConverter.ToString(bytes);
+                    _messageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Received: {_messageReaded}");
 
-            Logger.Log(Logger.Level.Info,"Client Connecté");
+                    HandleMessageReceive();
+
+                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(_messageToSend);
+                    stream.Write(reply, 0, reply.Length);
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {_messageToSend}");
+                    Thread.Sleep(500);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: {0}", e.ToString());
+                client.Close();
+            }
         }
 
-        
-
+        private void HandleMessageReceive()
+        {
+            PaquetDonnees p = new PaquetDonnees(MessageReaded);
+            if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
+            {
+                ConnexionServeur c = (ConnexionServeur)p.data;
+                c.ConnexionOK = true;
+                p.data = c;
+                
+            }
+            MessageToSend = p.ToString();
+        }
     }
 }

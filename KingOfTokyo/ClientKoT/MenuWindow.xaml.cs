@@ -54,6 +54,7 @@ namespace ClientKoT
             Application.Current.Shutdown();
         }
 
+
         /// <summary>
         /// Gestion de la sélection dans le menu
         /// </summary>
@@ -89,5 +90,22 @@ namespace ClientKoT
             }
         }
 
+        public void ChangeMenuToPlateau()
+        {
+            controlPrincipal = new Plateau();
+            this.ContentPrincipal.Content = controlPrincipal;
+        }
+
+
+        /// <summary>
+        ///  Deplacement de la fenetre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }

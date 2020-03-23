@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ServeurKoT.Connexion
@@ -18,58 +19,35 @@ namespace ServeurKoT.Connexion
 
     class PaquetDonnees
     {
-        /// <summary>
-        /// Taille du Buffer
-        /// </summary>
-        public const int bufferSize = 1500;
-
-        /// Position des différents éléments dans le buffer
-        private const int positionCommande = 0;
-        private const int positionCommandeType = 1;
-        private const int positionStreamObject = 3;
-
 
         public Commande commande;               // commande
-        public CommandeType commandeType;       // type (Requête/Réponse)
-        public Joueur joueur;                   // Joueur
-        public int dataSize;                    // taille de la donnée
-        public StreamObject data;               // Objet envoyé
-                        
+        public CommandeType commandeType;       // type (Requête/Réponse)                   
+        public StreamObject data;               // données de la commande
+        public String pseudo;                   // Pseudo du joueur
 
-        public PaquetDonnees(Commande commande, CommandeType type, Joueur j, StreamObject data)
+        public PaquetDonnees(Commande commande, CommandeType type, String pseudo, StreamObject data)
         {
             this.commande = commande;
             this.commandeType = type;
-            this.dataSize = data.Length;
             this.data = data;
-            
+            this.pseudo = pseudo;
         }
 
-        public PaquetDonnees(byte[] buffer)
+        public PaquetDonnees(string s)
         {
-            this.commande = (Commande)buffer[0];
-            this.commandeType = (CommandeType)buffer[1];
-            this.data = StreamObject.FromBytes(buffer,commandeType);
+            string[] tab = s.Split(';');
+            this.commande = (Commande)(int.Parse(tab[0]));
+            this.commandeType = (CommandeType)(int.Parse(tab[1]));
+            this.pseudo = tab[2];
+            this.data = StreamObject.FromString(tab[3],this.commandeType);
         }
 
-
-        public byte[] GetBytes()
-        {
-            byte[] buffer = new byte[bufferSize];
-
-            buffer[0] = (byte)commande;
-            buffer[1] = (byte)commandeType;
-            buffer[2] = joueur.IntoBytes()[0];
-            buffer[3] = data.IntoBytes();
-
-
-            return buffer;
-        }
 
         public override string ToString()
         {
-            return "[" + commande + "\"," + commandeType + "\"," + joueur.ToString() + "\"," + dataSize + ",\"" + data + "\"]";
+            return $"{(int)commande};{(int)commandeType};{pseudo};{data.IntoString()}";
         }
 
     }
+
 }

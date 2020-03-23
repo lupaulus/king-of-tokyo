@@ -8,26 +8,28 @@ namespace ServeurKoT.Connexion
 {
     class ConnexionServeur : StreamObject
     {
-        int tailleIdJoueur = 1;
-        bool check;
+        public int NbrJoueurActuellement { get; set; }
+        public bool ConnexionOK { get; set; }
 
 
         public ConnexionServeur()
         {
-            
+            this.NbrJoueurActuellement = 0;
+            this.ConnexionOK = false;
         }
 
-        public ConnexionServeur(byte[] b)
+        public ConnexionServeur(string b)
         {
-            this.joueur = Joueur.FromBytes(b);
-            this.check = Boolean.Parse(b[10].ToString());
+            string[] tab = b.Split('|');
+            ConnexionOK = bool.Parse(tab[0]);
+            NbrJoueurActuellement = int.Parse(tab[1]);
+
         }
 
 
-
-        public override byte IntoBytes()
+        public override string IntoString()
         {
-            return new byte();
+            return $"{ConnexionOK.ToString()}|{NbrJoueurActuellement}";
         }
     }
 }

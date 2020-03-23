@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientKoT"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Title="King of Paris" WindowState="Maximized" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Title="King of Paris"  WindowStyle="None" WindowStartupLocation="CenterScreen" MouseDown="MainWindow_MouseDown">
 
     <Grid Background="#FF3580BF" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}">
         <Grid.ColumnDefinitions>

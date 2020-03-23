@@ -4,12 +4,11 @@
     {
         private byte[] b;
 
-        public ConnexionPartie(byte[] b)
+        public ConnexionPartie(string b)
         {
-            this.b = b;
         }
 
-        public override byte IntoBytes()
+        public override string IntoString()
         {
             throw new System.NotImplementedException();
         }

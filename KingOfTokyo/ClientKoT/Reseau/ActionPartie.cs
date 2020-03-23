@@ -4,12 +4,12 @@
     {
         private byte[] b;
 
-        public ActionPartie(byte[] b)
+        public ActionPartie(string s)
         {
-            this.b = b;
+            
         }
 
-        public override byte IntoBytes()
+        public override string IntoString()
         {
             throw new System.NotImplementedException();
         }
