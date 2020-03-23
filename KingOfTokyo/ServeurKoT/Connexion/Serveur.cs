@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 
 namespace ServeurKoT.Connexion
@@ -165,20 +166,19 @@ namespace ServeurKoT.Connexion
         {
             
             Logger.Log(Logger.Level.Info, "Client Connecté");
-            ConnexionServeur c = new ConnexionServeur();
-            PaquetDonnees p = new PaquetDonnees(Commande.GET, CommandeType.CONNEXIONSERVEUR, "SERVEUR", c);
-            MessageToSend = p.ToString();
+            
             var stream = client.GetStream();
             Byte[] bytes = new Byte[BYTES_SIZE];
-            int i;
             try
             {
-                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                while (true)
                 {
                     string hex = BitConverter.ToString(bytes);
-                    _messageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    _messageReaded = Encoding.ASCII.GetString(bytes);
                     Logger.Log(Logger.Level.Debug,$"{Thread.CurrentThread.ManagedThreadId}: Received: {_messageReaded}");
 
+                    // Gestion des messages reçus
+                    HandleMessageReceive();
 
                     Byte[] reply = System.Text.Encoding.ASCII.GetBytes(_messageToSend);
                     stream.Write(reply, 0, reply.Length);
@@ -191,6 +191,19 @@ namespace ServeurKoT.Connexion
                 Console.WriteLine("Exception: {0}", e.ToString());
                 client.Close();
             }
+        }
+
+        private void HandleMessageReceive()
+        {
+            PaquetDonnees p = new PaquetDonnees(MessageReaded);
+            if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
+            {
+                ConnexionServeur c = (ConnexionServeur)p.data;
+                c.ConnexionOK = true;
+                p.data = c;
+                
+            }
+            MessageToSend = p.ToString();
         }
     }
 }

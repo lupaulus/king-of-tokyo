@@ -36,8 +36,8 @@ namespace ServeurKoT.Connexion
         public PaquetDonnees(string s)
         {
             string[] tab = s.Split(';');
-            this.commande = (Commande)int.Parse(tab[0]);
-            this.commandeType = (CommandeType)int.Parse(tab[1]);
+            this.commande = (Commande)(int.Parse(tab[0]));
+            this.commandeType = (CommandeType)(int.Parse(tab[1]));
             this.pseudo = tab[2];
             this.data = StreamObject.FromString(tab[3],this.commandeType);
         }
@@ -45,7 +45,7 @@ namespace ServeurKoT.Connexion
 
         public override string ToString()
         {
-            return (int)commande + ";" + (int)commandeType + ";" + pseudo + ";" + data.IntoString();
+            return $"{(int)commande};{(int)commandeType};{pseudo};{data.IntoString()}";
         }
 
     }

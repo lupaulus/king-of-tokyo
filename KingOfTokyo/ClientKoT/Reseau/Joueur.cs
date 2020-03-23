@@ -16,7 +16,7 @@ namespace Client.Reseau
 
         public override string IntoString()
         {
-            return new string();
+            return "";
         }
     }
 }

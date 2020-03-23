@@ -122,9 +122,14 @@ namespace Client.Reseau
                 if(p.commandeType == CommandeType.CONNEXIONSERVEUR)
                 {
                     ConnexionServeur c = (ConnexionServeur)p.data;
-                    c.
+                    if(c.ConnexionOK)
+                    {
+                        return true;
+                    }
                 }
+                Thread.Sleep(500);
             }
+            return false;
             
         }
 
