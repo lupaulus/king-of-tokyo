@@ -9,14 +9,15 @@ namespace Client.Reseau
     #region Enum
     public enum Commande
     {
-        POST, GET, HELP, QUIT, STOPSERVEUR, SUBSCRIBE, SUBSCRIBEv2, UNSUBSCRIBE
+        POST, GET, HELP, QUIT, STOPSERVEUR, SUBSCRIBE, UNSUBSCRIBE
     };
 
-    public enum CommandeType { REQUETE, REPONSE, ACTIONTOUR, ACTIONPARTIE, CONNEXIONPARTIE, CONNEXIONSERVEUR };
+    public enum CommandeType { SERVEURCONNEXION, CONNEXIONSERVEUR, CONNEXIONPARTIE, ACTIONPARTIE, ACTIONTOUR };
     #endregion Enum
+
     class PaquetDonnees
     {
-      
+
 
         public Commande commande;               // commande
         public CommandeType commandeType;       // type (Requête/Réponse)                   
@@ -33,13 +34,17 @@ namespace Client.Reseau
 
         public PaquetDonnees(string s)
         {
-
+            string[] tab = s.Split(';');
+            this.commande = (Commande)int.Parse(tab[0]);
+            this.commandeType = (CommandeType)int.Parse(tab[1]);
+            this.pseudo = tab[2];
+            this.data = StreamObject.FromString(tab[3], this.commandeType);
         }
 
 
         public override string ToString()
         {
-            return "[" + commande + ";" + commandeType + ";" + pseudo + ";" + data + "]";
+            return (int)commande + ";" + (int)commandeType + ";" + pseudo + ";" + data.IntoString();
         }
 
     }

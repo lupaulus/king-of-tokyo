@@ -94,6 +94,7 @@ namespace Client.Reseau
                     // Send the message to the connected TcpServer. 
                     stream.Write(data, 0, data.Length);
                     Debug.WriteLine("Sent: {0}", _messageToSend);
+
                     // Bytes Array to receive Server Response.
                     data = new Byte[BYTES_SIZE];
                     _messageReaded = String.Empty;
@@ -101,6 +102,7 @@ namespace Client.Reseau
                     Int32 bytes = stream.Read(data, 0, data.Length);
                     _messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
                     Debug.WriteLine("Received: {0}", _messageReaded);
+                   
 
                     Thread.Sleep(500);
                 }
@@ -110,8 +112,21 @@ namespace Client.Reseau
                 ClientTCP?.Close();
             }
             
-        } 
+        }
 
+        public bool CheckServeurRep()
+        {
+            for(int i=0;i<6;i++)
+            {
+                PaquetDonnees p = new PaquetDonnees(MessageReaded);
+                if(p.commandeType == CommandeType.CONNEXIONSERVEUR)
+                {
+                    ConnexionServeur c = (ConnexionServeur)p.data;
+                    c.
+                }
+            }
+            
+        }
 
         public void InitConnexion()
         {

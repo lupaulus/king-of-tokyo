@@ -9,7 +9,7 @@
             
         }
 
-        public override byte IntoString()
+        public override string IntoString()
         {
             throw new System.NotImplementedException();
         }

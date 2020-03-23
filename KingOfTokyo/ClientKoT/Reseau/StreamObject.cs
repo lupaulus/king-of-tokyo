@@ -35,7 +35,7 @@ namespace Client.Reseau
             return res;
         }
 
-        public abstract byte IntoString();
+        public abstract string IntoString();
 
     }
 }

@@ -1,17 +1,18 @@
-﻿namespace ServeurKoT.Connexion
+﻿using System;
+
+namespace ServeurKoT.Connexion
 {
     internal class ActionPartie : StreamObject
     {
         private byte[] b;
 
-        public ActionPartie(byte[] b)
+        public ActionPartie(string b)
         {
-            this.b = b;
         }
 
-        public override byte IntoBytes()
+        public override string IntoString()
         {
-            throw new System.NotImplementedException();
+            return String.Empty;
         }
     }
 }

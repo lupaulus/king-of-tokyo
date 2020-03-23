@@ -19,15 +19,14 @@ namespace Client.Reseau
 
         public ConnexionServeur(string s)
         {
-            this.joueur = (Joueur) StreamObject.FromString(s,CommandeType.CONNEXIONSERVEUR);
-            this.check = Boolean.Parse(s[10].ToString());
+            
         }
 
 
 
-        public override byte IntoString()
+        public override string IntoString()
         {
-            return new byte();
+            return $"{check.ToString()};"
         }
     }
 }

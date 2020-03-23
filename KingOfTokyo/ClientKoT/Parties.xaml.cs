@@ -73,6 +73,14 @@ namespace ClientKoT
             try
             {
                 val.InitConnexion();
+                if(val.CheckServeurRep()) // Réponse ok
+                {
+                    Window.GetWindow(this).Content = new Plateau();
+                }
+                else // Si reponse not ok
+                {
+                    MessageBox.Show("Le serveur ne vous a pas accepter", "Cheh", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             catch(Exception ex)
             {

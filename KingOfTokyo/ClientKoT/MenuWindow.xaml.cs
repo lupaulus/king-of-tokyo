@@ -89,5 +89,11 @@ namespace ClientKoT
             }
         }
 
+        public void ChangeMenuToPlateau()
+        {
+            controlPrincipal = new Plateau();
+            this.ContentPrincipal.Content = controlPrincipal;
+        }
+
     }
 }

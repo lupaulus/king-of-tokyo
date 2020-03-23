@@ -17,17 +17,17 @@ namespace ServeurKoT.Connexion
             
         }
 
-        public ConnexionServeur(byte[] b)
+        public ConnexionServeur(string b)
         {
-            this.joueur = Joueur.FromBytes(b);
+            
             this.check = Boolean.Parse(b[10].ToString());
         }
 
 
 
-        public override byte IntoBytes()
+        public override string IntoString()
         {
-            return new byte();
+            return String.Empty;
         }
     }
 }

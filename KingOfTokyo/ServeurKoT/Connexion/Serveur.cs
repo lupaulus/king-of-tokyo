@@ -47,8 +47,22 @@ namespace ServeurKoT.Connexion
         /// Instance Value
         /// </summary>
         private static Serveur InstanceValue = null;
-        private byte[] bytesReaded;
-        private byte[] byteToWrite;
+
+        private volatile string _messageReaded;
+        private volatile string _messageToSend;
+
+        public string MessageReaded
+        {
+            get { return _messageReaded; }
+            set { _messageReaded = value; }
+        }
+
+        public string MessageToSend
+        {
+            get { return _messageToSend; }
+            set { _messageToSend = value; }
+        }
+
 
         /// <summary>
         /// Singleton instance value
@@ -151,10 +165,10 @@ namespace ServeurKoT.Connexion
         {
             
             Logger.Log(Logger.Level.Info, "Client Connecté");
-
+            ConnexionServeur c = new ConnexionServeur();
+            PaquetDonnees p = new PaquetDonnees(Commande.GET, CommandeType.CONNEXIONSERVEUR, "SERVEUR", c);
+            MessageToSend = p.ToString();
             var stream = client.GetStream();
-            string imei = String.Empty;
-            string data = null;
             Byte[] bytes = new Byte[BYTES_SIZE];
             int i;
             try
@@ -162,12 +176,13 @@ namespace ServeurKoT.Connexion
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     string hex = BitConverter.ToString(bytes);
-                    data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                    Logger.Log(Logger.Level.Debug,$"{Thread.CurrentThread.ManagedThreadId}: Received: {data}");
-                    string str = "Hey Device!";
-                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
+                    _messageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    Logger.Log(Logger.Level.Debug,$"{Thread.CurrentThread.ManagedThreadId}: Received: {_messageReaded}");
+
+
+                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(_messageToSend);
                     stream.Write(reply, 0, reply.Length);
-                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {data}");
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {_messageToSend}");
                     Thread.Sleep(500);
                 }
             }
