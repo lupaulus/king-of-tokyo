@@ -20,7 +20,7 @@ namespace Client.Reseau
 
         public ConnexionServeur(string b)
         {
-            string[] tab = b.Split(';');
+            string[] tab = b.Split('|');
             ConnexionOK = bool.Parse(tab[0]);
             NbrJoueurActuellement = int.Parse(tab[1]);
 
@@ -29,7 +29,7 @@ namespace Client.Reseau
 
         public override string IntoString()
         {
-            return $"{ConnexionOK.ToString()};{NbrJoueurActuellement}";
+            return $"{ConnexionOK.ToString()}|{NbrJoueurActuellement}";
         }
     }
 }

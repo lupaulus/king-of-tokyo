@@ -169,15 +169,15 @@ namespace ServeurKoT.Connexion
             
             var stream = client.GetStream();
             Byte[] bytes = new Byte[BYTES_SIZE];
+            int i;
             try
             {
-                while (true)
+                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     string hex = BitConverter.ToString(bytes);
-                    _messageReaded = Encoding.ASCII.GetString(bytes);
-                    Logger.Log(Logger.Level.Debug,$"{Thread.CurrentThread.ManagedThreadId}: Received: {_messageReaded}");
+                    _messageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Received: {_messageReaded}");
 
-                    // Gestion des messages reçus
                     HandleMessageReceive();
 
                     Byte[] reply = System.Text.Encoding.ASCII.GetBytes(_messageToSend);
