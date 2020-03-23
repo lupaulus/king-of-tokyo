@@ -4,20 +4,264 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClientKoT"
-      mc:Ignorable="d" >
+      xmlns:reseau="clr-namespace:Client.Reseau"
+      mc:Ignorable="d"
+      d:DesignHeight="768" d:DesignWidth="1024">
 
+    <!-- Grid plateau -->
     <Grid>
-        <!-- Plateau -->
-        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Canvas Width="800" Height="450">
-                <!-- Tokyo City -->
-                <Ellipse Fill="Red" Width="100" Height="100" Canvas.Left="223" Canvas.Top="170" RenderTransformOrigin="-0.32,0.408"/>
-                <TextBlock Canvas.Left="252" Canvas.Top="217" RenderTransformOrigin="3.287,11.002" Foreground="White">tokyo city</TextBlock>
-                <!-- Tokyo Bay -->
-                <Ellipse Fill="Blue" Width="100" Height="100" Canvas.Left="450" Canvas.Top="170" RenderTransformOrigin="-0.32,0.408"/>
-                <TextBlock Canvas.Left="476" Canvas.Top="217" RenderTransformOrigin="3.287,11.002" Foreground="White">tokyo bay</TextBlock>
-            </Canvas>
-        </Viewbox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Grid joueur 3 -->
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="NbViesJ3" Text="NbVies" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbVictoireJ3" Text="NbVictoire" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbEnergieJ3" Text="NbEnergy" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur3" Text="Joueur 3" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ3" Text="Pouvoirs" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+
+
+        <!-- Grid joueur 4 -->
+        <Grid Grid.Column="2" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="3" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="NbViesJ4" Text="NbVies" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbVictoireJ4" Text="NbVictoire" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbEnergieJ4" Text="NbEnergy" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur4" Text="Joueur 4" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ4" Text="Pouvoirs" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+
+
+        <!-- Grid joueur 1 -->
+        <Grid Grid.Column="1" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="NbViesJ1" Text="NbVies" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbVictoireJ1" Text="NbVictoire" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbEnergieJ1" Text="NbEnergy" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur1" Text="Joueur 1" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ1" Text="Pouvoirs" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+
+
+        <!-- Grid joueur 2 -->
+        <Grid Grid.Column="2" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="3" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="NbViesJ2" Text="NbVies" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbVictoireJ2" Text="NbVictoire" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbEnergieJ2" Text="NbEnergy" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+
+        <!-- Grid joueur 5 -->
+        <Grid Grid.Column="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="NbViesJ5" Text="NbVies" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbVictoireJ5" Text="NbVictoire" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbEnergieJ5" Text="NbEnergy" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur5" Text="Joueur 5" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ5" Text="Pouvoirs" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+
+
+        <!-- Grid joueur 6 -->
+        <Grid Grid.Column="5" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="NbViesJ6" Text="NbVies" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbVictoireJ6" Text="NbVictoire" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NbEnergieJ6" Text="NbEnergy" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur6" Text="Joueur 6" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ6" Text="Pouvoirs" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <!-- Deck -->
+        <Grid Grid.Column="2" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="Deck" Text="Deck" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="Reroll" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Reroll</Button>
+
+            <TextBlock x:Name="Carte1" Text="Carte1" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="Carte2" Text="Carte2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="Carte3" Text="Carte3" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="Acheter1" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter1</Button>
+            <Button x:Name="Acheter2" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter2</Button>
+            <Button x:Name="Acheter3" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter3</Button>
+        </Grid>
+
+        <!-- Dés -->
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="De1" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Dé1</Button>
+            <Button x:Name="De2" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Dé2</Button>
+            <Button x:Name="De3" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Dé3</Button>
+            <Button x:Name="De4" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Dé4</Button>
+            <Button x:Name="De5" Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Dé5</Button>
+            <Button x:Name="De6" Grid.Column="5" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Dé6</Button>
+
+            <TextBlock x:Name="ResultatDes" Text="Resultat littéral" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="LancerDes" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Lancer les dés</Button>
+            <Button x:Name="ValidDes" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Valider les dés</Button>
+        </Grid>
+      
+
+        <!-- Paris Ville -->
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="Ville" Text="Paris Ville" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="EntrerVille" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Entrer dans la Ville</Button>
+        </Grid>
+
+        <!-- Paris Banlieue -->
+        <Grid Grid.Column="2" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="Banlieue" Text="Banlieue" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="EntrerBanlieue" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Entrer dans la Banlieue</Button>
+        </Grid>
 
 
     </Grid>
