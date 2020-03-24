@@ -424,9 +424,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Paris_1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\imgDes\Des_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
