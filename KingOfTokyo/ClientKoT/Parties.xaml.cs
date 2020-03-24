@@ -75,6 +75,7 @@ namespace ClientKoT
                 val.InitConnexion();
                 if(val.CheckServeurRep()) // Réponse ok
                 {
+                    MessageBox.Show("Vous êtes connecté");
                     Window.GetWindow(this).Content = new Plateau();
                 }
                 else // Si reponse not ok
