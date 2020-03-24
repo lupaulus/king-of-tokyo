@@ -23,6 +23,7 @@ namespace ClientKoT
     {
         private UserControl controlPrincipal;
         private bool collapse = false; // eval l'état du menu
+        private Plateau ActualPlateau;
 
         public MenuWindow()
         {
@@ -80,7 +81,7 @@ namespace ClientKoT
                         this.ContentPrincipal.Content = controlPrincipal;
                         break;
                     case 3: // Plateau
-                        controlPrincipal = new Plateau();
+                        controlPrincipal = ActualPlateau;
                         this.ContentPrincipal.Content = controlPrincipal;
                         break;
                     default:
@@ -92,8 +93,9 @@ namespace ClientKoT
 
         public void ChangeMenuToPlateau()
         {
-            controlPrincipal = new Plateau();
-            this.ContentPrincipal.Content = controlPrincipal;
+            ActualPlateau = new Plateau();
+            this.ContentPrincipal.Content = ActualPlateau;
+            listViewItemPlateau.IsEnabled = true;
         }
 
 
