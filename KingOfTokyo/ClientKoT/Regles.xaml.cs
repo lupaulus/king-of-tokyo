@@ -23,11 +23,14 @@ namespace ClientKoT
         public Regles()
         {
             InitializeComponent();
-            pdfWebViewer.Navigate(new Uri("about:blank"));
-            pdfWebViewer.Navigate("https://ludos.brussels/ludo-cocof/opac_css/doc_num.php?explnum_id=918");
+
+            // pdfWebViewer.Navigate(new Uri("about:blank"));
+            // pdfWebViewer.Navigate("https://ludos.brussels/ludo-cocof/opac_css/doc_num.php?explnum_id=918");
 
             // Pour chez moi. Il faut IE + addon Adobe.
             // pdfWebViewer.Navigate(new Uri("file:///D:/Projet%20POO/king-of-tokyo/rules/rules_short.pdf"));
+
+
         }
     }
 }
