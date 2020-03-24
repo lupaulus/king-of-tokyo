@@ -76,7 +76,8 @@ namespace ClientKoT
                 if(val.CheckServeurRep()) // Réponse ok
                 {
                     MessageBox.Show("Vous êtes connecté");
-                    Window.GetWindow(this).Content = new Plateau();
+                    MenuWindow w = (MenuWindow)Window.GetWindow(this);
+                    w.ChangeMenuToPlateau();
                 }
                 else // Si reponse not ok
                 {
