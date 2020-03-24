@@ -98,7 +98,7 @@
             <TextBlock x:Name="NbViesJ1" Text="NbVies" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock x:Name="NbVictoireJ1" Text="NbVictoire" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock x:Name="NbEnergieJ1" Text="NbEnergy" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="nomJoueur1" Text="Joueur 1" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur1" Text="Joueur 1" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock x:Name="pouvoirsJ1" Text="Pouvoirs" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
 
@@ -124,8 +124,8 @@
             <TextBlock x:Name="NbViesJ2" Text="NbVies" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock x:Name="NbVictoireJ2" Text="NbVictoire" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock x:Name="NbEnergieJ2" Text="NbEnergy" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
 
 
