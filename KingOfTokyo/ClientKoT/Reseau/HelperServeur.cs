@@ -51,19 +51,47 @@ namespace Client.Reseau
         private Thread ClientThread;
         private bool StopClient = false;
 
-        private volatile string _messageReaded;
-        private volatile string _messageToSend;
+        private object lockRead = new object();
+        private object lockSend = new object();
+
+        private string _messageReaded;
+        private string _messageToSend;
 
         public string MessageReaded
         {
-            get { return _messageReaded; }
-            set { _messageReaded = value; }
+            get 
+            { 
+                lock(lockRead)
+                {
+                    return _messageReaded;
+                }
+            }
+            set
+            {
+                lock (lockRead)
+                {
+                    _messageReaded = value;
+                }
+            }
         }
 
         public string MessageToSend
         {
-            get { return _messageToSend; }
-            set { _messageToSend = value; }
+            get { 
+
+                lock(lockSend)
+                {
+                    return _messageToSend;
+                }
+                
+            }
+            set
+            {
+                lock (lockSend)
+                {
+                    _messageToSend = value;
+                }
+            }
         }
 
         public HelperServeur(string pseudo, string name, string hostName, int portNum)
@@ -87,8 +115,7 @@ namespace Client.Reseau
             {
                 ClientTCP = new TcpClient(Adresse, Port);
                 NetworkStream stream = ClientTCP.GetStream();
-                while (true)
-                {
+
                     // Translate the Message into ASCII.
                     Byte[] data = Encoding.ASCII.GetBytes(_messageToSend);
                     // Send the message to the connected TcpServer. 
@@ -104,8 +131,7 @@ namespace Client.Reseau
                     Debug.WriteLine("Received: {0}", _messageReaded);
                    
 
-                    Thread.Sleep(500);
-                }
+
             }catch(Exception ex)
             {
                 MessageBox.Show($"Erreur Thread Connexion : {ex.ToString()}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -114,17 +140,25 @@ namespace Client.Reseau
             
         }
 
+        /// <summary>
+        /// Fonction de verification si la connexion au serveur 
+        /// à abouti
+        /// </summary>
+        /// <returns></returns>
         public bool CheckServeurRep()
         {
             for(int i=0;i<6;i++)
             {
-                PaquetDonnees p = new PaquetDonnees(MessageReaded);
-                if(p.commandeType == CommandeType.CONNEXIONSERVEUR)
+                if(MessageReaded != null)
                 {
-                    ConnexionServeur c = (ConnexionServeur)p.data;
-                    if(c.ConnexionOK)
+                    PaquetDonnees p = new PaquetDonnees(MessageReaded);
+                    if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
                     {
-                        return true;
+                        ConnexionServeur c = (ConnexionServeur)p.data;
+                        if (c.ConnexionOK)
+                        {
+                            return true;
+                        }
                     }
                 }
                 Thread.Sleep(500);
