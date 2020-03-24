@@ -13,17 +13,17 @@
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_1.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_2.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_3.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_4.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_5.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_6.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_7.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_8.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_9.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_10.jpg" />
-                <Image Source="D:\Projet POO\king-of-tokyo\KingOfTokyo\ClientKoT\Images\imgRules\rules_11.jpg" />
+                <Image Source="/Images/imgRules/rules_1.jpg" />
+                <Image Source="/Images/imgRules/rules_2.jpg" />
+                <Image Source="/Images/imgRules/rules_3.jpg" />
+                <Image Source="/Images/imgRules/rules_4.jpg" />
+                <Image Source="/Images/imgRules/rules_5.jpg" />
+                <Image Source="/Images/imgRules/rules_6.jpg" />
+                <Image Source="/Images/imgRules/rules_7.jpg" />
+                <Image Source="/Images/imgRules/rules_8.jpg" />
+                <Image Source="/Images/imgRules/rules_9.jpg" />
+                <Image Source="/Images/imgRules/rules_10.jpg" />
+                <Image Source="/Images/imgRules/rules_11.jpg" />
             </StackPanel>
         </ScrollViewer>
 
