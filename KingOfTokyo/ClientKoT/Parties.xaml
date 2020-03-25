@@ -65,7 +65,19 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Grid.Row="2"  Content="Connexion Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnConnexionServeur"  Click="ButtonConnexion_Click" />
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalAlignment="Center" Name ="lblPseudo" Content="Pseudo :"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Center" Name="tbPseudo" MinWidth="150" MinHeight="20" MaxWidth="250" MaxHeight="30" />
+                <Button Grid.Column="2"  Content="Connexion Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnConnexionServeur"  Click="ButtonConnexion_Click" />
+                
+            </Grid>
+    
+           
         </Grid>
         
 

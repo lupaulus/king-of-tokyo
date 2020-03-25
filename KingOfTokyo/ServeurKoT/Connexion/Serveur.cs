@@ -27,7 +27,7 @@ namespace ServeurKoT.Connexion
         /// <summary>
         /// Liste des clients
         /// </summary>
-        private List<TcpClient> ListClients;
+        private Dictionary<TcpClient,Joueur> ListClients;
 
         /// <summary>
         /// Port du serveur
@@ -49,20 +49,7 @@ namespace ServeurKoT.Connexion
         /// </summary>
         private static Serveur InstanceValue = null;
 
-        private volatile string _messageReaded;
-        private volatile string _messageToSend;
-
-        public string MessageReaded
-        {
-            get { return _messageReaded; }
-            set { _messageReaded = value; }
-        }
-
-        public string MessageToSend
-        {
-            get { return _messageToSend; }
-            set { _messageToSend = value; }
-        }
+        
 
 
         /// <summary>
@@ -85,6 +72,7 @@ namespace ServeurKoT.Connexion
         }
 
         public int BYTES_SIZE = 256;
+        private int nextIdJoueur = 1;
 
         #endregion Properties
 
@@ -96,7 +84,7 @@ namespace ServeurKoT.Connexion
             // Variable de sortie
             Quit = false;
             // Ensemble des clients
-            ListClients = new List<TcpClient>();
+            ListClients = new Dictionary<TcpClient, Joueur>();
             // Cast des clients
             localAddrString = ipAdresse;
             localPort = port;
@@ -146,9 +134,10 @@ namespace ServeurKoT.Connexion
                 {
                     Logger.Log(Logger.Level.Info, "Dans l'attente d'une connexion... ");
                     // Méthode bloquante
-                    TcpClient client = Server.AcceptTcpClient();
+                    TcpClient client = (TcpClient)Server.AcceptTcpClient();
                     // Ajout à la liste des clients
-                    ListClients.Add(client);
+                    ListClients.Add(client, new Joueur(nextIdJoueur,""));
+                    nextIdJoueur++;
                     // Start a thread to handle this client...
                     new Thread(() => HandleClient(client)).Start();
                 }
@@ -175,14 +164,14 @@ namespace ServeurKoT.Connexion
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     string hex = BitConverter.ToString(bytes);
-                    _messageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Received: {_messageReaded}");
+                    ListClients[client].MessageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Received: {ListClients[client].MessageReaded}");
 
-                    HandleMessageReceive();
+                    HandleMessageReceive(client);
 
-                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(_messageToSend);
+                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
                     stream.Write(reply, 0, reply.Length);
-                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {_messageToSend}");
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
                     Thread.Sleep(500);
                 }
             }
@@ -193,17 +182,17 @@ namespace ServeurKoT.Connexion
             }
         }
 
-        private void HandleMessageReceive()
+        private void HandleMessageReceive(TcpClient client)
         {
-            PaquetDonnees p = new PaquetDonnees(MessageReaded);
+            PaquetDonnees p = new PaquetDonnees(ListClients[client].MessageReaded);
             if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
             {
                 ConnexionServeur c = (ConnexionServeur)p.data;
                 c.ConnexionOK = true;
-                p.data = c;
-                
+                ListClients[client].Pseudo = p.pseudo;
+                p.data = c;       
             }
-            MessageToSend = p.ToString();
+            ListClients[client].MessageToSend = p.ToString();
         }
     }
 }

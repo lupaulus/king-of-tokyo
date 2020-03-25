@@ -94,9 +94,8 @@ namespace Client.Reseau
             }
         }
 
-        public HelperServeur(string pseudo, string name, string hostName, int portNum)
+        public HelperServeur(string name, string hostName, int portNum)
         {
-            this.PseudoJoueur = pseudo;
             this.Nom = name;
             this.Adresse = hostName;
             this.Port = portNum;
@@ -104,9 +103,6 @@ namespace Client.Reseau
             this.NbrJoueur = 0;
             this.Etat = EtatServeur.OK;
 
-            PaquetDonnees startConnection = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONSERVEUR, PseudoJoueur,
-                new ConnexionServeur());
-            _messageToSend = startConnection.ToString();
         }
 
         private void RunClient()
@@ -169,6 +165,11 @@ namespace Client.Reseau
 
         public void InitConnexion()
         {
+
+            PaquetDonnees startConnection = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONSERVEUR, PseudoJoueur,
+                new ConnexionServeur());
+            _messageToSend = startConnection.ToString();
+
             // Lancement thread
             ClientThread = new Thread(new ThreadStart(RunClient));
             ClientThread.Start();

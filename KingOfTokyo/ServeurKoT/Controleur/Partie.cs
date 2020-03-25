@@ -17,13 +17,16 @@ namespace ServeurKoT.Controleur{
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
 
+        private Queue<string> ListeDesJoueurs { get; }
+
         #endregion Properties
 
         #region Ctor
         public Partie(int idValue, string nom, int nbrJoueur) {
             Id = idValue;
             nomPartie = nom;
-            NombreDeJoueur = nbrJoueur; 
+            NombreDeJoueur = nbrJoueur;
+            ListeDesJoueurs = new Queue<string>();
             GestionaryMonstre = new GMonstre(nbrJoueur);
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();

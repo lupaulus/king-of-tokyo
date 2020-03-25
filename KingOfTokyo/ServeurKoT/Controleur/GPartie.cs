@@ -25,13 +25,17 @@ namespace ServeurKoT.Controleur{
         /// </summary>
         public static int NOMBRE_JOUEUR_MIN = 2;
         /// <summary>
-        /// List<> Contenant l'ensemble des parties
-        /// </summary>
-        private List<Partie> listeDesParties;
-        /// <summary>
         /// Variable de l'instance
         /// </summary>
         private static GPartie InstanceValue = null;
+        /// <summary>
+        /// 
+        /// </summary>
+        private Partie PartieInstance;
+
+
+
+
         /// <summary>
         /// Propriétes pour récuperer l'instance
         /// </summary>
@@ -53,7 +57,7 @@ namespace ServeurKoT.Controleur{
         #region Ctor
         private GPartie()
         {
-            listeDesParties = new List<Partie>();
+            
         }
         #endregion Ctor
 
@@ -67,28 +71,15 @@ namespace ServeurKoT.Controleur{
             Logger.Log(Logger.Level.Info, 
                 String.Format("Création de la partie : {0} ({1})", nomPartie, NextId));
             int res = NextId;
-            Partie partie = new Partie(NextId, nomPartie, nbrJoueur);
-            listeDesParties.Add(partie);
+            PartieInstance = new Partie(NextId, nomPartie, nbrJoueur);
             return res;
         }
 
-        public Partie TrouverPartie(int numPartie)
+        public Partie PartieActuel()
         {
-            foreach(Partie p in listeDesParties)
-            {
-                if(numPartie == p.Id)
-                {
-                    return p;
-                }
-            }
-            throw new InvalidOperationException();
+            return PartieInstance;
         }
-        private void SupprimerPartie(int id) {
-            Partie partie = TrouverPartie(id);
-            listeDesParties.Remove(partie);
-            Logger.Log(Logger.Level.Info,
-                String.Format("Suppresion partie : {0} ({1})", partie.nomPartie, id));
-        }
+       
 
     }
 }
