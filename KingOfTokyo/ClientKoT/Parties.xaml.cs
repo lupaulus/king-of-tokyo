@@ -90,7 +90,7 @@ namespace ClientKoT
                 {
                     MessageBox.Show("Vous êtes connecté");
                     MenuWindow w = (MenuWindow)Window.GetWindow(this);
-                    w.ChangeMenuToPlateau();
+                    w.ChangeMenuToPlateau(val);
                 }
                 else // Si reponse not ok
                 {

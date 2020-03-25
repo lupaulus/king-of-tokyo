@@ -21,7 +21,7 @@ namespace Client.Reseau
                     res = new ConnexionServeur(s);
                     break;
                 case CommandeType.CONNEXIONPARTIE:
-                    res = new ConnexionPartie(s);
+                    res = new LancementPartie(s);
                     break;
                 case CommandeType.ACTIONPARTIE:
                     res = new ActionPartie(s);

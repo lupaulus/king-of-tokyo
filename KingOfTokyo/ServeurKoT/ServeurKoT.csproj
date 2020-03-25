@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Connexion\ActionPartie.cs" />
     <Compile Include="Connexion\ActionTour.cs" />
-    <Compile Include="Connexion\ConnexionPartie.cs" />
+    <Compile Include="Connexion\LancementPartie.cs" />
     <Compile Include="Connexion\PaquetDonnees.cs" />
     <Compile Include="Connexion\Serveur.cs" />
     <Compile Include="Connexion\Joueur.cs" />

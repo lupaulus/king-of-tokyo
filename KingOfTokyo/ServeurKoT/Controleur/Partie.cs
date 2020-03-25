@@ -17,7 +17,7 @@ namespace ServeurKoT.Controleur{
         public GMonstre GestionaryMonstre { get; }
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
-        private Queue<Joueur> ListeDesJoueurs { get; }
+        public Queue<Joueur> ListeDesJoueurs { get; }
 
         #endregion Properties
 

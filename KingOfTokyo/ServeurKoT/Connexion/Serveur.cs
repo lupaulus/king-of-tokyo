@@ -192,8 +192,16 @@ namespace ServeurKoT.Connexion
                 c.ConnexionOK = true;
                 ListClients[client].Pseudo = p.pseudo;
                 GPartie.Instance.PartieActuel.AjouterJoueur(ListClients[client]);
+                c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.ListeDesJoueurs.Count;
                 p.data = c;       
             }
+            if(p.commandeType == CommandeType.CONNEXIONPARTIE)
+            {
+
+            }
+
+
+
             ListClients[client].MessageToSend = p.ToString();
         }
     }

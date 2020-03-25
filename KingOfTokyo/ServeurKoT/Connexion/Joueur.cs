@@ -20,6 +20,10 @@ namespace ServeurKoT.Connexion
         private string pseudo;
         public string Pseudo { get => pseudo; set => pseudo = value; }
 
+        private bool estPret;
+        public bool EstPret { get => estPret; set => estPret = value; }
+
+
         private volatile string _messageReaded;
         private volatile string _messageToSend;
 
@@ -35,16 +39,13 @@ namespace ServeurKoT.Connexion
             set { _messageToSend = value; }
         }
 
-        
-
+       
         public Joueur(int id,string pseudo)
         {
             this.id = id;
             this.pseudo = pseudo;
+            this.estPret = false;
         }
-
-
-        
 
 
         public void passerTour()
