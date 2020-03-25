@@ -1,4 +1,5 @@
-﻿using SimpleLogger;
+﻿using ServeurKoT.Controleur;
+using SimpleLogger;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -190,6 +191,7 @@ namespace ServeurKoT.Connexion
                 ConnexionServeur c = (ConnexionServeur)p.data;
                 c.ConnexionOK = true;
                 ListClients[client].Pseudo = p.pseudo;
+                GPartie.Instance.PartieActuel.AjouterJoueur(ListClients[client]);
                 p.data = c;       
             }
             ListClients[client].MessageToSend = p.ToString();

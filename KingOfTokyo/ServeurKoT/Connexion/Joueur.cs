@@ -14,6 +14,7 @@ namespace ServeurKoT.Connexion
     public class Joueur 
     {
         private int id;
+        public int Id { get => id; }
 
 
         private string pseudo;
@@ -54,16 +55,6 @@ namespace ServeurKoT.Connexion
         public void lancerDes()
         {
             // TODO implement here
-        }
-
-        public static Joueur FromBytes(byte[] v)
-        {
-            return Utilitaire.Deserializer<Joueur>(v);
-        }
-
-        public byte[] IntoBytes()
-        {
-            return Utilitaire.Serializer(this);
         }
     }
 }

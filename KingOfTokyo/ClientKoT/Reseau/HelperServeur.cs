@@ -165,7 +165,7 @@ namespace Client.Reseau
 
         public void InitConnexion()
         {
-
+            // Preparation du paquet
             PaquetDonnees startConnection = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONSERVEUR, PseudoJoueur,
                 new ConnexionServeur());
             _messageToSend = startConnection.ToString();

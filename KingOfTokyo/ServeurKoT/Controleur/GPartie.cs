@@ -31,7 +31,7 @@ namespace ServeurKoT.Controleur{
         /// <summary>
         /// 
         /// </summary>
-        private Partie PartieInstance;
+        private Partie partieInstance;
 
 
 
@@ -71,13 +71,14 @@ namespace ServeurKoT.Controleur{
             Logger.Log(Logger.Level.Info, 
                 String.Format("Création de la partie : {0} ({1})", nomPartie, NextId));
             int res = NextId;
-            PartieInstance = new Partie(NextId, nomPartie, nbrJoueur);
+            partieInstance = new Partie(NextId, nomPartie, nbrJoueur);
             return res;
         }
 
-        public Partie PartieActuel()
+        public Partie PartieActuel
         {
-            return PartieInstance;
+            get { return partieInstance; }
+            set { partieInstance = value; }
         }
        
 
