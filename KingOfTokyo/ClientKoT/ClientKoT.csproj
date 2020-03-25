@@ -87,7 +87,7 @@
     </Compile>
     <Compile Include="Reseau\ActionPartie.cs" />
     <Compile Include="Reseau\ActionTour.cs" />
-    <Compile Include="Reseau\ConnexionPartie.cs" />
+    <Compile Include="Reseau\LancementPartie.cs" />
     <Compile Include="Reseau\ConnexionServeur.cs" />
     <Compile Include="Reseau\GJoueur.cs" />
     <Compile Include="Reseau\HelperServeur.cs" />
@@ -97,7 +97,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Reseau\Serveur.cs" />
     <Compile Include="Reseau\StreamObject.cs" />
     <Page Include="MenuWindow.xaml">
       <SubType>Designer</SubType>

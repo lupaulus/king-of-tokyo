@@ -46,10 +46,9 @@
   <ItemGroup>
     <Compile Include="Connexion\ActionPartie.cs" />
     <Compile Include="Connexion\ActionTour.cs" />
-    <Compile Include="Connexion\ConnexionPartie.cs" />
+    <Compile Include="Connexion\LancementPartie.cs" />
     <Compile Include="Connexion\PaquetDonnees.cs" />
     <Compile Include="Connexion\Serveur.cs" />
-    <Compile Include="Connexion\GJoueur.cs" />
     <Compile Include="Connexion\Joueur.cs" />
     <Compile Include="Connexion\ConnexionServeur.cs" />
     <Compile Include="Connexion\StreamObject.cs" />

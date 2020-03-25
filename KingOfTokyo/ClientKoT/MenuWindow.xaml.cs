@@ -91,9 +91,9 @@ namespace ClientKoT
             }
         }
 
-        public void ChangeMenuToPlateau()
+        public void ChangeMenuToPlateau(HelperServeur h)
         {
-            ActualPlateau = new Plateau();
+            ActualPlateau = new Plateau(h);
             this.ContentPrincipal.Content = ActualPlateau;
             listViewItemPlateau.IsEnabled = true;
         }

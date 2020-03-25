@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,27 @@ namespace ClientKoT
     /// </summary>
     public partial class Plateau : UserControl
     {
-        public Plateau()
+        private bool joueurPret = false;
+
+        private HelperServeur helperServeur;
+        public Plateau(HelperServeur h)
         {
             InitializeComponent();
+            helperServeur = h;
+        }
+
+        private void btnPret_Click(object sender, RoutedEventArgs e)
+        {
+            joueurPret = !joueurPret;
+            if(joueurPret)
+            {
+                helperServeur.JoueurPret();
+            }
+            else
+            {
+                helperServeur.JoueurPasPret();
+            }
+            
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Client.Reseau
         private static int JOUEUR_MAX = 6;
 
         private TcpClient ClientTCP;
-
+        private NetworkStream stream;
         private Thread ClientThread;
         private bool StopClient = false;
 
@@ -94,9 +94,8 @@ namespace Client.Reseau
             }
         }
 
-        public HelperServeur(string pseudo, string name, string hostName, int portNum)
+        public HelperServeur(string name, string hostName, int portNum)
         {
-            this.PseudoJoueur = pseudo;
             this.Nom = name;
             this.Adresse = hostName;
             this.Port = portNum;
@@ -104,9 +103,6 @@ namespace Client.Reseau
             this.NbrJoueur = 0;
             this.Etat = EtatServeur.OK;
 
-            PaquetDonnees startConnection = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONSERVEUR, PseudoJoueur,
-                new ConnexionServeur());
-            _messageToSend = startConnection.ToString();
         }
 
         private void RunClient()
@@ -114,30 +110,34 @@ namespace Client.Reseau
             try
             {
                 ClientTCP = new TcpClient(Adresse, Port);
-                NetworkStream stream = ClientTCP.GetStream();
-
-                    // Translate the Message into ASCII.
-                    Byte[] data = Encoding.ASCII.GetBytes(_messageToSend);
-                    // Send the message to the connected TcpServer. 
-                    stream.Write(data, 0, data.Length);
-                    Debug.WriteLine("Sent: {0}", _messageToSend);
-
-                    // Bytes Array to receive Server Response.
-                    data = new Byte[BYTES_SIZE];
-                    _messageReaded = String.Empty;
-                    // Read the Tcp Server Response Bytes.
-                    Int32 bytes = stream.Read(data, 0, data.Length);
-                    _messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
-                    Debug.WriteLine("Received: {0}", _messageReaded);
-                   
-
+                stream = ClientTCP.GetStream();
+                EnvoyerReceptionPaquet();
 
             }catch(Exception ex)
             {
                 MessageBox.Show($"Erreur Thread Connexion : {ex.ToString()}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 ClientTCP?.Close();
+
             }
             
+
+        }
+
+        public void EnvoyerReceptionPaquet()
+        {
+            // Translate the Message into ASCII.
+            Byte[] data = Encoding.ASCII.GetBytes(_messageToSend);
+            // Send the message to the connected TcpServer. 
+            stream.Write(data, 0, data.Length);
+            Debug.WriteLine("Sent: {0}", _messageToSend);
+
+            // Bytes Array to receive Server Response.
+            data = new Byte[BYTES_SIZE];
+            _messageReaded = String.Empty;
+            // Read the Tcp Server Response Bytes.
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            _messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
+            Debug.WriteLine("Received: {0}", _messageReaded);
         }
 
         /// <summary>
@@ -169,24 +169,41 @@ namespace Client.Reseau
 
         public void InitConnexion()
         {
+            // Preparation du paquet
+            PaquetDonnees startConnection = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONSERVEUR, PseudoJoueur,
+                new ConnexionServeur());
+            _messageToSend = startConnection.ToString();
+
             // Lancement thread
             ClientThread = new Thread(new ThreadStart(RunClient));
             ClientThread.Start();
-            
-
 
         }
 
-        internal object GetListePartieParDefaut()
+        public void JoueurPret()
         {
-            throw new NotImplementedException();
+            LancementPartie l = new LancementPartie();
+            l.JoueurPret = true;
+            PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONPARTIE, PseudoJoueur,l);
+
+            _messageToSend = startPartie.ToString();
+            EnvoyerReceptionPaquet();
         }
 
-
-        internal void CreePartie()
+        public void JoueurPasPret()
         {
-            throw new NotImplementedException();
+
+            PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONPARTIE, PseudoJoueur,
+                new LancementPartie());
+            _messageToSend = startPartie.ToString();
+            EnvoyerReceptionPaquet();
         }
+
+
+
+
+
+
 
         public void DeconnexionServeur() {
             // TODO implement here

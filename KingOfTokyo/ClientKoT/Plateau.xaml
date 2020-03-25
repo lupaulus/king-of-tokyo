@@ -255,7 +255,7 @@
             <Button x:Name="LancerDes" Grid.Column="3" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Lancer les dés</Button>
             <Button x:Name="ValidDes" Grid.Column="4" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Valider les dés</Button>
         </Grid>
-      
+
 
         <!-- Paris Ville -->
         <Grid Grid.Column="1" Grid.Row="2">
@@ -286,6 +286,8 @@
             <TextBlock x:Name="Banlieue" Text="Banlieue" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Button x:Name="EntrerBanlieue" Grid.Column="4" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Entrer dans la Banlieue</Button>
         </Grid>
+        <Button x:Name="btnPret" Content="Pret?" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Bottom" Width="75" Click="btnPret_Click" Margin="48,0,47.4,36.4" Grid.RowSpan="2"/>
+
 
 
     </Grid>

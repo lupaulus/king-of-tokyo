@@ -1,4 +1,5 @@
 
+using ServeurKoT.Connexion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,13 @@ namespace ServeurKoT.Controleur{
         #region Properties
 
         public int Id { get; }
-        public int NombreDeJoueur { get; }
+        public int NombreDeJoueurTotal { get; }
         public string nomPartie { get; }
         public Plateau Plateau { get; }
         public GMonstre GestionaryMonstre { get; }
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
+        public Queue<Joueur> ListeDesJoueurs { get; }
 
         #endregion Properties
 
@@ -23,21 +25,32 @@ namespace ServeurKoT.Controleur{
         public Partie(int idValue, string nom, int nbrJoueur) {
             Id = idValue;
             nomPartie = nom;
-            NombreDeJoueur = nbrJoueur; 
+            NombreDeJoueurTotal = nbrJoueur;
+            ListeDesJoueurs = new Queue<Joueur>();
             GestionaryMonstre = new GMonstre(nbrJoueur);
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
             Plateau = new Plateau(GestionaryMonstre.getListeMonstre());
         }
 
-        
-
         #endregion Ctor
 
         #region Methodes
+        public void AjouterJoueur(Joueur j)
+        {
+            // Si place encore dispo
+            if(ListeDesJoueurs.Count < NombreDeJoueurTotal)
+            {
+                ListeDesJoueurs.Enqueue(j);
+            }
+            
+        }
 
         public void DemarerPartie() {
-            // Choix du premier Joueur à jouer
+            if (ListeDesJoueurs.Count > 2)
+            {
+
+            }
 
         }
 

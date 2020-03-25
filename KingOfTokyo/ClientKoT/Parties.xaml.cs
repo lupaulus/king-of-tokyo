@@ -34,7 +34,7 @@ namespace ClientKoT
             //Serveur Add serveur par défaut
 
             // Binding du nombre de joueurs dans une partie
-            listServeur.Add(new HelperServeur("J1","localhost", "127.0.0.1", 13670));
+            listServeur.Add(new HelperServeur("localhost", "127.0.0.1", 13670));
             lvServeur.ItemsSource = listServeur;
         }
 
@@ -43,6 +43,7 @@ namespace ClientKoT
             // Récupération des champs
             string txtAdresse = tbAdresseServeur.Text.Trim();
             string txtNom = tbNomServeur.Text.Trim();
+            
 
             // Verification des champs
             if (txtAdresse.Equals(String.Empty))
@@ -57,19 +58,31 @@ namespace ClientKoT
             }
 
             // Creation du serveur dans la liste
-            listServeur.Add(new HelperServeur("J1",txtNom, txtAdresse, 13670)); // Serveur par defaut
+            listServeur.Add(new HelperServeur(txtNom, txtAdresse, 13670)); // Serveur par defaut
             MessageBox.Show("Serveur ajouté", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             lvServeur.Items.Refresh();
         }
 
         private void ButtonConnexion_Click(object sender, RoutedEventArgs e)
         {
-            if(lvServeur.SelectedItem == null)
+            string txtPseudo = tbPseudo.Text.Trim();
+            if (txtPseudo.Equals(String.Empty))
+            {
+                MessageBox.Show("Erreur saisie Pseudo", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (lvServeur.SelectedItem == null)
             {
                 MessageBox.Show("Merci de selectionner un serveur", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            
+
+
             HelperServeur val = (HelperServeur)lvServeur.SelectedItem;
+            // MAJ PSEUDO Joueur
+            val.PseudoJoueur = txtPseudo;
             try
             {
                 val.InitConnexion();
@@ -77,7 +90,7 @@ namespace ClientKoT
                 {
                     MessageBox.Show("Vous êtes connecté");
                     MenuWindow w = (MenuWindow)Window.GetWindow(this);
-                    w.ChangeMenuToPlateau();
+                    w.ChangeMenuToPlateau(val);
                 }
                 else // Si reponse not ok
                 {
