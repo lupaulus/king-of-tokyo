@@ -3,6 +3,7 @@
 
 ## Installation
 
+Lien vers artefacts [Lien](https://github.com/lupaulus/king-of-tokyo/actions?query=workflow%3ACI)
 
 
 Projet realisé par Thomas DURR et Lucas PAULUS
