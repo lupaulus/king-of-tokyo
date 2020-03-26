@@ -3,10 +3,12 @@
     internal class LancementPartie : StreamObject
     {
         public bool JoueurPret { get; set; }
+        public bool PartieVaDebuter { get; set; }
 
         public LancementPartie()
         {
             JoueurPret = false;
+            PartieVaDebuter = false;
 
         }
 

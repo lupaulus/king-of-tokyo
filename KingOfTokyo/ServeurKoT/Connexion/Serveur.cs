@@ -192,17 +192,46 @@ namespace ServeurKoT.Connexion
                 c.ConnexionOK = true;
                 ListClients[client].Pseudo = p.pseudo;
                 GPartie.Instance.PartieActuel.AjouterJoueur(ListClients[client]);
+                Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est connecté");
+                Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.ListeDesJoueurs.Count}");
                 c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.ListeDesJoueurs.Count;
                 p.data = c;       
             }
             if(p.commandeType == CommandeType.CONNEXIONPARTIE)
             {
-
+                
+                LancementPartie c = (LancementPartie)p.data;
+                ListClients[client].EstPret = c.JoueurPret;
+                string pret = c.JoueurPret ? "pret" : "pas prêt";
+                Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est {pret}");
+                // Verification si la partie OK
+                if (CheckIfAllPlayerAreReady())
+                {
+                    Logger.Log(Logger.Level.Info, $"La partie va débuter, tous les joueurs sont prets");
+                    GPartie.Instance.PartieActuel.DemarerPartie();
+                }
             }
 
 
 
             ListClients[client].MessageToSend = p.ToString();
+        }
+
+        private bool CheckIfAllPlayerAreReady()
+        {
+            if(GPartie.Instance.PartieActuel.ListeDesJoueurs.Count < 2)
+            {
+                return false;
+            }
+
+            foreach(Joueur j in ListClients.Values) 
+            {
+                if(!j.EstPret)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

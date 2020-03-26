@@ -36,12 +36,13 @@ namespace ClientKoT
             if(joueurPret)
             {
                 helperServeur.JoueurPret();
+                lblPret.Content = "Vous êtes prêt !";
             }
             else
             {
                 helperServeur.JoueurPasPret();
+                lblPret.Content = "Vous n'êtes pas prêt !";
             }
-            
         }
     }
 }
