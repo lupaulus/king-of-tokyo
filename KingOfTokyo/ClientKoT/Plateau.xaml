@@ -287,6 +287,7 @@
             <Button x:Name="EntrerBanlieue" Grid.Column="4" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Entrer dans la Banlieue</Button>
         </Grid>
         <Button x:Name="btnPret" Content="Pret?" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Bottom" Width="75" Click="btnPret_Click" Margin="48,0,47.4,36.4" Grid.RowSpan="2"/>
+        <Label x:Name="lblPret" Content="Vous n'êtes pas prêt !" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="4"/>
 
 
 
