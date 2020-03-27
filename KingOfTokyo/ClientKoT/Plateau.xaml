@@ -252,8 +252,8 @@
             </Button>
 
             <TextBlock x:Name="ResultatDes" Text="Resultat littéral" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Button x:Name="LancerDes" Grid.Column="3" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Lancer les dés</Button>
-            <Button x:Name="ValidDes" Grid.Column="4" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Valider les dés</Button>
+            <Button x:Name="LancerDes" Grid.Column="3" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Lancer dés</Button>
+            <Button x:Name="ValidDes" Grid.Column="4" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">Valider dés</Button>
         </Grid>
 
 
