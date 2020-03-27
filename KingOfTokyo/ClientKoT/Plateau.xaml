@@ -26,9 +26,9 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <!-- Grid joueur 3 -->
-        <Border BorderBrush="White" BorderThickness="2" Grid.Column="1" Grid.Row="0">
-            <Grid Grid.Column="1" Grid.Row="0">
+        <!-- Grid joueur 2 -->
+        <Border x:Name="borderj2" BorderBrush="White" BorderThickness="2" Grid.Column="1" Grid.Row="0">
+            <Grid Grid.Column="1" Grid.Row="0" x:Name="j2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -44,19 +44,19 @@
                 <Label Grid.Column="0" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Grid.Column="1" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Grid.Column="2" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ3" Text="NbVies" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ3" Text="NbVictoire" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ3" Text="NbEnergy" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="nomJoueur3" Text="Joueur 3" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="pouvoirsJ3" Text="Pouvoirs" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ2" Text="NbVies" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ2" Text="NbVictoire" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ2" Text="NbEnergy" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Border>
 
 
 
         <!-- Grid joueur 4 -->
-        <Border BorderBrush="White" BorderThickness="2" Grid.Column="2" Grid.Row="0">
-            <Grid Grid.Column="2" Grid.Row="0">
+        <Border x:Name="borderj4" BorderBrush="White" BorderThickness="2" Grid.Column="2" Grid.Row="0">
+            <Grid Grid.Column="2" Grid.Row="0" x:Name="j4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="1*"/>
@@ -83,8 +83,8 @@
 
 
         <!-- Grid joueur 1 -->
-        <Border BorderBrush="White" BorderThickness="2" Grid.Column="1" Grid.Row="5">
-            <Grid Grid.Column="1" Grid.Row="5" >
+        <Border x:Name="borderj1" BorderBrush="White" BorderThickness="2" Grid.Column="1" Grid.Row="5">
+            <Grid Grid.Column="1" Grid.Row="5" x:Name="j1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -110,9 +110,9 @@
 
 
 
-        <!-- Grid joueur 2 -->
-        <Border BorderBrush="White" BorderThickness="2" Grid.Column="2" Grid.Row="5">
-            <Grid Grid.Column="2" Grid.Row="5">
+        <!-- Grid joueur 3 -->
+        <Border x:Name="borderj3" BorderBrush="White" BorderThickness="2" Grid.Column="2" Grid.Row="5">
+            <Grid Grid.Column="2" Grid.Row="5" x:Name="j3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="1*"/>
@@ -128,18 +128,18 @@
                 <Label Grid.Column="1" Grid.Row="1" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Grid.Column="2" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Grid.Column="3" Grid.Row="1" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ2" Text="NbVies" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ2" Text="NbVictoire" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ2" Text="NbEnergy" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ3" Text="NbVies" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ3" Text="NbVictoire" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ3" Text="NbEnergy" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="nomJoueur3" Text="Joueur 3" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="pouvoirsJ3" Text="Pouvoirs" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Border>
 
 
         <!-- Grid joueur 5 -->
-        <Border BorderBrush="White" BorderThickness="2" Grid.Column="0" Grid.Row="2">
-            <Grid Grid.Column="0" Grid.Row="2">
+        <Border x:Name="borderj5" BorderBrush="White" BorderThickness="2" Grid.Column="0" Grid.Row="2">
+            <Grid Grid.Column="0" Grid.Row="2" x:Name="j5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -166,8 +166,8 @@
 
 
         <!-- Grid joueur 6 -->
-        <Border BorderBrush="White" BorderThickness="2" Grid.Column="5" Grid.Row="2">
-            <Grid Grid.Column="5" Grid.Row="2">
+        <Border x:Name="borderj6" BorderBrush="White" BorderThickness="2" Grid.Column="5" Grid.Row="2">
+            <Grid Grid.Column="5" Grid.Row="2" x:Name="j6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -288,7 +288,7 @@
         </Grid>
 
         <!-- Pret -->
-        <Grid Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Grid Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -300,6 +300,23 @@
             
             <Button x:Name="btnPret" Content="Pret?" Click="btnPret_Click" Grid.Row="0"/>
             <Label x:Name="lblPret" Content="Vous n'êtes pas prêt !" Grid.Row="1"/>
+        </Grid>
+
+        <!-- Hide -->
+        <Grid Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnHideJoueur" Content="nbJoueurs" Click="btnHide_Click" Grid.Row="0"/>
+            <TextBox x:Name="nbHideJoueur" Grid.Row="1">
+                1
+            </TextBox>
         </Grid>
 
 
