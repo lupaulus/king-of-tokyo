@@ -44,14 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connexion\ActionPartie.cs" />
-    <Compile Include="Connexion\ActionTour.cs" />
-    <Compile Include="Connexion\LancementPartie.cs" />
-    <Compile Include="Connexion\PaquetDonnees.cs" />
-    <Compile Include="Connexion\Serveur.cs" />
-    <Compile Include="Connexion\Joueur.cs" />
-    <Compile Include="Connexion\ConnexionServeur.cs" />
-    <Compile Include="Connexion\StreamObject.cs" />
+    <Compile Include="Reseau\ActionPartie.cs" />
+    <Compile Include="Reseau\ActionTour.cs" />
+    <Compile Include="Reseau\InfoJoueur.cs" />
+    <Compile Include="Reseau\LancementPartie.cs" />
+    <Compile Include="Reseau\PaquetDonnees.cs" />
+    <Compile Include="Reseau\Serveur.cs" />
+    <Compile Include="Controleur\Joueur.cs" />
+    <Compile Include="Reseau\ConnexionServeur.cs" />
+    <Compile Include="Reseau\StreamObject.cs" />
     <Compile Include="Controleur\FactoryCarte.cs" />
     <Compile Include="Controleur\FactoryCarteAction.cs" />
     <Compile Include="Controleur\FactoryCartePouvoir.cs" />

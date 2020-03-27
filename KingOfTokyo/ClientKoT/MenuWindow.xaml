@@ -32,7 +32,7 @@
                     <TextBlock Text="Règles du jeu" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="listViewItemPlateau"  Tag="3" Height="60" RenderTransformOrigin="0.5,0.5" ToolTip="Astuce: Pour accéder au plateau il faut au préalable rejoindre une partie">
+            <ListViewItem x:Name="listViewItemPlateau" IsEnabled="False" Tag="3" Height="60" RenderTransformOrigin="0.5,0.5" ToolTipService.ShowOnDisabled="True" ToolTip="Astuce: Pour accéder au plateau il faut au préalable rejoindre une partie">
                 <StackPanel Orientation="Horizontal"  Margin="10 0">
                     <materialDesign:PackIcon Kind="Gamepad" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Opacity="0.5"/>
                     <TextBlock Text="Plateau de jeu" Margin="10" VerticalAlignment="Center" Opacity="0.5"/>
