@@ -44,5 +44,70 @@ namespace ClientKoT
                 lblPret.Content = "Vous n'êtes pas prêt !";
             }
         }
+
+        private void btnHide_Click(object sender, RoutedEventArgs e)
+        {
+            switch(int.Parse(nbHideJoueur.Text))
+            {
+                case 0: // 0 joueur
+                    j1.Visibility = Visibility.Hidden;
+                    j2.Visibility = Visibility.Hidden;
+                    j3.Visibility = Visibility.Hidden;
+                    j4.Visibility = Visibility.Hidden;
+                    j5.Visibility = Visibility.Hidden;
+                    j6.Visibility = Visibility.Hidden;
+                    break;
+                case 1: // 1 joueur
+                    j1.Visibility = Visibility.Visible;
+                    j2.Visibility = Visibility.Hidden;
+                    j3.Visibility = Visibility.Hidden;
+                    j4.Visibility = Visibility.Hidden;
+                    j5.Visibility = Visibility.Hidden;
+                    j6.Visibility = Visibility.Hidden;
+                    break;
+                case 2: // 2 joueurs
+                    j1.Visibility = Visibility.Visible;
+                    j2.Visibility = Visibility.Visible;
+                    j3.Visibility = Visibility.Hidden;
+                    j4.Visibility = Visibility.Hidden;
+                    j5.Visibility = Visibility.Hidden;
+                    j6.Visibility = Visibility.Hidden;
+                    break;
+                case 3: // 3 joueurs
+                    j1.Visibility = Visibility.Visible;
+                    j2.Visibility = Visibility.Visible;
+                    j3.Visibility = Visibility.Visible;
+                    j4.Visibility = Visibility.Hidden;
+                    j5.Visibility = Visibility.Hidden;
+                    j6.Visibility = Visibility.Hidden;
+                    break;
+                case 4: // 4 joueurs
+                    j1.Visibility = Visibility.Visible;
+                    j2.Visibility = Visibility.Visible;
+                    j3.Visibility = Visibility.Visible;
+                    j4.Visibility = Visibility.Visible;
+                    j5.Visibility = Visibility.Hidden;
+                    j6.Visibility = Visibility.Hidden;
+                    break;
+                case 5: // 5 joueurs
+                    j1.Visibility = Visibility.Visible;
+                    j2.Visibility = Visibility.Visible;
+                    j3.Visibility = Visibility.Visible;
+                    j4.Visibility = Visibility.Visible;
+                    j5.Visibility = Visibility.Visible;
+                    j6.Visibility = Visibility.Hidden;
+                    break;
+                case 6: // 6 joueurs
+                    j1.Visibility = Visibility.Visible;
+                    j2.Visibility = Visibility.Visible;
+                    j3.Visibility = Visibility.Visible;
+                    j4.Visibility = Visibility.Visible;
+                    j5.Visibility = Visibility.Visible;
+                    j6.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
