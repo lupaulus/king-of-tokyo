@@ -56,12 +56,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Hidden;
                     j5.Visibility = Visibility.Hidden;
                     j6.Visibility = Visibility.Hidden;
-                    borderj1.Visibility = Visibility.Hidden;
-                    borderj2.Visibility = Visibility.Hidden;
-                    borderj3.Visibility = Visibility.Hidden;
-                    borderj4.Visibility = Visibility.Hidden;
-                    borderj5.Visibility = Visibility.Hidden;
-                    borderj6.Visibility = Visibility.Hidden;
                     break;
                 case 1: // 1 joueur
                     j1.Visibility = Visibility.Visible;
@@ -70,12 +64,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Hidden;
                     j5.Visibility = Visibility.Hidden;
                     j6.Visibility = Visibility.Hidden;
-                    borderj1.Visibility = Visibility.Visible;
-                    borderj2.Visibility = Visibility.Hidden;
-                    borderj3.Visibility = Visibility.Hidden;
-                    borderj4.Visibility = Visibility.Hidden;
-                    borderj5.Visibility = Visibility.Hidden;
-                    borderj6.Visibility = Visibility.Hidden;
                     break;
                 case 2: // 2 joueurs
                     j1.Visibility = Visibility.Visible;
@@ -84,12 +72,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Hidden;
                     j5.Visibility = Visibility.Hidden;
                     j6.Visibility = Visibility.Hidden;
-                    borderj1.Visibility = Visibility.Visible;
-                    borderj2.Visibility = Visibility.Visible;
-                    borderj3.Visibility = Visibility.Hidden;
-                    borderj4.Visibility = Visibility.Hidden;
-                    borderj5.Visibility = Visibility.Hidden;
-                    borderj6.Visibility = Visibility.Hidden;
                     break;
                 case 3: // 3 joueurs
                     j1.Visibility = Visibility.Visible;
@@ -98,12 +80,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Hidden;
                     j5.Visibility = Visibility.Hidden;
                     j6.Visibility = Visibility.Hidden;
-                    borderj1.Visibility = Visibility.Visible;
-                    borderj2.Visibility = Visibility.Visible;
-                    borderj3.Visibility = Visibility.Visible;
-                    borderj4.Visibility = Visibility.Hidden;
-                    borderj5.Visibility = Visibility.Hidden;
-                    borderj6.Visibility = Visibility.Hidden;
                     break;
                 case 4: // 4 joueurs
                     j1.Visibility = Visibility.Visible;
@@ -112,12 +88,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Visible;
                     j5.Visibility = Visibility.Hidden;
                     j6.Visibility = Visibility.Hidden;
-                    borderj1.Visibility = Visibility.Visible;
-                    borderj2.Visibility = Visibility.Visible;
-                    borderj3.Visibility = Visibility.Visible;
-                    borderj4.Visibility = Visibility.Visible;
-                    borderj5.Visibility = Visibility.Hidden;
-                    borderj6.Visibility = Visibility.Hidden;
                     break;
                 case 5: // 5 joueurs
                     j1.Visibility = Visibility.Visible;
@@ -126,12 +96,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Visible;
                     j5.Visibility = Visibility.Visible;
                     j6.Visibility = Visibility.Hidden;
-                    borderj1.Visibility = Visibility.Visible;
-                    borderj2.Visibility = Visibility.Visible;
-                    borderj3.Visibility = Visibility.Visible;
-                    borderj4.Visibility = Visibility.Visible;
-                    borderj5.Visibility = Visibility.Visible;
-                    borderj6.Visibility = Visibility.Hidden;
                     break;
                 case 6: // 6 joueurs
                     j1.Visibility = Visibility.Visible;
@@ -140,12 +104,6 @@ namespace ClientKoT
                     j4.Visibility = Visibility.Visible;
                     j5.Visibility = Visibility.Visible;
                     j6.Visibility = Visibility.Visible;
-                    borderj1.Visibility = Visibility.Visible;
-                    borderj2.Visibility = Visibility.Visible;
-                    borderj3.Visibility = Visibility.Visible;
-                    borderj4.Visibility = Visibility.Visible;
-                    borderj5.Visibility = Visibility.Visible;
-                    borderj6.Visibility = Visibility.Visible;
                     break;
                 default:
                     break;
