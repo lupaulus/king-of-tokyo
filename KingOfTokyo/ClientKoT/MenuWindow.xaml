@@ -57,12 +57,13 @@
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="0.1*" />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" x:Name="ButtonMenu" Width="30" Height="30" Margin="15" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ButtonMenu_Click">
                     <materialDesign:PackIcon Kind="Menu" Foreground="#FFFFFF"/>
                 </Button>
-                <Button Grid.Column="2" x:Name="ButtonClose" Width="30" Height="30" Margin="15" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonClose_Click">
-                    <materialDesign:PackIcon Kind="Power" Foreground="#CF6679"/>
+                <Button Grid.Column="2" x:Name="ButtonClose" Width="50" Height="50"  Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonClose_Click">
+                    <materialDesign:PackIcon Kind="Power" Foreground="#CF6679" Height="30" Width="30"/>
                 </Button>
             </Grid>
             <ContentControl x:Name="ContentPrincipal" Grid.Row="1"/>
