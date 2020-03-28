@@ -30,7 +30,7 @@ namespace ServeurKoT.Controleur{
             DicJeuMonstre = new Dictionary<MonstreJeu, Joueur>();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
-            GestionnaireDesTours = new GTour();
+            GestionnaireDesTours = new GTour(new List<MonstreJeu>(DicJeuMonstre.Keys));
             Plateau = new Plateau();
         }
 
@@ -64,9 +64,16 @@ namespace ServeurKoT.Controleur{
             }
 
             // Joueur qui commence la partie
-            //GestionnaireDesTours.JoueurActuel();
+            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = true;
         }
 
+
+        public void ProchainTour()
+        {
+            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = false;
+            GestionnaireDesTours.ProchainTour();
+            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = true;
+        }
         public void FinirPartie() {
             // Renvoyer le gagnant.
         }
