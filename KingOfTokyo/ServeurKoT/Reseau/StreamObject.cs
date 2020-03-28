@@ -1,6 +1,6 @@
 using System;
 
-namespace ServeurKoT.Connexion
+namespace ServeurKoT.Reseau
 {
     public abstract class StreamObject
     {
@@ -20,7 +20,7 @@ namespace ServeurKoT.Connexion
                 case CommandeType.CONNEXIONSERVEUR:
                     res = new ConnexionServeur(s);
                     break;
-                case CommandeType.CONNEXIONPARTIE:
+                case CommandeType.LANCEMENTPARTIE:
                     res = new LancementPartie(s);
                     break;
                 case CommandeType.ACTIONPARTIE:
@@ -28,6 +28,9 @@ namespace ServeurKoT.Connexion
                     break;
                 case CommandeType.ACTIONTOUR:
                     res = new ActionTour(s);
+                    break;
+                case CommandeType.INFOJOUEUR:
+                    res = new InfoJoueur(s);
                     break;
                 default:
                     throw new Exception("PAQUET INCONNU");

@@ -53,9 +53,29 @@ namespace Client.Reseau
 
         private object lockRead = new object();
         private object lockSend = new object();
+        private object lockInfo = new object();
 
         private string _messageReaded;
         private string _messageToSend;
+        private List<InfoJoueur> _infoJoueurs;
+
+        public List<InfoJoueur> ListInfoJoueur
+        {
+            get
+            {
+                lock (lockInfo)
+                {
+                    return _infoJoueurs;
+                }
+            }
+            set
+            {
+                lock (lockInfo)
+                {
+                    _infoJoueurs = value;
+                }
+            }
+        }
 
         public string MessageReaded
         {
@@ -112,6 +132,11 @@ namespace Client.Reseau
                 ClientTCP = new TcpClient(Adresse, Port);
                 stream = ClientTCP.GetStream();
                 EnvoyerReceptionPaquet();
+                while (true)
+                {
+                    ReceptionPaquet();
+                }
+
 
             }catch(Exception ex)
             {
@@ -121,6 +146,30 @@ namespace Client.Reseau
             }
             
 
+        }
+
+        private void ReceptionPaquet()
+        {
+            // Bytes Array to receive Server Response.
+            Byte[] data = new Byte[BYTES_SIZE];
+            string info = String.Empty;
+            // Read the Tcp Server Response Bytes.
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            info = Encoding.ASCII.GetString(data, 0, bytes);
+            Debug.WriteLine("Received: {0}", info);
+            PaquetDonnees p = new PaquetDonnees(info);
+
+            if(p.commandeType == CommandeType.INFOJOUEUR)
+            {
+                InfoJoueur ij = (InfoJoueur)p.data;
+                ListInfoJoueur.Add(ij);
+
+                if(ij.IdJoueur == InfoJoueur.Monstre.UNKNOWN)
+                {
+                    ListInfoJoueur.Clear();
+                }
+            }
+            
         }
 
         public void EnvoyerReceptionPaquet()
@@ -184,7 +233,7 @@ namespace Client.Reseau
         {
             LancementPartie l = new LancementPartie();
             l.JoueurPret = true;
-            PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONPARTIE, PseudoJoueur,l);
+            PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.LANCEMENTPARTIE, PseudoJoueur,l);
 
             _messageToSend = startPartie.ToString();
             EnvoyerReceptionPaquet();
@@ -193,7 +242,7 @@ namespace Client.Reseau
         public void JoueurPasPret()
         {
 
-            PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.CONNEXIONPARTIE, PseudoJoueur,
+            PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.LANCEMENTPARTIE, PseudoJoueur,
                 new LancementPartie());
             _messageToSend = startPartie.ToString();
             EnvoyerReceptionPaquet();

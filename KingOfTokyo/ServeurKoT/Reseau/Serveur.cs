@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace ServeurKoT.Connexion
+namespace ServeurKoT.Reseau
 {
     internal class Serveur
     {
@@ -157,7 +157,7 @@ namespace ServeurKoT.Connexion
             
             Logger.Log(Logger.Level.Info, "Client Connecté");
             
-            var stream = client.GetStream();
+            NetworkStream stream = client.GetStream();
             Byte[] bytes = new Byte[BYTES_SIZE];
             int i;
             try
@@ -165,12 +165,12 @@ namespace ServeurKoT.Connexion
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     string hex = BitConverter.ToString(bytes);
-                    ListClients[client].MessageReaded = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                    ListClients[client].MessageReaded = Encoding.ASCII.GetString(bytes, 0, i);
                     Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Received: {ListClients[client].MessageReaded}");
 
                     HandleMessageReceive(client);
 
-                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
+                    Byte[] reply = Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
                     stream.Write(reply, 0, reply.Length);
                     Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
                     Thread.Sleep(500);
@@ -186,6 +186,7 @@ namespace ServeurKoT.Connexion
         private void HandleMessageReceive(TcpClient client)
         {
             PaquetDonnees p = new PaquetDonnees(ListClients[client].MessageReaded);
+            // Connexion Client
             if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
             {
                 ConnexionServeur c = (ConnexionServeur)p.data;
@@ -195,9 +196,10 @@ namespace ServeurKoT.Connexion
                 Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est connecté");
                 Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.ListeDesJoueurs.Count}");
                 c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.ListeDesJoueurs.Count;
-                p.data = c;       
+                p.data = c;
+                UpdateInfoAllPlayers();
             }
-            if(p.commandeType == CommandeType.CONNEXIONPARTIE)
+            if(p.commandeType == CommandeType.LANCEMENTPARTIE)
             {
                 
                 LancementPartie c = (LancementPartie)p.data;
@@ -211,10 +213,34 @@ namespace ServeurKoT.Connexion
                     GPartie.Instance.PartieActuel.DemarerPartie();
                 }
             }
-
-
-
             ListClients[client].MessageToSend = p.ToString();
+        }
+
+        private void UpdateInfoAllPlayers()
+        {
+            foreach(TcpClient tcpClient in ListClients.Keys)
+            {
+                //Get stream
+                NetworkStream stream = tcpClient.GetStream();
+
+                // Clear list
+                InfoJoueur clear = new InfoJoueur();
+                PaquetDonnees pa = new PaquetDonnees(Commande.POST, CommandeType.INFOJOUEUR, "CLEARLIST", clear);
+                Byte[] send = Encoding.ASCII.GetBytes(pa.ToString());
+                stream.Write(send, 0, send.Length);
+                Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {pa.ToString()}");
+                Thread.Sleep(500);
+
+                foreach (Joueur j in ListClients.Values)
+                {
+                    PaquetDonnees p = new PaquetDonnees(Commande.POST, CommandeType.INFOJOUEUR, j.Pseudo, j.GenerateInfoJoueur());
+                    Byte[] reply = Encoding.ASCII.GetBytes(p.ToString());
+                    stream.Write(reply, 0, reply.Length);
+                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {p.ToString()}");
+                    Thread.Sleep(500);
+                }
+            }
+            
         }
 
         private bool CheckIfAllPlayerAreReady()

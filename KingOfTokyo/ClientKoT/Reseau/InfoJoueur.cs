@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Client.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServeurKoT.Connexion
+namespace Client.Reseau
 {
-    class InfoJoueur : StreamObject
+    public class InfoJoueur : StreamObject
     {
         public enum Monstre { UNKNOWN, J1, J2, J3, J4, J5, J6 }
         public Monstre IdJoueur { get; set; }

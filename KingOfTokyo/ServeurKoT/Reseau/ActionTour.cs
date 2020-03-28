@@ -1,4 +1,4 @@
-﻿namespace ServeurKoT.Connexion
+﻿namespace ServeurKoT.Reseau
 {
     internal class ActionTour : StreamObject
     {

@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace ServeurKoT.Connexion
+namespace ServeurKoT.Reseau
+
 {
     #region Enum
+
     public enum Commande
     {
         POST, GET, HELP, QUIT, STOPSERVEUR, SUBSCRIBE, UNSUBSCRIBE
     };
 
-    public enum CommandeType { SERVEURCONNEXION, CONNEXIONSERVEUR, CONNEXIONPARTIE, ACTIONPARTIE, ACTIONTOUR };
+    public enum CommandeType { SERVEURCONNEXION, CONNEXIONSERVEUR, LANCEMENTPARTIE, ACTIONPARTIE, ACTIONTOUR, INFOJOUEUR };
+
     #endregion Enum
 
-    class PaquetDonnees
+    internal class PaquetDonnees
     {
-
         public Commande commande;               // commande
-        public CommandeType commandeType;       // type (Requête/Réponse)                   
+        public CommandeType commandeType;       // type (Requête/Réponse)
         public StreamObject data;               // données de la commande
         public String pseudo;                   // Pseudo du joueur
 
@@ -39,15 +35,12 @@ namespace ServeurKoT.Connexion
             this.commande = (Commande)(int.Parse(tab[0]));
             this.commandeType = (CommandeType)(int.Parse(tab[1]));
             this.pseudo = tab[2];
-            this.data = StreamObject.FromString(tab[3],this.commandeType);
+            this.data = StreamObject.FromString(tab[3], this.commandeType);
         }
-
 
         public override string ToString()
         {
             return $"{(int)commande};{(int)commandeType};{pseudo};{data.IntoString()}";
         }
-
     }
-
 }

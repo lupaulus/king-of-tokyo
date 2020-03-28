@@ -1,14 +1,17 @@
-﻿using System;
+﻿using ServeurKoT.Reseau;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServeurKoT.Connexion
+namespace ServeurKoT.Reseau
 {
-    class InfoJoueur : StreamObject
+    public enum Monstre { UNKNOWN, J1, J2, J3, J4, J5, J6 }
+
+    public class InfoJoueur : StreamObject
     {
-        public enum Monstre { UNKNOWN, J1, J2, J3, J4, J5, J6 }
+        
         public Monstre IdJoueur { get; set; }
         public bool EstPret { get; set; }
         public string Pseudo { get; set; }
@@ -20,7 +23,7 @@ namespace ServeurKoT.Connexion
         public InfoJoueur()
         {
             this.IdJoueur = Monstre.UNKNOWN;
-            this.Pseudo = String.Empty;
+            this.Pseudo = "CLEARVOID";
             this.EstPret = false;
  
             this.PtsVie = -1;

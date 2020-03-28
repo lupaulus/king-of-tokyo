@@ -1,5 +1,5 @@
 
-using ServeurKoT.Connexion;
+using ServeurKoT.Reseau;
 using System;
 using System.Collections.Generic;
 using System.Linq;

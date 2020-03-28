@@ -1,5 +1,6 @@
 
 using ServeurKoT.Controleur;
+using ServeurKoT.Reseau;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,13 +10,14 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
-namespace ServeurKoT.Connexion
+namespace ServeurKoT.Reseau
 {
     public class Joueur 
     {
         private int id;
         public int Id { get => id; }
 
+        public Monstre IdJoueur { get; set; }
 
         private string pseudo;
         public string Pseudo { get => pseudo; set => pseudo = value; }
@@ -26,6 +28,8 @@ namespace ServeurKoT.Connexion
 
         private volatile string _messageReaded;
         private volatile string _messageToSend;
+
+
 
         public string MessageReaded
         {
@@ -45,17 +49,19 @@ namespace ServeurKoT.Connexion
             this.id = id;
             this.pseudo = pseudo;
             this.estPret = false;
+
         }
 
 
-        public void passerTour()
+        public InfoJoueur GenerateInfoJoueur()
         {
-            // TODO implement here
+            InfoJoueur res = new InfoJoueur();
+            res.Pseudo = pseudo;
+            res.IdJoueur = IdJoueur;
+            res.EstPret = EstPret;
+            return res;
         }
 
-        public void lancerDes()
-        {
-            // TODO implement here
-        }
+
     }
 }

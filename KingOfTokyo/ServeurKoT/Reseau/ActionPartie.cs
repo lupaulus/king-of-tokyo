@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServeurKoT.Connexion
+namespace ServeurKoT.Reseau
 {
     internal class ActionPartie : StreamObject
     {
