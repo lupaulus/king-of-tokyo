@@ -1,5 +1,5 @@
 
-using ServeurKoT.Connexion;
+using ServeurKoT.Reseau;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +39,10 @@ namespace ServeurKoT.Controleur{
         public void AjouterJoueur(Joueur j)
         {
             // Si place encore dispo
+            
             if(ListeDesJoueurs.Count < NombreDeJoueurTotal)
             {
+                j.IdJoueur = (Monstre)(ListeDesJoueurs.Count+1);
                 ListeDesJoueurs.Enqueue(j);
             }
             

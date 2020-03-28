@@ -20,7 +20,7 @@ namespace Client.Reseau
                 case CommandeType.CONNEXIONSERVEUR:
                     res = new ConnexionServeur(s);
                     break;
-                case CommandeType.CONNEXIONPARTIE:
+                case CommandeType.LANCEMENTPARTIE:
                     res = new LancementPartie(s);
                     break;
                 case CommandeType.ACTIONPARTIE:
@@ -28,6 +28,9 @@ namespace Client.Reseau
                     break;
                 case CommandeType.ACTIONTOUR:
                     res = new ActionTour(s);
+                    break;
+                case CommandeType.INFOJOUEUR:
+                    res = new InfoJoueur(s);
                     break;
                 default:
                     throw new Exception("PAQUET INCONNU");

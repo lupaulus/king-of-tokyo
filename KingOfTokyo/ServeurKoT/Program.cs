@@ -1,4 +1,4 @@
-﻿using ServeurKoT.Connexion;
+﻿using ServeurKoT.Reseau;
 using ServeurKoT.Controleur;
 using SimpleLogger;
 using SimpleLogger.Logging.Handlers;
