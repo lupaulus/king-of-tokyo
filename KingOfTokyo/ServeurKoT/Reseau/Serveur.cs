@@ -174,6 +174,8 @@ namespace ServeurKoT.Reseau
                     stream.Write(reply, 0, reply.Length);
                     Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
                     Thread.Sleep(500);
+
+                    UpdateInfoAllPlayers();
                 }
             }
             catch (Exception e)
@@ -197,7 +199,6 @@ namespace ServeurKoT.Reseau
                 Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.ListeDesJoueurs.Count}");
                 c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.ListeDesJoueurs.Count;
                 p.data = c;
-                UpdateInfoAllPlayers();
             }
             if(p.commandeType == CommandeType.LANCEMENTPARTIE)
             {

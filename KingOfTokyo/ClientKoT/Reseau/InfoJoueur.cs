@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Client.Reseau
 {
+    public enum Monstre { UNKNOWN, J1, J2, J3, J4, J5, J6 }
+
     public class InfoJoueur : StreamObject
     {
-        public enum Monstre { UNKNOWN, J1, J2, J3, J4, J5, J6 }
+
         public Monstre IdJoueur { get; set; }
         public bool EstPret { get; set; }
         public string Pseudo { get; set; }
@@ -21,12 +23,12 @@ namespace Client.Reseau
         public InfoJoueur()
         {
             this.IdJoueur = Monstre.UNKNOWN;
-            this.Pseudo = String.Empty;
+            this.Pseudo = "CLEARVOID";
             this.EstPret = false;
- 
+
             this.PtsVie = -1;
             this.PtsVictoire = -1;
-            this.PtsEnergie = -1; 
+            this.PtsEnergie = -1;
 
         }
 
@@ -40,8 +42,6 @@ namespace Client.Reseau
             this.PtsVie = int.Parse(tab[3]);
             this.PtsVictoire = int.Parse(tab[4]);
             this.PtsEnergie = int.Parse(tab[5]);
-            
-
         }
 
 

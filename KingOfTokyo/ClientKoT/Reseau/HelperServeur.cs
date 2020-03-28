@@ -58,6 +58,7 @@ namespace Client.Reseau
         private string _messageReaded;
         private string _messageToSend;
         private List<InfoJoueur> _infoJoueurs;
+        private bool okConnexion;
 
         public List<InfoJoueur> ListInfoJoueur
         {
@@ -119,9 +120,10 @@ namespace Client.Reseau
             this.Nom = name;
             this.Adresse = hostName;
             this.Port = portNum;
-
+            this.okConnexion = false;
             this.NbrJoueur = 0;
             this.Etat = EtatServeur.OK;
+            this.ListInfoJoueur = new List<InfoJoueur>();
 
         }
 
@@ -131,7 +133,7 @@ namespace Client.Reseau
             {
                 ClientTCP = new TcpClient(Adresse, Port);
                 stream = ClientTCP.GetStream();
-                EnvoyerReceptionPaquet();
+                EnvoyerPaquet();
                 while (true)
                 {
                     ReceptionPaquet();
@@ -152,41 +154,68 @@ namespace Client.Reseau
         {
             // Bytes Array to receive Server Response.
             Byte[] data = new Byte[BYTES_SIZE];
-            string info = String.Empty;
+            _messageReaded = String.Empty;
             // Read the Tcp Server Response Bytes.
             Int32 bytes = stream.Read(data, 0, data.Length);
-            info = Encoding.ASCII.GetString(data, 0, bytes);
-            Debug.WriteLine("Received: {0}", info);
-            PaquetDonnees p = new PaquetDonnees(info);
+            _messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
+            Debug.WriteLine($"Received: {_messageReaded}");
+            if(_messageReaded.Equals(String.Empty))
+            {
+                return;
+            }
 
-            if(p.commandeType == CommandeType.INFOJOUEUR)
+            PaquetDonnees p = new PaquetDonnees(_messageReaded);
+
+            if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
+            {
+                ConnexionServeur c = (ConnexionServeur)p.data;
+                if (c.ConnexionOK)
+                {
+                    okConnexion = true;
+                }
+            }
+
+            if (p.commandeType == CommandeType.INFOJOUEUR)
             {
                 InfoJoueur ij = (InfoJoueur)p.data;
                 ListInfoJoueur.Add(ij);
 
-                if(ij.IdJoueur == InfoJoueur.Monstre.UNKNOWN)
+                if(ij.IdJoueur == Monstre.UNKNOWN)
                 {
                     ListInfoJoueur.Clear();
                 }
+                CheckIfAllPlayerAreReady();
             }
             
         }
 
-        public void EnvoyerReceptionPaquet()
+        public bool CheckIfAllPlayerAreReady()
+        {
+            if (ListInfoJoueur.Count < 2)
+            {
+                return false;
+            }
+
+            foreach (InfoJoueur j in ListInfoJoueur)
+            {
+                if (!j.EstPret)
+                {
+                    return false;
+                }
+            }
+            MessageBox.Show("La partie va commencer");
+            return true;
+        }
+
+        public void EnvoyerPaquet()
         {
             // Translate the Message into ASCII.
             Byte[] data = Encoding.ASCII.GetBytes(_messageToSend);
             // Send the message to the connected TcpServer. 
             stream.Write(data, 0, data.Length);
-            Debug.WriteLine("Sent: {0}", _messageToSend);
+            Debug.WriteLine($"Sent: { _messageToSend}");
 
-            // Bytes Array to receive Server Response.
-            data = new Byte[BYTES_SIZE];
-            _messageReaded = String.Empty;
-            // Read the Tcp Server Response Bytes.
-            Int32 bytes = stream.Read(data, 0, data.Length);
-            _messageReaded = Encoding.ASCII.GetString(data, 0, bytes);
-            Debug.WriteLine("Received: {0}", _messageReaded);
+            
         }
 
         /// <summary>
@@ -195,25 +224,16 @@ namespace Client.Reseau
         /// </summary>
         /// <returns></returns>
         public bool CheckServeurRep()
-        {
-            for(int i=0;i<6;i++)
+        {   
+            for(int i=0;i<5; i++)
             {
-                if(MessageReaded != null)
+                if(okConnexion)
                 {
-                    PaquetDonnees p = new PaquetDonnees(MessageReaded);
-                    if (p.commandeType == CommandeType.CONNEXIONSERVEUR)
-                    {
-                        ConnexionServeur c = (ConnexionServeur)p.data;
-                        if (c.ConnexionOK)
-                        {
-                            return true;
-                        }
-                    }
+                    return true;
                 }
                 Thread.Sleep(500);
             }
-            return false;
-            
+            return false;   
         }
 
         public void InitConnexion()
@@ -236,7 +256,7 @@ namespace Client.Reseau
             PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.LANCEMENTPARTIE, PseudoJoueur,l);
 
             _messageToSend = startPartie.ToString();
-            EnvoyerReceptionPaquet();
+            EnvoyerPaquet();
         }
 
         public void JoueurPasPret()
@@ -245,7 +265,7 @@ namespace Client.Reseau
             PaquetDonnees startPartie = new PaquetDonnees(Commande.POST, CommandeType.LANCEMENTPARTIE, PseudoJoueur,
                 new LancementPartie());
             _messageToSend = startPartie.ToString();
-            EnvoyerReceptionPaquet();
+            EnvoyerPaquet();
         }
 
 

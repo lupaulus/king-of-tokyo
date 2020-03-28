@@ -21,6 +21,8 @@ namespace ClientKoT
     /// </summary>
     public partial class Plateau : UserControl
     {
+       
+
         private bool joueurPret = false;
 
         private HelperServeur helperServeur;
