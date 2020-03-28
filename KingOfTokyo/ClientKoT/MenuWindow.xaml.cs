@@ -38,14 +38,14 @@ namespace ClientKoT
             // Collapse et ouvrir menu
             if(collapse)
             {
-                this.c1.Width = new GridLength(15, GridUnitType.Star);
-                this.c2.Width = new GridLength(85, GridUnitType.Star);
+                this.c1.Width = new GridLength(1, GridUnitType.Star);
+                this.c2.Width = new GridLength(4, GridUnitType.Star);
                 collapse = false;
             }
             else
             {
                 this.c1.Width = new GridLength(0, GridUnitType.Star);
-                this.c2.Width = new GridLength(100, GridUnitType.Star);
+                this.c2.Width = new GridLength(1, GridUnitType.Star);
                 collapse = true;
             }
         }
