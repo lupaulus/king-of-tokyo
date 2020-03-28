@@ -43,9 +43,11 @@ namespace ClientKoT
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 Hide_Joueur();
+                Update_Data();
             }));
         }
 
+        
 
         private void btnPret_Click(object sender, RoutedEventArgs e)
         {
@@ -62,8 +64,83 @@ namespace ClientKoT
             }
         }
 
-        protected virtual void Hide_Joueur()
+        public void Update_Data()
         {
+            int actualPlayerPosition = (int)helperServeur.ActualPlayer;
+            for(int i=0; i<helperServeur.ListInfoJoueur.Count;i++)
+            {
+                InfoJoueur infoJoueur = FindJoueur((Monstre)actualPlayerPosition);
+                switch(i+1)
+                {
+                    case 1: // 1 joueur
+                        nomJoueur1.Text = infoJoueur.Pseudo;
+                        NbViesJ1.Text = infoJoueur.PtsVie.ToString();
+                        NbEnergieJ1.Text = infoJoueur.PtsEnergie.ToString();
+                        NbVictoireJ1.Text = infoJoueur.PtsVictoire.ToString();
+
+                        break;
+                    case 2: // 2 joueurs
+                        nomJoueur2.Text = infoJoueur.Pseudo;
+                        NbViesJ2.Text = infoJoueur.PtsVie.ToString();
+                        NbEnergieJ2.Text = infoJoueur.PtsEnergie.ToString();
+                        NbVictoireJ2.Text = infoJoueur.PtsVictoire.ToString();
+                        break;
+                    case 3: // 3 joueurs
+                        nomJoueur3.Text = infoJoueur.Pseudo;
+                        NbViesJ3.Text = infoJoueur.PtsVie.ToString();
+                        NbEnergieJ3.Text = infoJoueur.PtsEnergie.ToString();
+                        NbVictoireJ3.Text = infoJoueur.PtsVictoire.ToString();
+                        break;
+                    case 4: // 4 joueurs
+                        nomJoueur4.Text = infoJoueur.Pseudo;
+                        NbViesJ4.Text = infoJoueur.PtsVie.ToString();
+                        NbEnergieJ4.Text = infoJoueur.PtsEnergie.ToString();
+                        NbVictoireJ4.Text = infoJoueur.PtsVictoire.ToString();
+                        break;
+                    case 5: // 5 joueurs
+                        nomJoueur5.Text = infoJoueur.Pseudo;
+                        NbViesJ5.Text = infoJoueur.PtsVie.ToString();
+                        NbEnergieJ5.Text = infoJoueur.PtsEnergie.ToString();
+                        NbVictoireJ5.Text = infoJoueur.PtsVictoire.ToString();
+                        break;
+                    case 6: // 6 joueurs
+                        nomJoueur6.Text = infoJoueur.Pseudo;
+                        NbViesJ6.Text = infoJoueur.PtsVie.ToString();
+                        NbEnergieJ6.Text = infoJoueur.PtsEnergie.ToString();
+                        NbVictoireJ6.Text = infoJoueur.PtsVictoire.ToString();
+                        break;
+                    default:
+                        break;
+                }
+                // Important
+                actualPlayerPosition = (actualPlayerPosition + 1) % (helperServeur.ListInfoJoueur.Count+1);
+                if(actualPlayerPosition == 0)
+                {
+                    actualPlayerPosition = 1;
+                }
+
+            }
+                
+        }
+
+        private InfoJoueur FindJoueur(Monstre actualPlayerPosition)
+        {
+            foreach(InfoJoueur info in helperServeur.ListInfoJoueur)
+            {
+                if(info.IdJoueur == actualPlayerPosition)
+                {
+                    return info;
+                }
+            }
+            throw new KeyNotFoundException();
+        }
+
+        public void Hide_Joueur()
+        {
+            btnFinTour.Visibility = Visibility.Visible;
+            btnPret.Visibility = Visibility.Hidden;
+            lblPret.Visibility = Visibility.Hidden;
+
             switch(helperServeur.NombreJoueurs())
             {
                 case 0: // 0 joueur
@@ -125,6 +202,11 @@ namespace ClientKoT
                 default:
                     break;
             }
+        }
+
+        private void btnFinTour_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

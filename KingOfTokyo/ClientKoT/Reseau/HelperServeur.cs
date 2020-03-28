@@ -43,7 +43,8 @@ namespace Client.Reseau
 
         public event PartieStart_EventHandler PartieStart;
         public delegate void PartieStart_EventHandler(object sender, EventArgs args);
-       
+
+        public Monstre ActualPlayer { get; set; }
 
         /// <summary>
         /// Nombre de joueur max.
@@ -179,7 +180,14 @@ namespace Client.Reseau
                 }
             }
 
-            if (p.commandeType == CommandeType.INFOJOUEUR)
+            else if(p.commandeType == CommandeType.LANCEMENTPARTIE)
+            {
+                LancementPartie c = (LancementPartie)p.data;
+                ActualPlayer = c.JoueurActuel; 
+                
+            }
+
+            else if (p.commandeType == CommandeType.INFOJOUEUR)
             {
                 InfoJoueur ij = (InfoJoueur)p.data;
                 ListInfoJoueur.Add(ij);
@@ -284,18 +292,10 @@ namespace Client.Reseau
 
 
 
-
         public void DeconnexionServeur() {
             // TODO implement here
         }
 
-        public void ReadListeParties() {
-            // Renvoie la liste des parties: Nom; Nb joueurs;
-        }
-        
-        public void NomDuJoueur() {
-            // Obtenu à partir du formulaire dans Menu.xaml
-        }
 
 
         public int NombreJoueurs() {

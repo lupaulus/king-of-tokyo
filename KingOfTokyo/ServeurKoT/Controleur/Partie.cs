@@ -1,4 +1,5 @@
 
+using ServeurKoT.Modele;
 using ServeurKoT.Reseau;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,10 @@ namespace ServeurKoT.Controleur{
         public int NombreDeJoueurTotal { get; }
         public string nomPartie { get; }
         public Plateau Plateau { get; }
-        public GMonstre GestionaryMonstre { get; }
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
-        public Queue<Joueur> ListeDesJoueurs { get; }
         public GTour GestionnaireDesTours { get;  }
+        public Dictionary<MonstreJeu, Joueur> DicJeuMonstre { get; }
 
         #endregion Properties
 
@@ -27,12 +27,11 @@ namespace ServeurKoT.Controleur{
             Id = idValue;
             nomPartie = nom;
             NombreDeJoueurTotal = nbrJoueur;
-            ListeDesJoueurs = new Queue<Joueur>();
-            GestionaryMonstre = new GMonstre(nbrJoueur);
+            DicJeuMonstre = new Dictionary<MonstreJeu, Joueur>();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
             GestionnaireDesTours = new GTour();
-            Plateau = new Plateau(GestionaryMonstre.getListeMonstre());
+            Plateau = new Plateau();
         }
 
         #endregion Ctor
@@ -40,23 +39,32 @@ namespace ServeurKoT.Controleur{
         #region Methodes
         public void AjouterJoueur(Joueur j)
         {
-            // Si place encore dispo
-            
-            if(ListeDesJoueurs.Count < NombreDeJoueurTotal)
+            // Si place encore dispo         
+            if(DicJeuMonstre.Count < NombreDeJoueurTotal)
             {
-                j.IdJoueur = (Monstre)(ListeDesJoueurs.Count+1);
-                ListeDesJoueurs.Enqueue(j);
+                j.IdJoueur = (Monstre)(DicJeuMonstre.Count+1);
+                MonstreJeu m = new MonstreJeu((Monstre)(DicJeuMonstre.Count + 1));
+                DicJeuMonstre.Add(m, j);
             }
             
         }
 
         public void DemarerPartie() {
-            if (ListeDesJoueurs.Count < 2)
+            if (DicJeuMonstre.Count < 2)
             {
                 return;
             }
 
+            // Initialisation des infos
+            foreach(MonstreJeu m in DicJeuMonstre.Keys)
+            {
+                DicJeuMonstre[m].PtsVie = m.PointVie;
+                DicJeuMonstre[m].PtsVictoire = m.PointVictoire;
+                DicJeuMonstre[m].PtsEnergie = m.Energie;
+            }
 
+            // Joueur qui commence la partie
+            //GestionnaireDesTours.JoueurActuel();
         }
 
         public void FinirPartie() {

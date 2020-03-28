@@ -1,18 +1,18 @@
 
 using ServeurKoT.Controleur;
+using ServeurKoT.Reseau;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace ServeurKoT.Modele{
-    public class Monstre {
+    public class MonstreJeu {
 
         #region Properties
        
 
-        private int id;
-        private NomMonstre nom;
+        private Monstre id;
         private int pointVie;
         private int pointVictoire;
         private int energie;
@@ -34,10 +34,9 @@ namespace ServeurKoT.Modele{
         #endregion Properties
 
         #region Ctor
-        public Monstre(int idValue, NomMonstre nomValue)
+        public MonstreJeu(Monstre idValue)
         {
             id = idValue; 
-            nom = nomValue;
             pointVictoire = POINT_VICTOIRE_BASE;
             pointVie = POINT_VIE_BASE;
             energie = POINT_ENERGIE_BASE;
@@ -47,8 +46,7 @@ namespace ServeurKoT.Modele{
 
         #region Methods
 
-        public int Id { get => id; }
-        public NomMonstre Nom { get => nom;}
+
         public int PointVie { get => pointVie;}
         public int PointVictoire { get => pointVictoire; }
         public int Energie { get => energie; }
@@ -79,7 +77,7 @@ namespace ServeurKoT.Modele{
         }
 
         
-        public void frapper(Monstre monstreAFrapper, int valeurDegat)
+        public void frapper(MonstreJeu monstreAFrapper, int valeurDegat)
         {
             monstreAFrapper.seFaireFrapper(valeurDegat);
         }

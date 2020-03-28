@@ -196,8 +196,8 @@ namespace ServeurKoT.Reseau
                 ListClients[client].Pseudo = p.pseudo;
                 GPartie.Instance.PartieActuel.AjouterJoueur(ListClients[client]);
                 Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est connecté");
-                Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.ListeDesJoueurs.Count}");
-                c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.ListeDesJoueurs.Count;
+                Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.DicJeuMonstre.Count}");
+                c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.DicJeuMonstre.Count;
                 p.data = c;
             }
             if(p.commandeType == CommandeType.LANCEMENTPARTIE)
@@ -207,12 +207,14 @@ namespace ServeurKoT.Reseau
                 ListClients[client].EstPret = c.JoueurPret;
                 string pret = c.JoueurPret ? "pret" : "pas prêt";
                 Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est {pret}");
-                // Verification si la partie OK
+                // Verification si tout le monde est pret 
                 if (CheckIfAllPlayerAreReady())
                 {
                     Logger.Log(Logger.Level.Info, $"La partie va débuter, tous les joueurs sont prets");
                     GPartie.Instance.PartieActuel.DemarerPartie();
                 }
+                // Indique le Joueur actuel
+                c.JoueurActuel = ListClients[client].IdJoueur;
             }
             ListClients[client].MessageToSend = p.ToString();
         }
@@ -230,7 +232,7 @@ namespace ServeurKoT.Reseau
                 Byte[] send = Encoding.ASCII.GetBytes(pa.ToString());
                 stream.Write(send, 0, send.Length);
                 Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {pa.ToString()}");
-                Thread.Sleep(500);
+                Thread.Sleep(200);
 
                 foreach (Joueur j in ListClients.Values)
                 {
@@ -238,7 +240,7 @@ namespace ServeurKoT.Reseau
                     Byte[] reply = Encoding.ASCII.GetBytes(p.ToString());
                     stream.Write(reply, 0, reply.Length);
                     Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {p.ToString()}");
-                    Thread.Sleep(500);
+                    Thread.Sleep(200);
                 }
             }
             
@@ -246,7 +248,7 @@ namespace ServeurKoT.Reseau
 
         private bool CheckIfAllPlayerAreReady()
         {
-            if(GPartie.Instance.PartieActuel.ListeDesJoueurs.Count < 2)
+            if(GPartie.Instance.PartieActuel.DicJeuMonstre.Count < 2)
             {
                 return false;
             }

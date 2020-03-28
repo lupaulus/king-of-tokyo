@@ -25,6 +25,12 @@ namespace ServeurKoT.Reseau
         private bool estPret;
         public bool EstPret { get => estPret; set => estPret = value; }
 
+        public int PtsVie { get; set; }
+        public int PtsVictoire { get; set; }
+        public int PtsEnergie { get; set; }
+
+        public bool AToiDeJouer { get; set; }
+
 
         private volatile string _messageReaded;
         private volatile string _messageToSend;
@@ -50,6 +56,7 @@ namespace ServeurKoT.Reseau
             this.pseudo = pseudo;
             this.estPret = false;
 
+
         }
 
 
@@ -59,6 +66,13 @@ namespace ServeurKoT.Reseau
             res.Pseudo = pseudo;
             res.IdJoueur = IdJoueur;
             res.EstPret = EstPret;
+
+            res.PtsVie = PtsVie;
+            res.PtsVictoire = PtsVictoire;
+            res.PtsEnergie = PtsEnergie;
+
+            res.AToiDeJouer = AToiDeJouer;
+
             return res;
         }
 
