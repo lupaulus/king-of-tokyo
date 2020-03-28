@@ -21,7 +21,8 @@ namespace ClientKoT
     /// </summary>
     public partial class Plateau : UserControl
     {
-       
+
+        
 
         private bool joueurPret = false;
 
@@ -30,7 +31,21 @@ namespace ClientKoT
         {
             InitializeComponent();
             helperServeur = h;
+            h.PartieStart += H_PartieStart;
+            
         }
+
+        
+
+        private void H_PartieStart(object sender, EventArgs e)
+        {
+            MessageBox.Show("La partie va commencer");
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                Hide_Joueur();
+            }));
+        }
+
 
         private void btnPret_Click(object sender, RoutedEventArgs e)
         {
@@ -47,9 +62,9 @@ namespace ClientKoT
             }
         }
 
-        private void btnHide_Click(object sender, RoutedEventArgs e)
+        protected virtual void Hide_Joueur()
         {
-            switch(int.Parse(nbHideJoueur.Text))
+            switch(helperServeur.NombreJoueurs())
             {
                 case 0: // 0 joueur
                     j1.Visibility = Visibility.Hidden;

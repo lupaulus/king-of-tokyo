@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controleur\GTour.cs" />
     <Compile Include="Reseau\ActionPartie.cs" />
     <Compile Include="Reseau\ActionTour.cs" />
     <Compile Include="Reseau\InfoJoueur.cs" />
@@ -61,7 +62,7 @@
     <Compile Include="Controleur\GMonstre.cs" />
     <Compile Include="Controleur\GPartie.cs" />
     <Compile Include="Controleur\Partie.cs" />
-    <Compile Include="Controleur\Tour.cs" />
+    <Compile Include="Modele\Tour.cs" />
     <Compile Include="Controleur\Utilitaire.cs" />
     <Compile Include="Modele\ApplicationEffet.cs" />
     <Compile Include="Modele\Carte.cs" />

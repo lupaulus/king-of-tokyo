@@ -18,6 +18,7 @@ namespace ServeurKoT.Controleur{
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
         public Queue<Joueur> ListeDesJoueurs { get; }
+        public GTour GestionnaireDesTours { get;  }
 
         #endregion Properties
 
@@ -30,6 +31,7 @@ namespace ServeurKoT.Controleur{
             GestionaryMonstre = new GMonstre(nbrJoueur);
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
+            GestionnaireDesTours = new GTour();
             Plateau = new Plateau(GestionaryMonstre.getListeMonstre());
         }
 
@@ -49,10 +51,11 @@ namespace ServeurKoT.Controleur{
         }
 
         public void DemarerPartie() {
-            if (ListeDesJoueurs.Count > 2)
+            if (ListeDesJoueurs.Count < 2)
             {
-
+                return;
             }
+
 
         }
 

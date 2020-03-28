@@ -312,11 +312,6 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-
-            <Button x:Name="btnHideJoueur" Content="nbJoueurs" Click="btnHide_Click" Grid.Row="0"/>
-            <TextBox x:Name="nbHideJoueur" Grid.Row="1">
-                1
-            </TextBox>
         </Grid>
 
 
