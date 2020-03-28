@@ -207,12 +207,14 @@ namespace ServeurKoT.Reseau
                 ListClients[client].EstPret = c.JoueurPret;
                 string pret = c.JoueurPret ? "pret" : "pas prêt";
                 Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est {pret}");
-                // Verification si la partie OK
+                // Verification si tout le monde est pret 
                 if (CheckIfAllPlayerAreReady())
                 {
                     Logger.Log(Logger.Level.Info, $"La partie va débuter, tous les joueurs sont prets");
                     GPartie.Instance.PartieActuel.DemarerPartie();
                 }
+                // Indique le Joueur actuel
+                c.JoueurActuel = ListClients[client].IdJoueur;
             }
             ListClients[client].MessageToSend = p.ToString();
         }
@@ -230,7 +232,7 @@ namespace ServeurKoT.Reseau
                 Byte[] send = Encoding.ASCII.GetBytes(pa.ToString());
                 stream.Write(send, 0, send.Length);
                 Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {pa.ToString()}");
-                Thread.Sleep(500);
+                Thread.Sleep(200);
 
                 foreach (Joueur j in ListClients.Values)
                 {
@@ -238,7 +240,7 @@ namespace ServeurKoT.Reseau
                     Byte[] reply = Encoding.ASCII.GetBytes(p.ToString());
                     stream.Write(reply, 0, reply.Length);
                     Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {p.ToString()}");
-                    Thread.Sleep(500);
+                    Thread.Sleep(200);
                 }
             }
             
