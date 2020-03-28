@@ -64,7 +64,7 @@ namespace ServeurKoT.Controleur{
             }
 
             // Joueur qui commence la partie
-            GestionnaireDesTours.JoueurActuel();
+            //GestionnaireDesTours.JoueurActuel();
         }
 
         public void FinirPartie() {
