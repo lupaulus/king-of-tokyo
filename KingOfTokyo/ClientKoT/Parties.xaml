@@ -11,16 +11,17 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="1" Grid.Row="0">
+        <Grid Grid.Column="1" Grid.Row="0" Background="#2d2d2d">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
@@ -31,31 +32,27 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" Content="Nom Serveur"/>
-            <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Name="tbNomServeur" MinWidth="150" MinHeight="20" MaxWidth="250" MaxHeight="30" />
-            <Label Grid.Column="0" Grid.Row="1" Content="Adresse Serveur" />
 
-            <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Name="tbAdresseServeur" MinWidth="150"  MinHeight="20" MaxWidth="250" MaxHeight="30" />
-            <Button Grid.Column="1" Grid.Row="2"  Content="Ajouter Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnCreerPartie"  Click="ButtonCreerServeur_Click" />
+            <Label Grid.Column="0" Grid.Row="0"  FontFamily="Arial" FontSize="16" Margin="10" Content="Nom du Serveur :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Foreground="#FFFFFF" HorizontalAlignment="Center" Name="tbNomServeur" MinWidth="300" MinHeight="20" MaxWidth="450" MaxHeight="30" />
+            <Label Grid.Column="0" Grid.Row="1"  FontFamily="Arial" FontSize="16" Margin="10" Content="Adresse du Serveur :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Foreground="#FFFFFF" HorizontalAlignment="Center" Name="tbAdresseServeur" MinWidth="300"  MinHeight="20" MaxWidth="450" MaxHeight="30" />
+
+            <Button Grid.Column="1" Grid.Row="3"  Content="Ajouter Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnCreerPartie"  Click="ButtonCreerServeur_Click" />
         </Grid>
+        
         <!-- Liste -->
 
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="2" Background="#2d2d2d">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
-            <Label  Grid.Row="0" Margin="10" Content="Liste des Serveur"/>
+
+            <Label  Grid.Row="0" Margin="10" FontFamily="Arial" FontSize="16" Content="Liste des Serveurs :"/>
             <ListView Grid.Row="1" Margin="10" Name="lvServeur">
-                <ListView.Resources>
-                    <Style TargetType="{x:Type GridViewColumnHeader}">
-                        <Setter Property="HorizontalContentAlignment" Value="Left" />
-                    </Style>
-                </ListView.Resources>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding Nom}" />
@@ -67,13 +64,13 @@
             </ListView>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" HorizontalAlignment="Center" Name ="lblPseudo" Content="Pseudo :"/>
-                <TextBox Grid.Column="1" HorizontalAlignment="Center" Name="tbPseudo" MinWidth="150" MinHeight="20" MaxWidth="250" MaxHeight="30" />
-                <Button Grid.Column="2"  Content="Connexion Serveur" HorizontalAlignment="Center" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnConnexionServeur"  Click="ButtonConnexion_Click" />
+                <Label Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="16" Name="lblPseudo" Content="Pseudo :"/>
+                <TextBox Grid.Column="1" Foreground="#FFFFFF" HorizontalAlignment="Center" Name="tbPseudo" MinWidth="300" MinHeight="20" MaxWidth="450" MaxHeight="30" />
+                <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" Grid.Column="2"  Content="Connexion Serveur" HorizontalAlignment="Left" MinWidth="150"  MinHeight="30" MaxWidth="250" MaxHeight="30" Name="btnConnexionServeur"  Click="ButtonConnexion_Click" />
                 
             </Grid>
     
