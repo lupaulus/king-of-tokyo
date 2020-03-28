@@ -41,6 +41,10 @@ namespace Client.Reseau
 
         private const int BYTES_SIZE = 256;
 
+        public event PartieStart_EventHandler PartieStart;
+        public delegate void PartieStart_EventHandler(object sender, EventArgs args);
+       
+
         /// <summary>
         /// Nombre de joueur max.
         /// </summary>
@@ -184,7 +188,10 @@ namespace Client.Reseau
                 {
                     ListInfoJoueur.Clear();
                 }
-                CheckIfAllPlayerAreReady();
+                if(CheckIfAllPlayerAreReady())
+                {
+                    OnPartieStart(new EventArgs());
+                }
             }
             
         }
@@ -203,7 +210,7 @@ namespace Client.Reseau
                     return false;
                 }
             }
-            MessageBox.Show("La partie va commencer");
+            
             return true;
         }
 
@@ -269,7 +276,11 @@ namespace Client.Reseau
         }
 
 
-
+        protected virtual void OnPartieStart(EventArgs e)
+        {
+            PartieStart_EventHandler handler = PartieStart;
+            handler?.Invoke(this, e);
+        }
 
 
 
@@ -288,10 +299,8 @@ namespace Client.Reseau
 
 
         public int NombreJoueurs() {
-            // retourne le nombre de joueur actuel dans la partie
-            int nbJoueurs = 0;
-            return nbJoueurs;
-        }
+            return ListInfoJoueur.Count;
+    }
 
         // Monstre 
 
