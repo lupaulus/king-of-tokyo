@@ -14,10 +14,13 @@ namespace ServeurKoT.Reseau
         
         public Monstre IdJoueur { get; set; }
         public bool EstPret { get; set; }
+        
         public string Pseudo { get; set; }
         public int PtsVie { get; set; }
         public int PtsVictoire { get; set; }
         public int PtsEnergie { get; set; }
+
+        public bool AToiDeJouer { get; set; }
 
 
         public InfoJoueur()
@@ -28,7 +31,8 @@ namespace ServeurKoT.Reseau
  
             this.PtsVie = -1;
             this.PtsVictoire = -1;
-            this.PtsEnergie = -1; 
+            this.PtsEnergie = -1;
+            this.AToiDeJouer = false;
 
         }
 
@@ -42,12 +46,14 @@ namespace ServeurKoT.Reseau
             this.PtsVie = int.Parse(tab[3]);
             this.PtsVictoire = int.Parse(tab[4]);
             this.PtsEnergie = int.Parse(tab[5]);
+
+            this.AToiDeJouer = bool.Parse(tab[6]);
         }
 
 
         public override string IntoString()
         {
-            return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}";
+            return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}|{AToiDeJouer}";
         }
     }
 }
