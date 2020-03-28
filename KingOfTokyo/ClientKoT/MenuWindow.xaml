@@ -8,37 +8,41 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Title="King of Paris"  WindowStyle="None" WindowStartupLocation="CenterScreen" MouseDown="MainWindow_MouseDown">
 
-    <Grid Background="#FF3580BF" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}">
+
+    <Grid Background="#292929" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="c1" Width="15*"/>
-            <ColumnDefinition x:Name="c2" Width="85*"/>
+            <ColumnDefinition x:Name="c1" Width="1*"/>
+            <ColumnDefinition x:Name="c2" Width="4*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" SelectionChanged="MenuSelectionChanged">
+        <StackPanel Grid.Column="0" Background="#BB86FC">
+        <ListView Grid.Column="0" SelectionChanged="MenuSelectionChanged" Foreground="#121212">
             <ListViewItem x:Name="listViewItem" Tag="0" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                    <TextBlock Text="Acceuil" Margin="10" VerticalAlignment="Center"/>
+                    <TextBlock Text="Accueil" FontFamily="Arial" FontSize="18" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="listViewItem1" Tag="1" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="AccountSearch" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                    <TextBlock Text="Liste des serveurs" Margin="10" VerticalAlignment="Center"/>
+                        <TextBlock Text="Liste des serveurs" FontFamily="Arial" FontSize="18" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="listViewItem2" Tag="2" Height="60" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
                     <materialDesign:PackIcon Kind="assignment" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                    <TextBlock Text="Règles du jeu" Margin="10" VerticalAlignment="Center"/>
+                        <TextBlock Text="Règles du jeu" FontFamily="Arial" FontSize="18" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="listViewItemPlateau" IsEnabled="False" Tag="3" Height="60" RenderTransformOrigin="0.5,0.5" ToolTipService.ShowOnDisabled="True" ToolTip="Astuce: Pour accéder au plateau il faut au préalable rejoindre une partie">
-                <StackPanel x:Name="menuPlateau" Orientation="Horizontal" Opacity="0.5"  Margin="10 0">
+                <StackPanel x:Name="menuPlateau" Orientation="Horizontal" Opacity="0.7"  Margin="10 0">
                     <materialDesign:PackIcon Kind="Gamepad" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                    <TextBlock Text="Plateau de jeu" Margin="10" VerticalAlignment="Center" />
+                        <TextBlock Text="Plateau de jeu" FontFamily="Arial" FontSize="18" Margin="10" VerticalAlignment="Center" />
                 </StackPanel>
             </ListViewItem>
         </ListView>
+        </StackPanel>
+        
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -46,6 +50,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="8*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -54,11 +59,10 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" x:Name="ButtonMenu" Width="30" Height="30" Margin="15" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ButtonMenu_Click">
-                    <materialDesign:PackIcon Kind="Menu" Foreground="#ffffff"/>
+                    <materialDesign:PackIcon Kind="Menu" Foreground="#FFFFFF"/>
                 </Button>
-                <Label Grid.Column="1" x:Name="LabelTitre" VerticalAlignment="Top" HorizontalAlignment="Center" Content="King of Tokyo"/>
                 <Button Grid.Column="2" x:Name="ButtonClose" Width="30" Height="30" Margin="15" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonClose_Click">
-                    <materialDesign:PackIcon Kind="Power" Foreground="#bc0000"/>
+                    <materialDesign:PackIcon Kind="Power" Foreground="#CF6679"/>
                 </Button>
             </Grid>
             <ContentControl x:Name="ContentPrincipal" Grid.Row="1"/>
