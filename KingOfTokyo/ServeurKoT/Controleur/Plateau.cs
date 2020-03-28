@@ -16,22 +16,21 @@ namespace ServeurKoT.Controleur{
         /// Création du plateau
         /// </summary>
         /// <param name="monstres">Liste des monstres qui compose le plateau</param>
-        public Plateau(List<Monstre> monstres) 
+        public Plateau() 
         {
-            tousLesMonstres = new List<Monstre>(monstres);
         }
 
-        private List<Monstre> monstreEnVille { get; }
+        private List<MonstreJeu> monstreEnVille { get; }
 
-        private List<Monstre> monstreHorsVille { get; }
-        private List<Monstre> tousLesMonstres { get; }
+        private List<MonstreJeu> monstreHorsVille { get; }
+        private List<MonstreJeu> tousLesMonstres { get; }
 
         
         /// <summary>
         /// Methode pour rentrer dans la ville
         /// </summary>
         /// <param name="monstre">Monstre qui doit rentrer dans la ville</param>
-        public void entrerVille(Monstre monstre)
+        public void entrerVille(MonstreJeu monstre)
         {
             monstreEnVille.Add(monstre);
         }
@@ -40,17 +39,17 @@ namespace ServeurKoT.Controleur{
         /// Methode pour sortir de la ville
         /// </summary>
         /// <param name="monstre">Monstre qui doit sortir la ville</param>
-        public void sortirVille(Monstre monstre)
+        public void sortirVille(MonstreJeu monstre)
         {
             monstreEnVille.Remove(monstre);
         }
 
         
 
-        public List<Monstre> ListeDesMonstreEnVie(List<Monstre> monstres)
+        public List<MonstreJeu> ListeDesMonstreEnVie(List<MonstreJeu> monstres)
         {
-            List<Monstre> res = new List<Monstre>();
-            foreach(Monstre monstre in monstres)
+            List<MonstreJeu> res = new List<MonstreJeu>();
+            foreach(MonstreJeu monstre in monstres)
             {
                 if(!monstre.monstreMort())
                 {
@@ -62,7 +61,7 @@ namespace ServeurKoT.Controleur{
 
         public void frapperLaVille(int valueFrappe)
         {
-            foreach(Monstre monstre in monstreEnVille)
+            foreach(MonstreJeu monstre in monstreEnVille)
             {
                 monstre.seFaireFrapper(valueFrappe);
             }

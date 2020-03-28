@@ -313,6 +313,7 @@
             </Grid.RowDefinitions>
 
             <Button Margin="5" x:Name="btnPret" Content="Pret?" Click="btnPret_Click" Grid.Row="0"/>
+            <Button Margin="5" x:Name="btnFinTour" Content="Fin Tour" Click="btnFinTour_Click" Grid.Row="0" Visibility="Hidden" />
             <Label x:Name="lblPret" Content="Vous n'êtes pas prêt !" Grid.Row="1"/>
         </Grid>
 

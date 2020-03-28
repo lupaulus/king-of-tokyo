@@ -196,8 +196,8 @@ namespace ServeurKoT.Reseau
                 ListClients[client].Pseudo = p.pseudo;
                 GPartie.Instance.PartieActuel.AjouterJoueur(ListClients[client]);
                 Logger.Log(Logger.Level.Info, $"Joueur {p.pseudo} est connecté");
-                Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.ListeDesJoueurs.Count}");
-                c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.ListeDesJoueurs.Count;
+                Logger.Log(Logger.Level.Info, $"Nombre de joueur actuellement : {GPartie.Instance.PartieActuel.DicJeuMonstre.Count}");
+                c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.DicJeuMonstre.Count;
                 p.data = c;
             }
             if(p.commandeType == CommandeType.LANCEMENTPARTIE)
@@ -248,7 +248,7 @@ namespace ServeurKoT.Reseau
 
         private bool CheckIfAllPlayerAreReady()
         {
-            if(GPartie.Instance.PartieActuel.ListeDesJoueurs.Count < 2)
+            if(GPartie.Instance.PartieActuel.DicJeuMonstre.Count < 2)
             {
                 return false;
             }

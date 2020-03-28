@@ -137,6 +137,10 @@ namespace ClientKoT
 
         public void Hide_Joueur()
         {
+            btnFinTour.Visibility = Visibility.Visible;
+            btnPret.Visibility = Visibility.Hidden;
+            lblPret.Visibility = Visibility.Hidden;
+
             switch(helperServeur.NombreJoueurs())
             {
                 case 0: // 0 joueur
@@ -198,6 +202,11 @@ namespace ClientKoT
                 default:
                     break;
             }
+        }
+
+        private void btnFinTour_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
