@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,15 +26,26 @@ namespace ClientKoT
         private bool joueurPret = false;
 
         private HelperServeur helperServeur;
+
+        private ActionTour actionTour;
+
         public Plateau(HelperServeur h)
         {
             InitializeComponent();
             helperServeur = h;
             h.PartieStart += H_PartieStart;
+            h.TourSuivant += H_TourSuivant;
+            actionTour = new ActionTour();
             
         }
 
-        
+        private void H_TourSuivant(object sender, EventArgs args)
+        {
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                Debut_Tour();
+            }));
+        }
 
         private void H_PartieStart(object sender, EventArgs e)
         {
@@ -46,9 +58,11 @@ namespace ClientKoT
             }));
         }
 
+        
+
         private void Debut_Tour()
         {
-
+            Thread.Sleep(500);
             InfoJoueur infoJoueur = FindJoueur(helperServeur.ActualPlayer);
             if(!infoJoueur.AToiDeJouer)
             {
@@ -264,7 +278,7 @@ namespace ClientKoT
 
         private void btnFinTour_Click(object sender, RoutedEventArgs e)
         {
-
+            helperServeur.FinTour(actionTour);
         }
     }
 }

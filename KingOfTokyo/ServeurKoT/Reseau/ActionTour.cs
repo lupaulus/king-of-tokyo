@@ -1,8 +1,8 @@
 ﻿namespace ServeurKoT.Reseau
 {
-    class ActionTour : StreamObject
+    public class ActionTour : StreamObject
     {
-        public int valeurDes;
+        public int ValeurDes;
 
         public bool FinTour { get; set; }
 
@@ -13,9 +13,15 @@
 
         }
 
+        public ActionTour()
+        {
+            this.FinTour = false;
+            this.ValeurDes = -1;
+        }
+
         public override string IntoString()
         {
-            return $"{FinTour.ToString()}|{valeurDes}";
+            return $"{FinTour.ToString()}|{ValeurDes}";
         }
     }
 }
