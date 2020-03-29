@@ -93,7 +93,6 @@
     <Compile Include="Reseau\InfoJoueur.cs" />
     <Compile Include="Reseau\LancementPartie.cs" />
     <Compile Include="Reseau\ConnexionServeur.cs" />
-    <Compile Include="Reseau\GJoueur.cs" />
     <Compile Include="Reseau\HelperServeur.cs" />
     <Compile Include="Reseau\Joueur.cs" />
     <Compile Include="Reseau\PaquetDonnees.cs" />

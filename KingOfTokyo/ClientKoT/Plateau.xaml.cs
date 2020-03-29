@@ -28,6 +28,7 @@ namespace ClientKoT
         private HelperServeur helperServeur;
 
         private ActionTour actionTour;
+        private bool[] listDesRoll;
 
         public Plateau(HelperServeur h)
         {
@@ -36,6 +37,7 @@ namespace ClientKoT
             h.PartieStart += H_PartieStart;
             h.TourSuivant += H_TourSuivant;
             actionTour = new ActionTour();
+            listDesRoll = new bool[6];
             
         }
 
@@ -63,6 +65,8 @@ namespace ClientKoT
         private void Debut_Tour()
         {
             Thread.Sleep(500);
+
+            EnabledDes(false);
             InfoJoueur infoJoueur = FindJoueur(helperServeur.ActualPlayer);
             if(!infoJoueur.AToiDeJouer)
             {
@@ -70,16 +74,9 @@ namespace ClientKoT
                 Acheter1.IsEnabled = false;
                 Acheter2.IsEnabled = false;
                 Acheter3.IsEnabled = false;
-                De1.IsEnabled = false;
-                De2.IsEnabled = false;
-                De3.IsEnabled = false;
-                De4.IsEnabled = false;
-                De5.IsEnabled = false;
-                De6.IsEnabled = false;
                 EntrerBanlieue.IsEnabled = false;
                 EntrerVille.IsEnabled = false;
                 LancerDes.IsEnabled = false;
-                ValidDes.IsEnabled = false;
                 Reroll.IsEnabled = false;
                 MessageBox.Show($"C'est au tour de {FindJoueurAToiJouer().Pseudo} de jouer");
                 return;
@@ -89,16 +86,9 @@ namespace ClientKoT
             Acheter1.IsEnabled = true;
             Acheter2.IsEnabled = true;
             Acheter3.IsEnabled = true;
-            De1.IsEnabled = true;
-            De2.IsEnabled = true;
-            De3.IsEnabled = true;
-            De4.IsEnabled = true;
-            De5.IsEnabled = true;
-            De6.IsEnabled = true;
             EntrerBanlieue.IsEnabled = true;
             EntrerVille.IsEnabled = true;
             LancerDes.IsEnabled = true;
-            ValidDes.IsEnabled = true;
             Reroll.IsEnabled = true;
 
             // Alerte message
@@ -279,6 +269,104 @@ namespace ClientKoT
         private void btnFinTour_Click(object sender, RoutedEventArgs e)
         {
             helperServeur.FinTour(actionTour);
+        }
+
+        private void LancerDes_Click(object sender, RoutedEventArgs e)
+        {
+            for(int i = 0;i<listDesRoll.Length;i++)
+            {
+                if(listDesRoll[i])
+                {
+                    switch(i)
+                    {
+                        case 0:
+                            actionTour.Des1 = ValeurDes.Unknown;
+                            break;
+                        case 1:
+                            actionTour.Des2 = ValeurDes.Unknown;
+                            break;
+                        case 2:
+                            actionTour.Des3 = ValeurDes.Unknown;
+                            break;
+                        case 3:
+                            actionTour.Des4 = ValeurDes.Unknown;
+                            break;
+                        case 4:
+                            actionTour.Des5 = ValeurDes.Unknown;
+                            break;
+                        case 5:
+                            actionTour.Des6 = ValeurDes.Unknown;
+                            break;
+
+                    }
+                }
+            }
+            helperServeur.RollDes(actionTour);
+            listDesRoll = new bool[6]; // Clear List;
+
+            EnabledDes(true);
+
+            switch (actionTour.EtatDes)
+            {
+                case EtatLancerDes.PremierLance:
+                    actionTour.EtatDes = EtatLancerDes.DeuxiemeLance;
+                    break;
+                case EtatLancerDes.DeuxiemeLance:
+                    actionTour.EtatDes = EtatLancerDes.TroisiemeLance;
+                    break;
+                case EtatLancerDes.TroisiemeLance:
+                    // On desactive le bouton
+                    LancerDes.IsEnabled = false;
+                    EnabledDes(false);
+                    break;
+            }
+
+        }
+
+        public void EnabledDes(bool etat)
+        {
+            De1.IsEnabled = etat;
+            De2.IsEnabled = etat;
+            De3.IsEnabled = etat;
+            De4.IsEnabled = etat;
+            De5.IsEnabled = etat;
+            De6.IsEnabled = etat;
+        }
+
+        private void De1_Click(object sender, RoutedEventArgs e)
+        {
+            listDesRoll[0] = listDesRoll[0] ? false : true;
+            De1.Background = listDesRoll[0] ? Brushes.Violet : Brushes.Green;
+        }
+
+        private void De2_Click(object sender, RoutedEventArgs e)
+        {
+            listDesRoll[1] = listDesRoll[1] ? false : true;
+            De1.Background = listDesRoll[1] ? Brushes.Violet : Brushes.Green;
+        }
+
+        private void De3_Click(object sender, RoutedEventArgs e)
+        {
+            listDesRoll[2] = listDesRoll[2] ? false : true;
+            De1.Background = listDesRoll[2] ? Brushes.Violet : Brushes.Green;
+        }
+
+        private void De4_Click(object sender, RoutedEventArgs e)
+        {
+            listDesRoll[3] = listDesRoll[3] ? false : true;
+            De1.Background = listDesRoll[3] ? Brushes.Violet : Brushes.Green;
+        }
+
+        private void De5_Click(object sender, RoutedEventArgs e)
+        {
+            listDesRoll[4] = listDesRoll[4] ? false : true;
+            De1.Background = listDesRoll[4] ? Brushes.Violet : Brushes.Green;
+        }
+
+        private void De6_Click(object sender, RoutedEventArgs e)
+        {
+            listDesRoll[5] = listDesRoll[5] ? false : true;
+            De1.Background = listDesRoll[5] ? Brushes.Violet : Brushes.Green;
         }
     }
 }

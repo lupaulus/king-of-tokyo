@@ -6,6 +6,14 @@ using System.Linq;
 using System.Text;
 
 namespace ServeurKoT.Controleur{
+
+    public enum EtatLancerDes
+    {
+        PremierLance,
+        DeuxiemeLance,
+        TroisiemeLance
+    }
+
     public class GDes {
 
         #region Properties 

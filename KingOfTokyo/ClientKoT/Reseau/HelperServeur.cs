@@ -323,7 +323,14 @@ namespace Client.Reseau
             return ListInfoJoueur.Count;
         }
 
-
+        public void RollDes(ActionTour a)
+        {
+            a.RerollDes = true;
+            PaquetDonnees reroll = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, PseudoJoueur,
+                a);
+            _messageToSend = reroll.ToString();
+            EnvoyerPaquet();
+        }
 
         public void FinTour(ActionTour a)
         {

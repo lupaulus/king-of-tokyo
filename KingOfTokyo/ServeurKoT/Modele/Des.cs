@@ -9,6 +9,7 @@ namespace ServeurKoT.Modele{
     #region Enum
     public enum ValeurDes
     {
+        Unknown,
         Un,
         Deux,
         Trois,
