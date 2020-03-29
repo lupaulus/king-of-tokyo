@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,15 +26,26 @@ namespace ClientKoT
         private bool joueurPret = false;
 
         private HelperServeur helperServeur;
+
+        private ActionTour actionTour;
+
         public Plateau(HelperServeur h)
         {
             InitializeComponent();
             helperServeur = h;
             h.PartieStart += H_PartieStart;
+            h.TourSuivant += H_TourSuivant;
+            actionTour = new ActionTour();
             
         }
 
-        
+        private void H_TourSuivant(object sender, EventArgs args)
+        {
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                Debut_Tour();
+            }));
+        }
 
         private void H_PartieStart(object sender, EventArgs e)
         {
@@ -46,9 +58,11 @@ namespace ClientKoT
             }));
         }
 
+        
+
         private void Debut_Tour()
         {
-
+            Thread.Sleep(500);
             InfoJoueur infoJoueur = FindJoueur(helperServeur.ActualPlayer);
             if(!infoJoueur.AToiDeJouer)
             {
@@ -61,6 +75,12 @@ namespace ClientKoT
                 De3.IsEnabled = false;
                 De4.IsEnabled = false;
                 De5.IsEnabled = false;
+                De6.IsEnabled = false;
+                EntrerBanlieue.IsEnabled = false;
+                EntrerVille.IsEnabled = false;
+                LancerDes.IsEnabled = false;
+                ValidDes.IsEnabled = false;
+                Reroll.IsEnabled = false;
                 MessageBox.Show($"C'est au tour de {FindJoueurAToiJouer().Pseudo} de jouer");
                 return;
             }
@@ -74,6 +94,12 @@ namespace ClientKoT
             De3.IsEnabled = true;
             De4.IsEnabled = true;
             De5.IsEnabled = true;
+            De6.IsEnabled = true;
+            EntrerBanlieue.IsEnabled = true;
+            EntrerVille.IsEnabled = true;
+            LancerDes.IsEnabled = true;
+            ValidDes.IsEnabled = true;
+            Reroll.IsEnabled = true;
 
             // Alerte message
             MessageBox.Show("C'est à votre tour de jouer");
@@ -252,7 +278,7 @@ namespace ClientKoT
 
         private void btnFinTour_Click(object sender, RoutedEventArgs e)
         {
-
+            helperServeur.FinTour(actionTour);
         }
     }
 }

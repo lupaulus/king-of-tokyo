@@ -74,6 +74,7 @@ namespace ServeurKoT.Reseau
 
         public int BYTES_SIZE = 256;
         private int nextIdJoueur = 1;
+        private bool updateTour;
 
         #endregion Properties
 
@@ -92,6 +93,7 @@ namespace ServeurKoT.Reseau
             IPAddress localAddr = IPAddress.Parse(ipAdresse);
             // TcpListener server = new TcpListener(port);
             Server = new TcpListener(localAddr, port);
+            updateTour = false;
         }
 
         #endregion Ctor
@@ -176,6 +178,11 @@ namespace ServeurKoT.Reseau
                     Thread.Sleep(500);
 
                     UpdateInfoAllPlayers();
+                    if(updateTour)
+                    {
+                        UpdateInfoTour();
+                        updateTour = false;
+                    }
                 }
             }
             catch (Exception e)
@@ -200,7 +207,7 @@ namespace ServeurKoT.Reseau
                 c.NbrJoueurActuellement = GPartie.Instance.PartieActuel.DicJeuMonstre.Count;
                 p.data = c;
             }
-            if(p.commandeType == CommandeType.LANCEMENTPARTIE)
+            else if(p.commandeType == CommandeType.LANCEMENTPARTIE)
             {
                 
                 LancementPartie c = (LancementPartie)p.data;
@@ -216,7 +223,36 @@ namespace ServeurKoT.Reseau
                 // Indique le Joueur actuel
                 c.JoueurActuel = ListClients[client].IdJoueur;
             }
+
+            else if (p.commandeType == CommandeType.ACTIONTOUR)
+            {
+                ActionTour t = (ActionTour)p.data;
+                if(t.FinTour)
+                {
+                    Logger.Log(Logger.Level.Info, $"le tour est fini, un nouveau va commencer");
+                    GPartie.Instance.PartieActuel.ProchainTour();
+                    updateTour = true;
+                }
+            }
+
             ListClients[client].MessageToSend = p.ToString();
+        }
+
+        private void UpdateInfoTour()
+        {
+            foreach (TcpClient tcpClient in ListClients.Keys)
+            {
+                //Get stream
+                NetworkStream stream = tcpClient.GetStream();
+
+                // Clear list
+                ActionTour action = new ActionTour();
+                PaquetDonnees pa = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, "SERVEUR", action);
+                Byte[] send = Encoding.ASCII.GetBytes(pa.ToString());
+                stream.Write(send, 0, send.Length);
+                Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {pa.ToString()}");
+                Thread.Sleep(200);
+            }
         }
 
         private void UpdateInfoAllPlayers()

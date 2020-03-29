@@ -44,12 +44,10 @@ namespace Client.Reseau
         public event PartieStart_EventHandler PartieStart;
         public delegate void PartieStart_EventHandler(object sender, EventArgs args);
 
-        public Monstre ActualPlayer { get; set; }
+        public event PartieTourSuivant_EventHandler TourSuivant;
+        public delegate void PartieTourSuivant_EventHandler(object sender, EventArgs args);
 
-        /// <summary>
-        /// Nombre de joueur max.
-        /// </summary>
-        private static int JOUEUR_MAX = 6;
+        public Monstre ActualPlayer { get; set; }
 
         private TcpClient ClientTCP;
         private NetworkStream stream;
@@ -64,6 +62,11 @@ namespace Client.Reseau
         private string _messageToSend;
         private List<InfoJoueur> _infoJoueurs;
         private bool okConnexion;
+        private bool partieLancer;
+
+        public string ImageCarte1 { get; set; }
+        public string ImageCarte2 { get; set; }
+        public string ImageCarte3 { get; set; }
 
         public List<InfoJoueur> ListInfoJoueur
         {
@@ -129,6 +132,7 @@ namespace Client.Reseau
             this.NbrJoueur = 0;
             this.Etat = EtatServeur.OK;
             this.ListInfoJoueur = new List<InfoJoueur>();
+            this.partieLancer = false;
 
         }
 
@@ -195,11 +199,23 @@ namespace Client.Reseau
                 if(ij.IdJoueur == Monstre.UNKNOWN)
                 {
                     ListInfoJoueur.Clear();
+                    ImageCarte1 = ij.ImageCarte1;
+                    ImageCarte2 = ij.ImageCarte2;
+                    ImageCarte3 = ij.ImageCarte3;
                 }
-                if(CheckIfAllPlayerAreReady())
+                if(!partieLancer && CheckIfAllPlayerAreReady())
                 {
                     OnPartieStart(new EventArgs());
+                    partieLancer = true;
                 }
+                else if(partieLancer)
+                {
+                    
+                }
+            }
+            else if(p.commandeType == CommandeType.ACTIONTOUR)
+            {
+                OnProchainTour(new EventArgs());
             }
             
         }
@@ -290,6 +306,11 @@ namespace Client.Reseau
             handler?.Invoke(this, e);
         }
 
+        protected virtual void OnProchainTour(EventArgs e)
+        {
+            PartieTourSuivant_EventHandler handler = TourSuivant;
+            handler?.Invoke(this, e);
+        }
 
 
         public void DeconnexionServeur() {
@@ -300,27 +321,17 @@ namespace Client.Reseau
 
         public int NombreJoueurs() {
             return ListInfoJoueur.Count;
-    }
-
-        // Monstre 
-
-        public List<int> LancerDes()
-        {
-            return new List<int>();
-        }
-
-        public void GarderDes(List<int> idDesGarder)
-        {
-
-        }
-
-        public void DonnerBaffes(List<int> idMonstres,List<int> nbrBaffes)
-        {
-
         }
 
 
 
-
+        public void FinTour(ActionTour a)
+        {
+            a.FinTour = true;
+            PaquetDonnees finTour = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, PseudoJoueur,
+                a);
+            _messageToSend = finTour.ToString();
+            EnvoyerPaquet();
+        }
     }
 }
