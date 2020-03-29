@@ -10,11 +10,14 @@ using System.Xml.Serialization;
 namespace ServeurKoT.Controleur{
     public class GCarte {
 
+        private Stack<Carte> ListDesCartes;
 
-        public Stack<Carte> ListDesCartes;
+        public List<Carte> CartePlateau { get; set; }
 
         public GCarte() {
             ImportCartes();
+            Randomize();
+            CartePlateau = GetTroisCartes();
         }
 
         private void ImportCartes()
@@ -37,6 +40,27 @@ namespace ServeurKoT.Controleur{
                 String.Format("{0} Cartes Actions | {1} Cartes Pouvoir", nbrAction,list.Count-nbrAction));
         }
 
+        private void Randomize()
+        {
+            ListDesCartes = Shuffle<Carte>(ListDesCartes);
+        }
+
+        public static Stack<T> Shuffle<T>(Stack<T> stack)
+        {
+            Random rnd = new Random();
+            return new Stack<T>(stack.OrderBy(x => rnd.Next()));
+        }
+
+        public List<Carte>  GetTroisCartes()
+        {
+            List<Carte> res = new List<Carte>();
+            for(int i =0;i<3;i++)
+            {
+                res.Add(ListDesCartes.Pop());
+            }
+            
+            return res;
+        }
 
     }
 }
