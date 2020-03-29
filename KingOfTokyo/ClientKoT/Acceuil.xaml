@@ -24,7 +24,7 @@
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Source="/Images/kot_banner.png"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Source="/Images/KoT_Accueil.png" Height="620" Width="403"/>
         </StackPanel>
