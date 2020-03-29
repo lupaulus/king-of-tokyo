@@ -50,6 +50,18 @@
                 <TextBlock x:Name="NbEnergieJ2" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                <!-- Popup images des cartes à acheter -->
+                <Popup Name="popupCarte1" IsOpen="{Binding ElementName=Carte1, Path=IsMouseOver, Mode=OneWay}">
+                    <Image x:Name="Carte1View" Source="{Binding ElementName=Carte1, Path=Source}"/>
+                </Popup>
+                <Popup Name="popupCarte2" IsOpen="{Binding ElementName=Carte2, Path=IsMouseOver, Mode=OneWay}">
+                    <Image x:Name="Carte2View" Source="{Binding ElementName=Carte2, Path=Source}"/>
+                </Popup>
+                <Popup Name="popupCarte3" IsOpen="{Binding ElementName=Carte3, Path=IsMouseOver, Mode=OneWay}">
+                    <Image x:Name="Carte3View" Source="{Binding ElementName=Carte3, Path=Source}"/>
+                </Popup>
+                
             </Grid>
         </Border>
 
@@ -79,17 +91,6 @@
                 <TextBlock x:Name="NbEnergieJ4" Text="0" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur4" Text="Joueur 4" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ4" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-                <!-- Popup images des cartes à acheter -->
-                <Popup Name="popupCarte1" IsOpen="{Binding ElementName=Carte1, Path=IsMouseOver, Mode=OneWay}">
-                    <Image x:Name="Carte1View" Source="{Binding ElementName=Carte1, Path=Source}"/>
-                </Popup>
-                <Popup Name="popupCarte2" IsOpen="{Binding ElementName=Carte2, Path=IsMouseOver, Mode=OneWay}">
-                    <Image x:Name="Carte2View" Source="{Binding ElementName=Carte2, Path=Source}"/>
-                </Popup>
-                <Popup Name="popupCarte3" IsOpen="{Binding ElementName=Carte3, Path=IsMouseOver, Mode=OneWay}">
-                    <Image x:Name="Carte3View" Source="{Binding ElementName=Carte3, Path=Source}"/>
-                </Popup>
             </Grid>
         </Border>
 
