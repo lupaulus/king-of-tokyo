@@ -18,7 +18,7 @@ namespace ServeurKoT.Modele{
 
         protected string Description { get; set; }
 
-        protected string CheminImgCarte { get; set; }
+        public string CheminImgCarte { get; set; }
 
         #endregion Properties
 

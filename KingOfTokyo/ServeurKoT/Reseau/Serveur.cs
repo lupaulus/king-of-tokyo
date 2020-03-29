@@ -264,6 +264,10 @@ namespace ServeurKoT.Reseau
 
                 // Clear list
                 InfoJoueur clear = new InfoJoueur();
+                // Rajout des informations des cartes si disponible
+                clear.AjoutCartesChemins(GPartie.Instance.PartieActuel.ListCheminImgCartesPlateau());
+
+
                 PaquetDonnees pa = new PaquetDonnees(Commande.POST, CommandeType.INFOJOUEUR, "CLEARLIST", clear);
                 Byte[] send = Encoding.ASCII.GetBytes(pa.ToString());
                 stream.Write(send, 0, send.Length);

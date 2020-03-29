@@ -81,6 +81,16 @@ namespace ServeurKoT.Controleur{
             // Renvoyer le gagnant.
         }
 
+        public string[] ListCheminImgCartesPlateau()
+        {
+            string[] tab = new string[3];
+            for(int i=0;i<3;i++)
+            {
+                tab[i] = GestionaryCarte.CartePlateau[i].CheminImgCarte;
+            }
+            return tab;
+        }
+
         
         #endregion Methodes
 

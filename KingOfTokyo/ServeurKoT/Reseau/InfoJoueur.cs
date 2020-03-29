@@ -65,5 +65,12 @@ namespace ServeurKoT.Reseau
         {
             return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}|{AToiDeJouer}|{ImageCarte1}|{ImageCarte2}|{ImageCarte3}";
         }
+
+        public void AjoutCartesChemins(string[] listCheminImgCartesPlateau)
+        {
+            ImageCarte1 =  listCheminImgCartesPlateau[0];
+            ImageCarte2 = listCheminImgCartesPlateau[1];
+            ImageCarte3 = listCheminImgCartesPlateau[2];
+        }
     }
 }
