@@ -63,7 +63,7 @@
                     <materialDesign:PackIcon Kind="Menu" Foreground="#FFFFFF"/>
                 </Button>
                 <Button Grid.Column="2" x:Name="ButtonClose" Width="50" Height="50"  Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonClose_Click">
-                    <materialDesign:PackIcon Kind="Power" Foreground="#CF6679" Height="30" Width="30"/>
+                    <materialDesign:PackIcon Kind="Power" Foreground="#C4151C" Height="30" Width="30"/>
                 </Button>
             </Grid>
             <ContentControl x:Name="ContentPrincipal" Grid.Row="1"/>
