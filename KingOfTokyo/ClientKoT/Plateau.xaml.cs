@@ -22,8 +22,6 @@ namespace ClientKoT
     public partial class Plateau : UserControl
     {
 
-        
-
         private bool joueurPret = false;
 
         private HelperServeur helperServeur;
@@ -44,10 +42,58 @@ namespace ClientKoT
             {
                 Hide_Joueur();
                 Update_Data();
+                Debut_Tour();
             }));
         }
 
-        
+        private void Debut_Tour()
+        {
+
+            InfoJoueur infoJoueur = FindJoueur(helperServeur.ActualPlayer);
+            if(!infoJoueur.AToiDeJouer)
+            {
+                btnFinTour.IsEnabled = false;
+                Acheter1.IsEnabled = false;
+                Acheter2.IsEnabled = false;
+                Acheter3.IsEnabled = false;
+                De1.IsEnabled = false;
+                De2.IsEnabled = false;
+                De3.IsEnabled = false;
+                De4.IsEnabled = false;
+                De5.IsEnabled = false;
+                MessageBox.Show($"C'est au tour de {FindJoueurAToiJouer().Pseudo} de jouer");
+                return;
+            }
+
+            btnFinTour.IsEnabled = true;
+            Acheter1.IsEnabled = true;
+            Acheter2.IsEnabled = true;
+            Acheter3.IsEnabled = true;
+            De1.IsEnabled = true;
+            De2.IsEnabled = true;
+            De3.IsEnabled = true;
+            De4.IsEnabled = true;
+            De5.IsEnabled = true;
+
+            // Alerte message
+            MessageBox.Show("C'est à votre tour de jouer");
+
+            // 
+
+            // Envoyer Action Tour
+        }
+
+        private InfoJoueur FindJoueurAToiJouer()
+        {
+            foreach (InfoJoueur info in helperServeur.ListInfoJoueur)
+            {
+                if (info.AToiDeJouer)
+                {
+                    return info;
+                }
+            }
+            throw new KeyNotFoundException();
+        }
 
         private void btnPret_Click(object sender, RoutedEventArgs e)
         {

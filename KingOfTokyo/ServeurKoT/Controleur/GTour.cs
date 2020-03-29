@@ -16,6 +16,7 @@ namespace ServeurKoT.Controleur
         
         public void ProchainTour()
         {
+            // Changement de position
             ListOrdonneJoueur.Enqueue(ListOrdonneJoueur.Dequeue());
             JoueurActuel = ListOrdonneJoueur.Peek();
         }
