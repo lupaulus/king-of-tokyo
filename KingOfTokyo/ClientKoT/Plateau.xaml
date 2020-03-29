@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:ClientKoT"
       xmlns:reseau="clr-namespace:Client.Reseau"
       mc:Ignorable="d"
@@ -41,12 +42,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="2" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ2" Text="NbVies" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ2" Text="NbVictoire" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ2" Text="NbEnergy" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="0" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="0" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="2" Grid.Row="0" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ2" Text="10" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ2" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ2" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ2" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
@@ -56,7 +57,7 @@
 
         <!-- Grid joueur 4 -->
         <Border Margin="2" x:Name="j4" Background="#292929" BorderBrush="#BB86FC" BorderThickness="2" Grid.Column="2" Grid.Row="0">
-            <Grid Grid.Column="2" Grid.Row="0" >
+            <Grid Grid.Column="2" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="1*"/>
@@ -69,14 +70,26 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="1" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="2" Grid.Row="0" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="3" Grid.Row="0" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ4" Text="NbVies" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ4" Text="NbVictoire" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ4" Text="NbEnergy" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="2" Grid.Row="0" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="3" Grid.Row="0" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               
+                <TextBlock x:Name="NbViesJ4" Text="10" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ4" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ4" Text="0" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur4" Text="Joueur 4" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ4" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                <!-- Popup images des cartes à acheter -->
+                <Popup Name="popupCarte1" IsOpen="{Binding ElementName=Carte1, Path=IsMouseOver, Mode=OneWay}">
+                    <Image x:Name="Carte1View" Source="{Binding ElementName=Carte1, Path=Source}"/>
+                </Popup>
+                <Popup Name="popupCarte2" IsOpen="{Binding ElementName=Carte2, Path=IsMouseOver, Mode=OneWay}">
+                    <Image x:Name="Carte2View" Source="{Binding ElementName=Carte2, Path=Source}"/>
+                </Popup>
+                <Popup Name="popupCarte3" IsOpen="{Binding ElementName=Carte3, Path=IsMouseOver, Mode=OneWay}">
+                    <Image x:Name="Carte3View" Source="{Binding ElementName=Carte3, Path=Source}"/>
+                </Popup>
             </Grid>
         </Border>
 
@@ -97,12 +110,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="1" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="2" Grid.Row="1" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ1" Text="NbVies" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ1" Text="NbVictoire" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ1" Text="NbEnergy" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="0" Grid.Row="1" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="2" Grid.Row="1" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ1" Text="10" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ1" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ1" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur1" Text="Joueur 1" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ1" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
@@ -125,12 +138,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="1" Grid.Row="1" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="2" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="3" Grid.Row="1" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ3" Text="NbVies" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ3" Text="NbVictoire" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ3" Text="NbEnergy" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="2" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="3" Grid.Row="1" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ3" Text="10" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ3" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ3" Text="0" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur3" Text="Joueur 3" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ3" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
@@ -152,12 +165,12 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="0" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="0" Grid.Row="2" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ5" Text="NbVies" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ5" Text="NbVictoire" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ5" Text="NbEnergy" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="0" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="0" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="0" Grid.Row="2" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ5" Text="10" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ5" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ5" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur5" Text="Joueur 5" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ5" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
@@ -180,12 +193,12 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="1" Grid.Row="0" Content="Vies" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" Grid.Row="1" Content="Victoire" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" Grid.Row="2" Content="Energie" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ6" Text="NbVies" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbVictoireJ6" Text="NbVictoire" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="NbEnergieJ6" Text="NbEnergy" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Grid.Column="1" Grid.Row="2" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ6" Text="10" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbVictoireJ6" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbEnergieJ6" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur6" Text="Joueur 6" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="pouvoirsJ6" Text="Pouvoirs" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
@@ -205,12 +218,11 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="Deck" Source="/Images/deck_2.jpg" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Button Margin="5" x:Name="Reroll" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Reroll</Button>
+            <Button Margin="5" x:Name="Reroll" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="Coute 3 Énergies">Reroll</Button>
 
-            <TextBlock x:Name="Carte1" Text="Carte1" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="Carte2" Text="Carte2" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="Carte3" Text="Carte3" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="Carte1" Source="/Images/imgCartes/Card_72.png" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="Carte2" Source="/Images/imgCartes/Card_66.png" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="Carte3" Source="/Images/imgCartes/Card_2.png" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Button Margin="5" x:Name="Acheter1" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter1</Button>
             <Button Margin="5" x:Name="Acheter2" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter2</Button>
             <Button Margin="5" x:Name="Acheter3" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter3</Button>
