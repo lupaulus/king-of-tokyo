@@ -61,6 +61,12 @@ namespace ClientKoT
                 De3.IsEnabled = false;
                 De4.IsEnabled = false;
                 De5.IsEnabled = false;
+                De6.IsEnabled = false;
+                EntrerBanlieue.IsEnabled = false;
+                EntrerVille.IsEnabled = false;
+                LancerDes.IsEnabled = false;
+                ValidDes.IsEnabled = false;
+                Reroll.IsEnabled = false;
                 MessageBox.Show($"C'est au tour de {FindJoueurAToiJouer().Pseudo} de jouer");
                 return;
             }
@@ -74,6 +80,12 @@ namespace ClientKoT
             De3.IsEnabled = true;
             De4.IsEnabled = true;
             De5.IsEnabled = true;
+            De6.IsEnabled = true;
+            EntrerBanlieue.IsEnabled = true;
+            EntrerVille.IsEnabled = true;
+            LancerDes.IsEnabled = true;
+            ValidDes.IsEnabled = true;
+            Reroll.IsEnabled = true;
 
             // Alerte message
             MessageBox.Show("C'est à votre tour de jouer");

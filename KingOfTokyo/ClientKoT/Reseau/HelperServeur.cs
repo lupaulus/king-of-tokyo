@@ -65,6 +65,11 @@ namespace Client.Reseau
         private List<InfoJoueur> _infoJoueurs;
         private bool okConnexion;
 
+
+        public string ImageCarte1 { get; set; }
+        public string ImageCarte2 { get; set; }
+        public string ImageCarte3 { get; set; }
+
         public List<InfoJoueur> ListInfoJoueur
         {
             get
@@ -195,6 +200,9 @@ namespace Client.Reseau
                 if(ij.IdJoueur == Monstre.UNKNOWN)
                 {
                     ListInfoJoueur.Clear();
+                    ImageCarte1 = ij.ImageCarte1;
+                    ImageCarte2 = ij.ImageCarte2;
+                    ImageCarte3 = ij.ImageCarte3;
                 }
                 if(CheckIfAllPlayerAreReady())
                 {

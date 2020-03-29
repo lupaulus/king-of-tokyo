@@ -1,16 +1,21 @@
 ﻿namespace ServeurKoT.Reseau
 {
-    internal class ActionTour : StreamObject
+    class ActionTour : StreamObject
     {
-        private byte[] b;
+        public int valeurDes;
 
-        public ActionTour(string b)
+        public bool FinTour { get; set; }
+
+        public ActionTour(string s)
         {
+            string[] tab = s.Split('|');
+            FinTour = bool.Parse(tab[0]);
+
         }
 
         public override string IntoString()
         {
-            throw new System.NotImplementedException();
+            return $"{FinTour.ToString()}|{valeurDes}";
         }
     }
 }

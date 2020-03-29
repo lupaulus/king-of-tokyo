@@ -1,17 +1,23 @@
-﻿namespace Client.Reseau
+﻿using System.Collections.Generic;
+
+namespace Client.Reseau
 {
-    internal class ActionTour : StreamObject
+    class ActionTour : StreamObject
     {
-        
+        public int valeurDes;
+
+        public bool FinTour { get; set; }
 
         public ActionTour(string s)
         {
+            string[] tab = s.Split('|');
+            FinTour = bool.Parse(tab[0]);
             
         }
 
         public override string IntoString()
         {
-            return "";
+            return $"{FinTour.ToString()}|{valeurDes}";
         }
     }
 }

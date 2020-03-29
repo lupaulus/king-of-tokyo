@@ -22,6 +22,10 @@ namespace Client.Reseau
 
         public bool AToiDeJouer { get; set; }
 
+        public string ImageCarte1 { get; set; }
+        public string ImageCarte2 { get; set; }
+        public string ImageCarte3 { get; set; }
+
 
         public InfoJoueur()
         {
@@ -34,6 +38,9 @@ namespace Client.Reseau
             this.PtsEnergie = -1;
             this.AToiDeJouer = false;
 
+            this.ImageCarte1 = " ";
+            this.ImageCarte2 = " ";
+            this.ImageCarte3 = " ";
         }
 
         public InfoJoueur(string b)
@@ -46,14 +53,17 @@ namespace Client.Reseau
             this.PtsVie = int.Parse(tab[3]);
             this.PtsVictoire = int.Parse(tab[4]);
             this.PtsEnergie = int.Parse(tab[5]);
-
             this.AToiDeJouer = bool.Parse(tab[6]);
+
+            this.ImageCarte1 = tab[7];
+            this.ImageCarte2 = tab[8];
+            this.ImageCarte3 = tab[9];
         }
 
 
         public override string IntoString()
         {
-            return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}|{AToiDeJouer}";
+            return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}|{AToiDeJouer}|{ImageCarte1}|{ImageCarte2}|{ImageCarte3}";
         }
     }
 }
