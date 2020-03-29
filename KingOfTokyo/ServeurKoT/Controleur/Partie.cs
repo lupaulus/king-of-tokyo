@@ -17,7 +17,7 @@ namespace ServeurKoT.Controleur{
         public Plateau Plateau { get; }
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
-        public GTour GestionnaireDesTours { get;  }
+        public GTour GestionnaireDesTours { get; set; }
         public Dictionary<MonstreJeu, Joueur> DicJeuMonstre { get; }
 
         #endregion Properties
@@ -30,7 +30,7 @@ namespace ServeurKoT.Controleur{
             DicJeuMonstre = new Dictionary<MonstreJeu, Joueur>();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
-            GestionnaireDesTours = new GTour(new List<MonstreJeu>(DicJeuMonstre.Keys));
+            
             Plateau = new Plateau();
         }
 
@@ -55,8 +55,11 @@ namespace ServeurKoT.Controleur{
                 return;
             }
 
+
+            GestionnaireDesTours = new GTour(new List<MonstreJeu>(DicJeuMonstre.Keys));
+
             // Initialisation des infos
-            foreach(MonstreJeu m in DicJeuMonstre.Keys)
+            foreach (MonstreJeu m in DicJeuMonstre.Keys)
             {
                 DicJeuMonstre[m].PtsVie = m.PointVie;
                 DicJeuMonstre[m].PtsVictoire = m.PointVictoire;
