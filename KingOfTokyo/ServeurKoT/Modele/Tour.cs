@@ -13,9 +13,7 @@ namespace ServeurKoT.Controleur{
         private int numTour;
 
 
-        public void finTour() {
-            // TODO implement here
-        }
+        
 
     }
 }
