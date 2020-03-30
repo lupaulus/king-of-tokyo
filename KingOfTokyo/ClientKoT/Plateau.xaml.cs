@@ -85,10 +85,8 @@ namespace ClientKoT
         {
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
-                
                 Debut_Tour();
                 UpdateMagasin();
-                
             }));
         }
 
