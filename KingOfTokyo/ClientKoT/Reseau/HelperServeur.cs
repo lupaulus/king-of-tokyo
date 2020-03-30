@@ -47,6 +47,9 @@ namespace Client.Reseau
         public event PartieTourSuivant_EventHandler TourSuivant;
         public delegate void PartieTourSuivant_EventHandler(object sender, EventArgs args);
 
+        public event ResultatDes_EventHandler ResultatDes;
+        public delegate void ResultatDes_EventHandler(object sender, EventDesArgs args);
+
         public Monstre ActualPlayer { get; set; }
 
         private TcpClient ClientTCP;
@@ -215,7 +218,16 @@ namespace Client.Reseau
             }
             else if(p.commandeType == CommandeType.ACTIONTOUR)
             {
-                OnProchainTour(new EventArgs());
+                ActionTour t = (ActionTour)p.data;
+                if(t.RerollDes)
+                {
+                    OnResultatDes(new EventDesArgs(t));
+                }
+                if (t.FinTour)
+                {
+                    OnProchainTour(new EventArgs());
+                }
+                    
             }
             
         }
@@ -313,17 +325,26 @@ namespace Client.Reseau
         }
 
 
-        public void DeconnexionServeur() {
-            // TODO implement here
+        protected virtual void OnResultatDes(EventDesArgs e)
+        {
+            ResultatDes_EventHandler handler = ResultatDes;
+            handler?.Invoke(this, e);
         }
-
 
 
         public int NombreJoueurs() {
             return ListInfoJoueur.Count;
         }
 
-
+        public void RollDes(ActionTour a)
+        {
+            a.RerollDes = true;
+            a.FinTour = false;
+            PaquetDonnees reroll = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, PseudoJoueur,
+                a);
+            _messageToSend = reroll.ToString();
+            EnvoyerPaquet();
+        }
 
         public void FinTour(ActionTour a)
         {
@@ -332,6 +353,15 @@ namespace Client.Reseau
                 a);
             _messageToSend = finTour.ToString();
             EnvoyerPaquet();
+        }
+    }
+
+    public class EventDesArgs : EventArgs
+    {
+        public ActionTour Action { get;}
+        public EventDesArgs(ActionTour a)
+        {
+            Action = a;
         }
     }
 }
