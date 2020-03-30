@@ -87,7 +87,7 @@ namespace ServeurKoT.Reseau
             res.PtsEnergie = PtsEnergie;
 
             res.AToiDeJouer = AToiDeJouer;
-
+            res.EstDansVille = EstEnVille;
             return res;
         }
 
