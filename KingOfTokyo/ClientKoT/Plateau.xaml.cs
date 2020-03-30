@@ -44,6 +44,7 @@ namespace ClientKoT
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 Debut_Tour();
+                UpdateMagasin();
             }));
         }
 
@@ -55,10 +56,50 @@ namespace ClientKoT
                 Hide_Joueur();
                 Update_Data();
                 Debut_Tour();
+                UpdateMagasin();
             }));
         }
 
         
+        private void UpdateMagasin()
+        {
+            string path1 = String.Concat("/Images/imgCartes/", helperServeur.ImageCarte1);
+            string path2 = String.Concat("/Images/imgCartes/", helperServeur.ImageCarte2);
+            string path3 = String.Concat("/Images/imgCartes/", helperServeur.ImageCarte3);
+
+            Uri uri1 = new Uri(path1, UriKind.Relative);
+            Uri uri2 = new Uri(path2, UriKind.Relative);
+            Uri uri3 = new Uri(path3, UriKind.Relative);
+
+            Carte1.Source = new BitmapImage(uri1);
+            Carte2.Source = new BitmapImage(uri2);
+            Carte3.Source = new BitmapImage(uri3);
+        }
+
+        private void UpdateDes(object sender, EventArgs e)
+        {
+            string path1 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte1);
+            string path2 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte2);
+            string path3 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
+            string path4 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
+            string path5 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
+            string path6 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
+
+            Uri uri1 = new Uri(path1, UriKind.Relative);
+            Uri uri2 = new Uri(path2, UriKind.Relative);
+            Uri uri3 = new Uri(path3, UriKind.Relative);
+            Uri uri4 = new Uri(path4, UriKind.Relative);
+            Uri uri5 = new Uri(path5, UriKind.Relative);
+            Uri uri6 = new Uri(path6, UriKind.Relative);
+
+            imgDe1.Source = new BitmapImage(uri1);
+            imgDe2.Source = new BitmapImage(uri2);
+            imgDe3.Source = new BitmapImage(uri3);
+            imgDe4.Source = new BitmapImage(uri1);
+            imgDe5.Source = new BitmapImage(uri2);
+            imgDe6.Source = new BitmapImage(uri3);
+        }
+
 
         private void Debut_Tour()
         {
