@@ -44,7 +44,7 @@ namespace ServeurKoT.Modele{
         public void Roll()
         {
             
-            Value = (ValeurDes) rand.Next(1, 6);
+            Value = (ValeurDes) rand.Next(1, 7);
         }
     }
 }

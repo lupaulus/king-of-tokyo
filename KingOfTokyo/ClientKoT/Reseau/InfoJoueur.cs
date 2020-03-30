@@ -25,6 +25,7 @@ namespace Client.Reseau
         public string ImageCarte1 { get; set; }
         public string ImageCarte2 { get; set; }
         public string ImageCarte3 { get; set; }
+        public bool EstDansVille { get; set; }
 
 
         public InfoJoueur()
@@ -41,6 +42,7 @@ namespace Client.Reseau
             this.ImageCarte1 = " ";
             this.ImageCarte2 = " ";
             this.ImageCarte3 = " ";
+            this.EstDansVille = false;
         }
 
         public InfoJoueur(string b)
@@ -58,12 +60,20 @@ namespace Client.Reseau
             this.ImageCarte1 = tab[7];
             this.ImageCarte2 = tab[8];
             this.ImageCarte3 = tab[9];
+            this.EstDansVille = bool.Parse(tab[10]);
         }
 
 
         public override string IntoString()
         {
-            return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}|{AToiDeJouer}|{ImageCarte1}|{ImageCarte2}|{ImageCarte3}";
+            return $"{(int)IdJoueur}|{Pseudo}|{EstPret.ToString()}|{PtsVie}|{PtsVictoire}|{PtsEnergie}|{AToiDeJouer}|{ImageCarte1}|{ImageCarte2}|{ImageCarte3}|{EstDansVille.ToString()}";
+        }
+
+        public void AjoutCartesChemins(string[] listCheminImgCartesPlateau)
+        {
+            ImageCarte1 = listCheminImgCartesPlateau[0];
+            ImageCarte2 = listCheminImgCartesPlateau[1];
+            ImageCarte3 = listCheminImgCartesPlateau[2];
         }
     }
 }

@@ -85,10 +85,8 @@ namespace ClientKoT
         {
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
-                
                 Debut_Tour();
                 UpdateMagasin();
-                
             }));
         }
 
@@ -169,6 +167,7 @@ namespace ClientKoT
             Thread.Sleep(1000);
 
             EnabledDes(false);
+            actionTour = new ActionTour();
             InfoJoueur infoJoueur = FindJoueur(helperServeur.ActualPlayer);
             if(!infoJoueur.AToiDeJouer)
             {

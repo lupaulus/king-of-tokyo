@@ -1,5 +1,6 @@
 
 using ServeurKoT.Modele;
+using ServeurKoT.Reseau;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,58 +13,56 @@ namespace ServeurKoT.Controleur{
     /// </summary>
     public class Plateau {
 
+
+
         /// <summary>
         /// Création du plateau
         /// </summary>
         /// <param name="monstres">Liste des monstres qui compose le plateau</param>
         public Plateau() 
-        {
-        }
-
-        private List<MonstreJeu> monstreEnVille { get; }
-
-        private List<MonstreJeu> monstreHorsVille { get; }
-        private List<MonstreJeu> tousLesMonstres { get; }
+        {}
 
         
         /// <summary>
         /// Methode pour rentrer dans la ville
         /// </summary>
         /// <param name="monstre">Monstre qui doit rentrer dans la ville</param>
-        public void entrerVille(MonstreJeu monstre)
+        public void entrerVille(Joueur monstre)
         {
-            monstreEnVille.Add(monstre);
+            monstre.EstEnVille = true;
         }
 
         /// <summary>
         /// Methode pour sortir de la ville
         /// </summary>
         /// <param name="monstre">Monstre qui doit sortir la ville</param>
-        public void sortirVille(MonstreJeu monstre)
+        public void sortirVille(Joueur monstre)
         {
-            monstreEnVille.Remove(monstre);
+            monstre.EstEnVille = false;
         }
 
         
 
-        public List<MonstreJeu> ListeDesMonstreEnVie(List<MonstreJeu> monstres)
+
+        public void frapperLaVille(List<Joueur> j, int valueFrappe)
         {
-            List<MonstreJeu> res = new List<MonstreJeu>();
-            foreach(MonstreJeu monstre in monstres)
+            foreach(Joueur monstre in j)
             {
-                if(!monstre.monstreMort())
+                if(monstre.EstEnVille)
                 {
-                    res.Add(monstre);
+                    monstre.seFaireFrapper(valueFrappe);
                 }
             }
-            return res;
         }
 
-        public void frapperLaVille(int valueFrappe)
+        public void frapperHorsVille(List<Joueur> j, int valueFrappe)
         {
-            foreach(MonstreJeu monstre in monstreEnVille)
+            foreach (Joueur monstre in j)
             {
-                monstre.seFaireFrapper(valueFrappe);
+                if (!monstre.EstEnVille)
+                {
+                    monstre.seFaireFrapper(valueFrappe);
+                }
             }
         }
 
