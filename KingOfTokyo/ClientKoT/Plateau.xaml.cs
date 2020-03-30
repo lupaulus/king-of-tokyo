@@ -244,7 +244,6 @@ namespace ClientKoT
                         NbViesJ1.Text = infoJoueur.PtsVie.ToString();
                         NbEnergieJ1.Text = infoJoueur.PtsEnergie.ToString();
                         NbVictoireJ1.Text = infoJoueur.PtsVictoire.ToString();
-
                         break;
                     case 2: // 2 joueurs
                         nomJoueur2.Text = infoJoueur.Pseudo;
