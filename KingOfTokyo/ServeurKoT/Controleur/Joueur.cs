@@ -30,6 +30,8 @@ namespace ServeurKoT.Reseau
         public int PtsVictoire { get; set; }
         public int PtsEnergie { get; set; }
 
+        public bool EstEnVille { get; set; }
+
         public bool AToiDeJouer { get; set; }
 
         private static int POINT_VIE_MIN = 0;

@@ -30,7 +30,6 @@ namespace ServeurKoT.Controleur{
             DicJeuMonstre = new List<Joueur>();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
-            
             Plateau = new Plateau();
         }
 
@@ -57,7 +56,8 @@ namespace ServeurKoT.Controleur{
 
             GestionnaireDesTours = new GTour(DicJeuMonstre);
 
-            // Initialisation des infos
+            // Monstre dans la ville au début
+            Plateau.entrerVille(GestionnaireDesTours.JoueurActuel);
 
             // Joueur qui commence la partie
             GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;
