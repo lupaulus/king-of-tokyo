@@ -227,7 +227,12 @@ namespace ServeurKoT.Reseau
             else if (p.commandeType == CommandeType.ACTIONTOUR)
             {
                 ActionTour t = (ActionTour)p.data;
-                if(t.FinTour)
+                if(t.RerollDes)
+                {
+                    Logger.Log(Logger.Level.Info, $"Reroll Des : {t.EtatDes.ToString()}");
+                    t.RemplirDes(GPartie.Instance.PartieActuel.LancerDes());
+                }
+                else if(t.FinTour)
                 {
                     Logger.Log(Logger.Level.Info, $"le tour est fini, un nouveau va commencer");
                     GPartie.Instance.PartieActuel.ProchainTour();

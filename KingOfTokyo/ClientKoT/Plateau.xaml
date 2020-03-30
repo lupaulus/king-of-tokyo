@@ -282,8 +282,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock x:Name="ResultatDes" Text="Resultat littéral" Foreground="#FFFFFF" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Button Margin="5" x:Name="LancerDes" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Lancer dés</Button>
-                <Button x:Name="ValidDes" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">Valider dés</Button>
+                <Button Margin="5" x:Name="LancerDes" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LancerDes_Click">Lancer dés</Button>
             </Grid>
         </Grid>
 
