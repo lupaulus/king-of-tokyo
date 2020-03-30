@@ -155,7 +155,7 @@ namespace ClientKoT
                 Acheter1.IsEnabled = false;
                 Acheter2.IsEnabled = false;
                 Acheter3.IsEnabled = false;
-                EntrerBanlieue.IsEnabled = false;
+                EntrerBay.IsEnabled = false;
                 EntrerVille.IsEnabled = false;
                 LancerDes.IsEnabled = false;
                 Reroll.IsEnabled = false;
@@ -167,7 +167,7 @@ namespace ClientKoT
             Acheter1.IsEnabled = true;
             Acheter2.IsEnabled = true;
             Acheter3.IsEnabled = true;
-            EntrerBanlieue.IsEnabled = true;
+            EntrerBay.IsEnabled = true;
             EntrerVille.IsEnabled = true;
             LancerDes.IsEnabled = true;
             Reroll.IsEnabled = true;
@@ -291,6 +291,10 @@ namespace ClientKoT
             switch(helperServeur.NombreJoueurs())
             {
                 case 0: // 0 joueur
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Hidden;
                     j2.Visibility = Visibility.Hidden;
                     j3.Visibility = Visibility.Hidden;
@@ -299,6 +303,10 @@ namespace ClientKoT
                     j6.Visibility = Visibility.Hidden;
                     break;
                 case 1: // 1 joueur
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Visible;
                     j2.Visibility = Visibility.Hidden;
                     j3.Visibility = Visibility.Hidden;
@@ -307,6 +315,10 @@ namespace ClientKoT
                     j6.Visibility = Visibility.Hidden;
                     break;
                 case 2: // 2 joueurs
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Visible;
                     j2.Visibility = Visibility.Visible;
                     j3.Visibility = Visibility.Hidden;
@@ -315,6 +327,10 @@ namespace ClientKoT
                     j6.Visibility = Visibility.Hidden;
                     break;
                 case 3: // 3 joueurs
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Visible;
                     j2.Visibility = Visibility.Visible;
                     j3.Visibility = Visibility.Visible;
@@ -323,6 +339,10 @@ namespace ClientKoT
                     j6.Visibility = Visibility.Hidden;
                     break;
                 case 4: // 4 joueurs
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Visible;
                     j2.Visibility = Visibility.Visible;
                     j3.Visibility = Visibility.Visible;
@@ -331,6 +351,10 @@ namespace ClientKoT
                     j6.Visibility = Visibility.Hidden;
                     break;
                 case 5: // 5 joueurs
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Visible;
                     j2.Visibility = Visibility.Visible;
                     j3.Visibility = Visibility.Visible;
@@ -339,6 +363,10 @@ namespace ClientKoT
                     j6.Visibility = Visibility.Hidden;
                     break;
                 case 6: // 6 joueurs
+                    GVille.Visibility = Visibility.Visible;
+                    GBay.Visibility = Visibility.Visible;
+                    GDeck.Visibility = Visibility.Visible;
+                    GDes.Visibility = Visibility.Visible;
                     j1.Visibility = Visibility.Visible;
                     j2.Visibility = Visibility.Visible;
                     j3.Visibility = Visibility.Visible;
