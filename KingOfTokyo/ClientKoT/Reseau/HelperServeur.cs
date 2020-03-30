@@ -222,12 +222,11 @@ namespace Client.Reseau
                 if(t.RerollDes)
                 {
                     OnResultatDes(new EventDesArgs(t));
-                }
-                if (t.FinTour)
-                {
-                    OnProchainTour(new EventArgs());
-                }
-                    
+                }                    
+            }
+            else if(p.commandeType == CommandeType.FINTOUR)
+            {
+                OnProchainTour(new EventArgs());
             }
             
         }
@@ -346,11 +345,10 @@ namespace Client.Reseau
             EnvoyerPaquet();
         }
 
-        public void FinTour(ActionTour a)
+        public void FinTour()
         {
-            a.FinTour = true;
-            PaquetDonnees finTour = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, PseudoJoueur,
-                a);
+            PaquetDonnees finTour = new PaquetDonnees(Commande.POST, CommandeType.FINTOUR, PseudoJoueur,
+                new TourFini()) ;
             _messageToSend = finTour.ToString();
             EnvoyerPaquet();
         }

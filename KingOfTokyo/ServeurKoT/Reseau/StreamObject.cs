@@ -32,6 +32,9 @@ namespace ServeurKoT.Reseau
                 case CommandeType.INFOJOUEUR:
                     res = new InfoJoueur(s);
                     break;
+                case CommandeType.FINTOUR:
+                    res = new TourFini(s);
+                    break;
                 default:
                     throw new Exception("PAQUET INCONNU");
             }

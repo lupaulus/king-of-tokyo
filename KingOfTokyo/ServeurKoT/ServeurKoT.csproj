@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Controleur\GTour.cs" />
     <Compile Include="Reseau\ActionPartie.cs" />
+    <Compile Include="Reseau\TourFini.cs" />
     <Compile Include="Reseau\ActionTour.cs" />
     <Compile Include="Reseau\InfoJoueur.cs" />
     <Compile Include="Reseau\LancementPartie.cs" />
