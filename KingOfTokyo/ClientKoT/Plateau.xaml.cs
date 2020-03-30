@@ -47,39 +47,13 @@ namespace ClientKoT
             actionTour = args.Action;
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
-                UpdateValeurDes();
+                UpdateDes();
             }));
            
                
         }
 
-        private void UpdateValeurDes()
-        {
-            if(actionTour.Des1 != ValeurDes.Unknown)
-            {
-                De1.Content = actionTour.Des1.ToString();
-            }
-            if (actionTour.Des2 != ValeurDes.Unknown)
-            {
-                De2.Content = actionTour.Des2.ToString();
-            }
-            if (actionTour.Des3 != ValeurDes.Unknown)
-            {
-                De3.Content = actionTour.Des3.ToString();
-            }
-            if (actionTour.Des4 != ValeurDes.Unknown)
-            {
-                De4.Content = actionTour.Des4.ToString();
-            }
-            if (actionTour.Des5 != ValeurDes.Unknown)
-            {
-                De5.Content = actionTour.Des5.ToString();
-            }
-            if (actionTour.Des6 != ValeurDes.Unknown)
-            {
-                De6.Content = actionTour.Des6.ToString();
-            }
-        }
+       
 
         private void H_TourSuivant(object sender, EventArgs args)
         {
@@ -118,14 +92,15 @@ namespace ClientKoT
             Carte3.Source = new BitmapImage(uri3);
         }
 
-        private void UpdateDes(object sender, EventArgs e)
+        private void UpdateDes()
         {
-            string path1 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte1);
-            string path2 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte2);
-            string path3 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
-            string path4 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
-            string path5 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
-            string path6 = String.Concat("/Images/imgDes/", helperServeur.ImageCarte3);
+            
+            string path1 = String.Concat("/Images/imgDes/","Des_" ,actionTour.Des1.ToString(),".png");
+            string path2 = String.Concat("/Images/imgDes/", "Des_", actionTour.Des2.ToString(), ".png");
+            string path3 = String.Concat("/Images/imgDes/", "Des_", actionTour.Des3.ToString(), ".png");
+            string path4 = String.Concat("/Images/imgDes/", "Des_", actionTour.Des4.ToString(), ".png");
+            string path5 = String.Concat("/Images/imgDes/", "Des_", actionTour.Des5.ToString(), ".png");
+            string path6 = String.Concat("/Images/imgDes/", "Des_", actionTour.Des6.ToString(), ".png");
 
             Uri uri1 = new Uri(path1, UriKind.Relative);
             Uri uri2 = new Uri(path2, UriKind.Relative);
@@ -134,15 +109,33 @@ namespace ClientKoT
             Uri uri5 = new Uri(path5, UriKind.Relative);
             Uri uri6 = new Uri(path6, UriKind.Relative);
 
-            imgDe1.Source = new BitmapImage(uri1);
-            imgDe2.Source = new BitmapImage(uri2);
-            imgDe3.Source = new BitmapImage(uri3);
-            imgDe4.Source = new BitmapImage(uri1);
-            imgDe5.Source = new BitmapImage(uri2);
-            imgDe6.Source = new BitmapImage(uri3);
+            if (actionTour.Des1 != ValeurDes.Unknown)
+            {
+                imgDe1.Source = new BitmapImage(uri1);
+            }
+            if (actionTour.Des1 != ValeurDes.Unknown)
+            {
+                imgDe2.Source = new BitmapImage(uri2);
+            }
+            if (actionTour.Des1 != ValeurDes.Unknown)
+            {
+                imgDe3.Source = new BitmapImage(uri3);
+            }
+            if (actionTour.Des1 != ValeurDes.Unknown)
+            {
+                imgDe4.Source = new BitmapImage(uri4);
+            }
+            if (actionTour.Des1 != ValeurDes.Unknown)
+            {
+                imgDe5.Source = new BitmapImage(uri5);
+            }
+            if (actionTour.Des1 != ValeurDes.Unknown)
+            {
+                imgDe6.Source = new BitmapImage(uri6);
+            }         
         }
 
-
+        
         private void Debut_Tour()
         {
             Thread.Sleep(500);
@@ -182,14 +175,19 @@ namespace ClientKoT
 
         private InfoJoueur FindJoueurAToiJouer()
         {
-            foreach (InfoJoueur info in helperServeur.ListInfoJoueur)
+            while(true)
             {
-                if (info.AToiDeJouer)
+                foreach (InfoJoueur info in helperServeur.ListInfoJoueur)
                 {
-                    return info;
+                    if (info.AToiDeJouer)
+                    {
+                        return info;
+                    }
                 }
+                Thread.Sleep(100);
             }
-            throw new KeyNotFoundException();
+            
+           
         }
 
         private void btnPret_Click(object sender, RoutedEventArgs e)

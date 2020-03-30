@@ -223,7 +223,7 @@ namespace Client.Reseau
                 {
                     OnResultatDes(new EventDesArgs(t));
                 }
-                if (t.FinTour)
+                if (t.FinTour && !t.RerollDes)
                 {
                     OnProchainTour(new EventArgs());
                 }
@@ -349,6 +349,7 @@ namespace Client.Reseau
         public void FinTour(ActionTour a)
         {
             a.FinTour = true;
+            a.RerollDes = false;
             PaquetDonnees finTour = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, PseudoJoueur,
                 a);
             _messageToSend = finTour.ToString();
