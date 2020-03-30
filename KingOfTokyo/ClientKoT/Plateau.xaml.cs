@@ -37,9 +37,58 @@ namespace ClientKoT
             h.PartieStart += H_PartieStart;
             h.TourSuivant += H_TourSuivant;
             h.ResultatDes += H_ResultatDes;
+            h.UpdateInfo += H_UpdateInfo;
             actionTour = new ActionTour();
             listDesRoll = new bool[6];
             
+        }
+
+        private void H_UpdateInfo(object sender, EventArgs args)
+        {
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                UpdateInfoJoueur();
+            }));
+        }
+
+        private void UpdateInfoJoueur()
+        {
+            foreach(InfoJoueur j in helperServeur.ListInfoJoueur)
+            {
+                switch(j.IdJoueur)
+                {
+                    case Monstre.J1:
+                        NbViesJ1.Text = j.PtsVie.ToString();
+                        NbVictoireJ1.Text = j.PtsVictoire.ToString();
+                        NbEnergieJ1.Text = j.PtsEnergie.ToString();
+                        break;
+                    case Monstre.J2:
+                        NbViesJ2.Text = j.PtsVie.ToString();
+                        NbVictoireJ2.Text = j.PtsVictoire.ToString();
+                        NbEnergieJ2.Text = j.PtsEnergie.ToString();
+                        break;
+                    case Monstre.J3:
+                        NbViesJ3.Text = j.PtsVie.ToString();
+                        NbVictoireJ3.Text = j.PtsVictoire.ToString();
+                        NbEnergieJ3.Text = j.PtsEnergie.ToString();
+                        break;
+                    case Monstre.J4:
+                        NbViesJ4.Text = j.PtsVie.ToString();
+                        NbVictoireJ4.Text = j.PtsVictoire.ToString();
+                        NbEnergieJ4.Text = j.PtsEnergie.ToString();
+                        break;
+                    case Monstre.J5:
+                        NbViesJ5.Text = j.PtsVie.ToString();
+                        NbVictoireJ5.Text = j.PtsVictoire.ToString();
+                        NbEnergieJ5.Text = j.PtsEnergie.ToString();
+                        break;
+                    case Monstre.J6:
+                        NbViesJ6.Text = j.PtsVie.ToString();
+                        NbVictoireJ6.Text = j.PtsVictoire.ToString();
+                        NbEnergieJ6.Text = j.PtsEnergie.ToString();
+                        break;
+                }
+            }
         }
 
         private void H_ResultatDes(object sender, EventDesArgs args)

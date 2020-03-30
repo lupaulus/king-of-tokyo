@@ -58,12 +58,6 @@ namespace ServeurKoT.Controleur{
             GestionnaireDesTours = new GTour(DicJeuMonstre);
 
             // Initialisation des infos
-            //foreach (MonstreJeu m in DicJeuMonstre)
-            //{
-            //    DicJeuMonstre[m].PtsVie = m.PointVie;
-            //    DicJeuMonstre[m].PtsVictoire = m.PointVictoire;
-            //    DicJeuMonstre[m].PtsEnergie = m.Energie;
-            //}
 
             // Joueur qui commence la partie
             GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;

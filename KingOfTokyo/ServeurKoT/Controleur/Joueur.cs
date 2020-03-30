@@ -66,6 +66,9 @@ namespace ServeurKoT.Reseau
             this.pseudo = pseudo;
             this.estPret = false;
 
+            this.PtsVictoire = POINT_VICTOIRE_BASE;
+            this.PtsVie = POINT_VIE_BASE;
+            this.PtsEnergie = POINT_ENERGIE_BASE;
 
         }
 
