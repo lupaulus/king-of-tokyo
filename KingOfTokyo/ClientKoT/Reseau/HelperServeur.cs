@@ -208,13 +208,14 @@ namespace Client.Reseau
                     ImageCarte1 = ij.ImageCarte1;
                     ImageCarte2 = ij.ImageCarte2;
                     ImageCarte3 = ij.ImageCarte3;
+                    
                 }
                 if(!partieLancer && CheckIfAllPlayerAreReady())
                 {
                     OnPartieStart(new EventArgs());
                     partieLancer = true;
                 }
-                OnUpdateInfo(new EventArgs());
+                
             }
             else if(p.commandeType == CommandeType.ACTIONTOUR)
             {
@@ -222,7 +223,8 @@ namespace Client.Reseau
                 if(t.RerollDes)
                 {
                     OnResultatDes(new EventDesArgs(t));
-                }                    
+                }
+                OnUpdateInfo(new EventArgs());
             }
             else if(p.commandeType == CommandeType.FINTOUR)
             {

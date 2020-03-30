@@ -47,49 +47,11 @@ namespace ClientKoT
         {
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
-                UpdateInfoJoueur();
+                UpdateData();
             }));
         }
 
-        private void UpdateInfoJoueur()
-        {
-            foreach(InfoJoueur j in helperServeur.ListInfoJoueur)
-            {
-                switch(j.IdJoueur)
-                {
-                    case Monstre.J1:
-                        NbViesJ1.Text = j.PtsVie.ToString();
-                        NbVictoireJ1.Text = j.PtsVictoire.ToString();
-                        NbEnergieJ1.Text = j.PtsEnergie.ToString();
-                        break;
-                    case Monstre.J2:
-                        NbViesJ2.Text = j.PtsVie.ToString();
-                        NbVictoireJ2.Text = j.PtsVictoire.ToString();
-                        NbEnergieJ2.Text = j.PtsEnergie.ToString();
-                        break;
-                    case Monstre.J3:
-                        NbViesJ3.Text = j.PtsVie.ToString();
-                        NbVictoireJ3.Text = j.PtsVictoire.ToString();
-                        NbEnergieJ3.Text = j.PtsEnergie.ToString();
-                        break;
-                    case Monstre.J4:
-                        NbViesJ4.Text = j.PtsVie.ToString();
-                        NbVictoireJ4.Text = j.PtsVictoire.ToString();
-                        NbEnergieJ4.Text = j.PtsEnergie.ToString();
-                        break;
-                    case Monstre.J5:
-                        NbViesJ5.Text = j.PtsVie.ToString();
-                        NbVictoireJ5.Text = j.PtsVictoire.ToString();
-                        NbEnergieJ5.Text = j.PtsEnergie.ToString();
-                        break;
-                    case Monstre.J6:
-                        NbViesJ6.Text = j.PtsVie.ToString();
-                        NbVictoireJ6.Text = j.PtsVictoire.ToString();
-                        NbEnergieJ6.Text = j.PtsEnergie.ToString();
-                        break;
-                }
-            }
-        }
+        
 
         private void H_ResultatDes(object sender, EventDesArgs args)
         {
@@ -123,8 +85,10 @@ namespace ClientKoT
         {
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
+                
                 Debut_Tour();
                 UpdateMagasin();
+                
             }));
         }
 
@@ -134,7 +98,7 @@ namespace ClientKoT
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 Hide_Joueur();
-                Update_Data();
+                UpdateData();
                 Debut_Tour();
                 UpdateMagasin();
             }));
@@ -266,7 +230,7 @@ namespace ClientKoT
             }
         }
 
-        public void Update_Data()
+        public void UpdateData()
         {
             Thread.Sleep(1000);
             int actualPlayerPosition = (int)helperServeur.ActualPlayer;
