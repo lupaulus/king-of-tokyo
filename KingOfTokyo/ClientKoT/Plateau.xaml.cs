@@ -47,6 +47,21 @@ namespace ClientKoT
             actionTour = args.Action;
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
+                switch (actionTour.EtatDes)
+                {
+                    case EtatLancerDes.PremierLance:
+                        actionTour.EtatDes = EtatLancerDes.DeuxiemeLance;
+                        break;
+                    case EtatLancerDes.DeuxiemeLance:
+                        actionTour.EtatDes = EtatLancerDes.TroisiemeLance;
+                        break;
+                    case EtatLancerDes.TroisiemeLance:
+                        // On desactive le bouton
+                        LancerDes.IsEnabled = false;
+                        EnabledDes(false);
+                        break;
+                }
+
                 UpdateDes();
             }));
            
@@ -168,9 +183,6 @@ namespace ClientKoT
             // Alerte message
             MessageBox.Show("C'est à votre tour de jouer");
 
-            // 
-
-            // Envoyer Action Tour
         }
 
         private InfoJoueur FindJoueurAToiJouer()
@@ -412,26 +424,13 @@ namespace ClientKoT
                     }
                 }
             }
+
             helperServeur.RollDes(actionTour);
             listDesRoll = new bool[6]; // Clear List;
 
             EnabledDes(true);
 
-            switch (actionTour.EtatDes)
-            {
-                case EtatLancerDes.PremierLance:
-                    actionTour.EtatDes = EtatLancerDes.DeuxiemeLance;
-                    break;
-                case EtatLancerDes.DeuxiemeLance:
-                    actionTour.EtatDes = EtatLancerDes.TroisiemeLance;
-                    break;
-                case EtatLancerDes.TroisiemeLance:
-                    // On desactive le bouton
-                    LancerDes.IsEnabled = false;
-                    EnabledDes(false);
-                    break;
-            }
-
+            
         }
 
         public void EnabledDes(bool etat)
