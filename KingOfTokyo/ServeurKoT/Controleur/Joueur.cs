@@ -31,6 +31,16 @@ namespace ServeurKoT.Reseau
 
         public bool AToiDeJouer { get; set; }
 
+        private static int POINT_VIE_MIN = 0;
+
+        private static int POINT_VICTOIRE_BASE = 0;
+
+        private static int POINT_VIE_MAX = 12;
+
+
+        private static int POINT_ENERGIE_BASE = 0;
+
+        private static int POINT_VIE_BASE = 10;
 
         private volatile string _messageReaded;
         private volatile string _messageToSend;
@@ -75,6 +85,90 @@ namespace ServeurKoT.Reseau
 
             return res;
         }
+
+        /// <summary>
+        /// Méthode pour rétirer la vie hors combat
+        /// </summary>
+        /// <param name="value">Valeur de vie à ajouter</param>
+        public void retirerVie(int value)
+        {
+            PtsVie -= value;
+            if (PtsVie < POINT_VIE_MIN)
+            {
+                PtsVie = POINT_VIE_MIN;
+            }
+        }
+        /// <summary>
+        /// Méthode pour ajouter la vie hors combat
+        /// </summary>
+        /// <param name="value">Valeur de vie à retirer</param>
+        public void ajouterVie(int value)
+        {
+            pointVie += value;
+            if (pointVie > POINT_VIE_MAX)
+            {
+                pointVie = POINT_VIE_MAX;
+            }
+        }
+
+        public void ajouterPtsVictoire(int value)
+        {
+            pointVictoire += value;
+        }
+
+
+        public void frapper(MonstreJeu monstreAFrapper, int valeurDegat)
+        {
+            monstreAFrapper.seFaireFrapper(valeurDegat);
+        }
+        public void seFaireFrapper(int valeurDegat)
+        {
+            retirerVie(valeurDegat);
+        }
+
+        public void appliquerJeton()
+        {
+            // TODO implement here
+        }
+
+
+
+        public void achatCarte(Carte carteValue)
+        {
+            listeCartes.Add(carteValue);
+        }
+
+        public void utilisationCarte(Carte carteValue)
+        {
+            // TODO Application des effets
+            listeCartes.Remove(carteValue);
+        }
+
+        /// <summary>
+        /// Méthode qui ajoute le monstre mort dans la ville
+        /// </summary>
+        /// <param name="monstre"></param>
+        public bool monstreMort()
+        {
+            return pointVie == 0;
+        }
+
+        public void ajouterEnergie(int compteurEnergie)
+        {
+            energie += compteurEnergie;
+        }
+
+        public bool enleverEnergie(int value)
+        {
+            if (POINT_ENERGIE_BASE < (energie - value))
+            {
+                energie -= value;
+                return true;
+            }
+            return false;
+        }
+
+#endregion Methods
 
 
     }

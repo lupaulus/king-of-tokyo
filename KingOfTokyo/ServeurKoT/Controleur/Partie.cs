@@ -95,7 +95,70 @@ namespace ServeurKoT.Controleur{
         {
             return GestionaryDes.LancementDes();
         }
-        
+
+        public void ResolutionDes(ActionTour t)
+        {
+            List<ValeurDes> list = new List<ValeurDes>();
+            list.Add(t.Des1);
+            list.Add(t.Des2);
+            list.Add(t.Des3);
+            list.Add(t.Des4);
+            list.Add(t.Des5);
+            list.Add(t.Des6);
+            EffetDes(list);
+        }
+
+        private void EffetDes(List<ValeurDes> des)
+        {
+            int compteurUn = 0;
+            int compteurDeux = 0;
+            int compteurTrois = 0;
+            int compteurBaffe = 0;
+            int compteurEnergie = 0;
+            int compteurSoin = 0;
+            foreach(ValeurDes d in des)
+            {
+                switch(d)
+                {
+                    case ValeurDes.Un:
+                        compteurUn++;
+                        break;
+                    case ValeurDes.Deux:
+                        compteurDeux++;
+                        break;
+                    case ValeurDes.Trois:
+                        compteurTrois++;
+                        break;
+                    case ValeurDes.Baffe:
+                        compteurBaffe++;
+                        break;
+                    case ValeurDes.Soin:
+                        compteurSoin++;
+                        break;
+                    case ValeurDes.Energie:
+                        compteurEnergie++;
+                        break;
+                }
+            }
+            if(compteurUn >= 3)
+            {
+                int value = 1 + (compteurUn - 3);
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
+            }
+            if(compteurDeux >= 3)
+            {
+                int value = 2 + (compteurDeux - 3);
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
+            }
+            if(compteurTrois >= 3)
+            {
+                int value = 3 + (compteurTrois - 3);
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
+            }
+            GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterVie(compteurSoin);
+            GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterEnergie(compteurEnergie);
+        }
+
         #endregion Methodes
 
     }

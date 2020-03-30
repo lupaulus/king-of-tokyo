@@ -486,9 +486,5 @@ namespace ClientKoT
             De6.Background = listDesRoll[5] ? Brushes.Violet : Brushes.Green;
         }
 
-        private void De1_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
