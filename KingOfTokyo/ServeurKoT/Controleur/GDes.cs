@@ -28,11 +28,17 @@ namespace ServeurKoT.Controleur{
         /// </summary>
         private const int NOMBRE_DES_PAR_TOUR = 6;
 
+        private List<Des> EnsembleDes;
+
+        private Random seed;
+
         #endregion Properties
 
         #region Ctor
         public GDes() {
             NextId = 1;
+            EnsembleDes = new List<Des>();
+            seed = new Random();
         }
         #endregion Ctor
 
@@ -42,11 +48,13 @@ namespace ServeurKoT.Controleur{
         /// </summary>
         /// <param name="nbrDes"></param>
         /// <returns></returns>
-        private List<Des> LancementDes(int nbrDes = NOMBRE_DES_PAR_TOUR) {
+        public List<Des> LancementDes(int nbrDes = NOMBRE_DES_PAR_TOUR) {
             List<Des> listDes = new List<Des>();
             for(int i = 0 ; i<nbrDes ; i++)
             {
-                listDes.Add(new Des(NextId));
+                Des des = new Des(NextId,seed);
+                listDes.Add(des);
+                EnsembleDes.Add(des);
                 NextId++;
             }
             return listDes;

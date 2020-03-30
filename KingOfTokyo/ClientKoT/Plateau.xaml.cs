@@ -36,9 +36,49 @@ namespace ClientKoT
             helperServeur = h;
             h.PartieStart += H_PartieStart;
             h.TourSuivant += H_TourSuivant;
+            h.ResultatDes += H_ResultatDes;
             actionTour = new ActionTour();
             listDesRoll = new bool[6];
             
+        }
+
+        private void H_ResultatDes(object sender, EventDesArgs args)
+        {
+            actionTour = args.Action;
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                UpdateValeurDes();
+            }));
+           
+               
+        }
+
+        private void UpdateValeurDes()
+        {
+            if(actionTour.Des1 != ValeurDes.Unknown)
+            {
+                De1.Content = actionTour.Des1.ToString();
+            }
+            if (actionTour.Des2 != ValeurDes.Unknown)
+            {
+                De2.Content = actionTour.Des2.ToString();
+            }
+            if (actionTour.Des3 != ValeurDes.Unknown)
+            {
+                De3.Content = actionTour.Des3.ToString();
+            }
+            if (actionTour.Des4 != ValeurDes.Unknown)
+            {
+                De4.Content = actionTour.Des4.ToString();
+            }
+            if (actionTour.Des5 != ValeurDes.Unknown)
+            {
+                De5.Content = actionTour.Des5.ToString();
+            }
+            if (actionTour.Des6 != ValeurDes.Unknown)
+            {
+                De6.Content = actionTour.Des6.ToString();
+            }
         }
 
         private void H_TourSuivant(object sender, EventArgs args)
@@ -187,14 +227,18 @@ namespace ClientKoT
 
         private InfoJoueur FindJoueur(Monstre actualPlayerPosition)
         {
-            foreach(InfoJoueur info in helperServeur.ListInfoJoueur)
+            while(true)
             {
-                if(info.IdJoueur == actualPlayerPosition)
+                foreach (InfoJoueur info in helperServeur.ListInfoJoueur)
                 {
-                    return info;
+                    if (info.IdJoueur == actualPlayerPosition)
+                    {
+                        return info;
+                    }
                 }
+                Thread.Sleep(100);
             }
-            throw new KeyNotFoundException();
+           
         }
 
         public void Hide_Joueur()
@@ -342,31 +386,31 @@ namespace ClientKoT
         private void De2_Click(object sender, RoutedEventArgs e)
         {
             listDesRoll[1] = listDesRoll[1] ? false : true;
-            De1.Background = listDesRoll[1] ? Brushes.Violet : Brushes.Green;
+            De2.Background = listDesRoll[1] ? Brushes.Violet : Brushes.Green;
         }
 
         private void De3_Click(object sender, RoutedEventArgs e)
         {
             listDesRoll[2] = listDesRoll[2] ? false : true;
-            De1.Background = listDesRoll[2] ? Brushes.Violet : Brushes.Green;
+            De3.Background = listDesRoll[2] ? Brushes.Violet : Brushes.Green;
         }
 
         private void De4_Click(object sender, RoutedEventArgs e)
         {
             listDesRoll[3] = listDesRoll[3] ? false : true;
-            De1.Background = listDesRoll[3] ? Brushes.Violet : Brushes.Green;
+            De4.Background = listDesRoll[3] ? Brushes.Violet : Brushes.Green;
         }
 
         private void De5_Click(object sender, RoutedEventArgs e)
         {
             listDesRoll[4] = listDesRoll[4] ? false : true;
-            De1.Background = listDesRoll[4] ? Brushes.Violet : Brushes.Green;
+            De5.Background = listDesRoll[4] ? Brushes.Violet : Brushes.Green;
         }
 
         private void De6_Click(object sender, RoutedEventArgs e)
         {
             listDesRoll[5] = listDesRoll[5] ? false : true;
-            De1.Background = listDesRoll[5] ? Brushes.Violet : Brushes.Green;
+            De6.Background = listDesRoll[5] ? Brushes.Violet : Brushes.Green;
         }
     }
 }

@@ -29,20 +29,22 @@ namespace ServeurKoT.Modele{
         /// Propriété representant la valeur du dés
         /// </summary>
         public ValeurDes Value { get; private set; }
+        private Random rand;
         
         /// <summary>
         /// Constructeur d'un dés générer automatiquement sa valeur
         /// </summary>
-        public Des(int id)
+        public Des(int id, Random random)
         {
             Id = id;
-            Roll();
+            rand = random;
+            Roll();  
         }
 
         public void Roll()
         {
-            Random rand = new Random();
-            Value = (ValeurDes) rand.Next(0, 5);
+            
+            Value = (ValeurDes) rand.Next(1, 6);
         }
     }
 }

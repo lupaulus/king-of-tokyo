@@ -1,5 +1,7 @@
 ﻿using ServeurKoT.Controleur;
 using ServeurKoT.Modele;
+using System;
+using System.Collections.Generic;
 
 namespace ServeurKoT.Reseau
 {
@@ -56,6 +58,36 @@ namespace ServeurKoT.Reseau
         public override string IntoString()
         {
             return $"{FinTour.ToString()}|{RerollDes.ToString()}|{(int)EtatDes}|{(int)Des1}|{(int)Des2}|{(int)Des3}|{(int)Des4}|{(int)Des5}|{(int)Des6}";
+        }
+
+        public void RemplirDes(List<Des> list)
+        {
+            if(Des1 == ValeurDes.Unknown)
+            {
+                Des1 = list[0].Value;
+            }
+            if (Des2 == ValeurDes.Unknown)
+            {
+                Des2 = list[1].Value;
+            }
+            if (Des3 == ValeurDes.Unknown)
+            {
+                Des3 = list[2].Value;
+            }
+            if (Des4 == ValeurDes.Unknown)
+            {
+                Des4 = list[3].Value;
+            }
+            if (Des5 == ValeurDes.Unknown)
+            {
+                Des5 = list[4].Value;
+            }
+            if (Des6 == ValeurDes.Unknown)
+            {
+                Des6 = list[5].Value;
+            }
+
+
         }
     }
 }

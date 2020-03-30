@@ -91,6 +91,10 @@ namespace ServeurKoT.Controleur{
             return tab;
         }
 
+        public List<Des> LancerDes()
+        {
+            return GestionaryDes.LancementDes();
+        }
         
         #endregion Methodes
 

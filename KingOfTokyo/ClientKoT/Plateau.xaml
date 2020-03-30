@@ -254,23 +254,23 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Margin="5" x:Name="De1" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De1_Click">
-                    <Image x:Name="img1" Source="/Images/imgDes/Des_1.png" />
+                <Button Margin="5" x:Name="De1" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De1_Click" Background="Green">
+                    <Image x:Name="img1" Source="/Images/imgDes/Des_Un.png" />
                 </Button>
-                <Button Margin="5" x:Name="De2" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De2_Click">
-                    <Image x:Name="img2" Source="/Images/imgDes/Des_2.png" />
+                <Button Margin="5" x:Name="De2" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De2_Click" Background="Green">
+                    <Image x:Name="img2" Source="/Images/imgDes/Des_Deux.png" />
                 </Button>
-                <Button Margin="5" x:Name="De3" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De3_Click">
-                    <Image x:Name="img3" Source="/Images/imgDes/Des_3.png" />
+                <Button Margin="5" x:Name="De3" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De3_Click" Background="Green">
+                    <Image x:Name="img3" Source="/Images/imgDes/Des_Trois.png" />
                 </Button>
-                <Button Margin="5" x:Name="De4" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De4_Click">
-                    <Image x:Name="imgBaffe" Source="/Images/imgDes/Des_baffe.png" />
+                <Button Margin="5" x:Name="De4" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De4_Click" Background="Green">
+                    <Image x:Name="imgBaffe" Source="/Images/imgDes/Des_Baffe.png" />
                 </Button>
-                <Button Margin="5" x:Name="De5" Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De5_Click">
-                    <Image x:Name="imgCoeur" Source="/Images/imgDes/Des_coeur.png" />
+                <Button Margin="5" x:Name="De5" Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De5_Click" Background="Green">
+                    <Image x:Name="imgCoeur" Source="/Images/imgDes/Des_Soin.png" />
                 </Button>
-                <Button Margin="5" x:Name="De6" Grid.Column="5" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De6_Click">
-                    <Image x:Name="imgEnergie" Source="/Images/imgDes/Des_energie.png" />
+                <Button Margin="5" x:Name="De6" Grid.Column="5" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="De6_Click" Background="Green">
+                    <Image x:Name="imgEnergie" Source="/Images/imgDes/Des_Energie.png" />
                 </Button>
             </Grid>
 
