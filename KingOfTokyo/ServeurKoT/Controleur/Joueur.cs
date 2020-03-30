@@ -1,5 +1,6 @@
 
 using ServeurKoT.Controleur;
+using ServeurKoT.Modele;
 using ServeurKoT.Reseau;
 using System;
 using System.Collections.Generic;
@@ -44,8 +45,7 @@ namespace ServeurKoT.Reseau
 
         private volatile string _messageReaded;
         private volatile string _messageToSend;
-
-
+        private List<Carte> listeCartes;
 
         public string MessageReaded
         {
@@ -104,20 +104,20 @@ namespace ServeurKoT.Reseau
         /// <param name="value">Valeur de vie à retirer</param>
         public void ajouterVie(int value)
         {
-            pointVie += value;
-            if (pointVie > POINT_VIE_MAX)
+            PtsVie += value;
+            if (PtsVie > POINT_VIE_MAX)
             {
-                pointVie = POINT_VIE_MAX;
+                PtsVie = POINT_VIE_MAX;
             }
         }
 
         public void ajouterPtsVictoire(int value)
         {
-            pointVictoire += value;
+            PtsVictoire += value;
         }
 
 
-        public void frapper(MonstreJeu monstreAFrapper, int valeurDegat)
+        public void frapper(Joueur monstreAFrapper, int valeurDegat)
         {
             monstreAFrapper.seFaireFrapper(valeurDegat);
         }
@@ -150,25 +150,24 @@ namespace ServeurKoT.Reseau
         /// <param name="monstre"></param>
         public bool monstreMort()
         {
-            return pointVie == 0;
+            return PtsVie == 0;
         }
 
         public void ajouterEnergie(int compteurEnergie)
         {
-            energie += compteurEnergie;
+            PtsEnergie += compteurEnergie;
         }
 
         public bool enleverEnergie(int value)
         {
-            if (POINT_ENERGIE_BASE < (energie - value))
+            if (POINT_ENERGIE_BASE < (PtsEnergie - value))
             {
-                energie -= value;
+                PtsEnergie -= value;
                 return true;
             }
             return false;
         }
 
-#endregion Methods
 
 
     }

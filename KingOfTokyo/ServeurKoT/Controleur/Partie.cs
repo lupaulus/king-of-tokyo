@@ -18,7 +18,7 @@ namespace ServeurKoT.Controleur{
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
         public GTour GestionnaireDesTours { get; set; }
-        public Dictionary<MonstreJeu, Joueur> DicJeuMonstre { get; }
+        public List<Joueur> DicJeuMonstre { get; }
 
         #endregion Properties
 
@@ -27,7 +27,7 @@ namespace ServeurKoT.Controleur{
             Id = idValue;
             nomPartie = nom;
             NombreDeJoueurTotal = nbrJoueur;
-            DicJeuMonstre = new Dictionary<MonstreJeu, Joueur>();
+            DicJeuMonstre = new List<Joueur>();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
             
@@ -43,8 +43,7 @@ namespace ServeurKoT.Controleur{
             if(DicJeuMonstre.Count < NombreDeJoueurTotal)
             {
                 j.IdJoueur = (Monstre)(DicJeuMonstre.Count+1);
-                MonstreJeu m = new MonstreJeu((Monstre)(DicJeuMonstre.Count + 1));
-                DicJeuMonstre.Add(m, j);
+                DicJeuMonstre.Add(j);
             }
             
         }
@@ -56,26 +55,26 @@ namespace ServeurKoT.Controleur{
             }
 
 
-            GestionnaireDesTours = new GTour(new List<MonstreJeu>(DicJeuMonstre.Keys));
+            GestionnaireDesTours = new GTour(DicJeuMonstre);
 
             // Initialisation des infos
-            foreach (MonstreJeu m in DicJeuMonstre.Keys)
-            {
-                DicJeuMonstre[m].PtsVie = m.PointVie;
-                DicJeuMonstre[m].PtsVictoire = m.PointVictoire;
-                DicJeuMonstre[m].PtsEnergie = m.Energie;
-            }
+            //foreach (MonstreJeu m in DicJeuMonstre)
+            //{
+            //    DicJeuMonstre[m].PtsVie = m.PointVie;
+            //    DicJeuMonstre[m].PtsVictoire = m.PointVictoire;
+            //    DicJeuMonstre[m].PtsEnergie = m.Energie;
+            //}
 
             // Joueur qui commence la partie
-            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = true;
+            GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;
         }
 
 
         public void ProchainTour()
         {
-            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = false;
+            GestionnaireDesTours.JoueurActuel.AToiDeJouer = false;
             GestionnaireDesTours.ProchainTour();
-            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = true;
+            GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;
         }
         public void FinirPartie() {
             // Renvoyer le gagnant.
