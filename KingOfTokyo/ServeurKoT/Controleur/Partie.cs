@@ -18,7 +18,7 @@ namespace ServeurKoT.Controleur{
         public GDes GestionaryDes { get;  }
         public GCarte GestionaryCarte { get;  }
         public GTour GestionnaireDesTours { get; set; }
-        public Dictionary<MonstreJeu, Joueur> DicJeuMonstre { get; }
+        public List<Joueur> DicJeuMonstre { get; }
 
         #endregion Properties
 
@@ -27,7 +27,7 @@ namespace ServeurKoT.Controleur{
             Id = idValue;
             nomPartie = nom;
             NombreDeJoueurTotal = nbrJoueur;
-            DicJeuMonstre = new Dictionary<MonstreJeu, Joueur>();
+            DicJeuMonstre = new List<Joueur>();
             GestionaryDes = new GDes();
             GestionaryCarte = new GCarte();
             
@@ -43,8 +43,7 @@ namespace ServeurKoT.Controleur{
             if(DicJeuMonstre.Count < NombreDeJoueurTotal)
             {
                 j.IdJoueur = (Monstre)(DicJeuMonstre.Count+1);
-                MonstreJeu m = new MonstreJeu((Monstre)(DicJeuMonstre.Count + 1));
-                DicJeuMonstre.Add(m, j);
+                DicJeuMonstre.Add(j);
             }
             
         }
@@ -56,26 +55,20 @@ namespace ServeurKoT.Controleur{
             }
 
 
-            GestionnaireDesTours = new GTour(new List<MonstreJeu>(DicJeuMonstre.Keys));
+            GestionnaireDesTours = new GTour(DicJeuMonstre);
 
             // Initialisation des infos
-            foreach (MonstreJeu m in DicJeuMonstre.Keys)
-            {
-                DicJeuMonstre[m].PtsVie = m.PointVie;
-                DicJeuMonstre[m].PtsVictoire = m.PointVictoire;
-                DicJeuMonstre[m].PtsEnergie = m.Energie;
-            }
 
             // Joueur qui commence la partie
-            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = true;
+            GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;
         }
 
 
         public void ProchainTour()
         {
-            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = false;
+            GestionnaireDesTours.JoueurActuel.AToiDeJouer = false;
             GestionnaireDesTours.ProchainTour();
-            DicJeuMonstre[GestionnaireDesTours.JoueurActuel].AToiDeJouer = true;
+            GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;
         }
         public void FinirPartie() {
             // Renvoyer le gagnant.
@@ -95,7 +88,70 @@ namespace ServeurKoT.Controleur{
         {
             return GestionaryDes.LancementDes();
         }
-        
+
+        public void ResolutionDes(ActionTour t)
+        {
+            List<ValeurDes> list = new List<ValeurDes>();
+            list.Add(t.Des1);
+            list.Add(t.Des2);
+            list.Add(t.Des3);
+            list.Add(t.Des4);
+            list.Add(t.Des5);
+            list.Add(t.Des6);
+            EffetDes(list);
+        }
+
+        private void EffetDes(List<ValeurDes> des)
+        {
+            int compteurUn = 0;
+            int compteurDeux = 0;
+            int compteurTrois = 0;
+            int compteurBaffe = 0;
+            int compteurEnergie = 0;
+            int compteurSoin = 0;
+            foreach(ValeurDes d in des)
+            {
+                switch(d)
+                {
+                    case ValeurDes.Un:
+                        compteurUn++;
+                        break;
+                    case ValeurDes.Deux:
+                        compteurDeux++;
+                        break;
+                    case ValeurDes.Trois:
+                        compteurTrois++;
+                        break;
+                    case ValeurDes.Baffe:
+                        compteurBaffe++;
+                        break;
+                    case ValeurDes.Soin:
+                        compteurSoin++;
+                        break;
+                    case ValeurDes.Energie:
+                        compteurEnergie++;
+                        break;
+                }
+            }
+            if(compteurUn >= 3)
+            {
+                int value = 1 + (compteurUn - 3);
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
+            }
+            if(compteurDeux >= 3)
+            {
+                int value = 2 + (compteurDeux - 3);
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
+            }
+            if(compteurTrois >= 3)
+            {
+                int value = 3 + (compteurTrois - 3);
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
+            }
+            GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterVie(compteurSoin);
+            GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterEnergie(compteurEnergie);
+        }
+
         #endregion Methodes
 
     }

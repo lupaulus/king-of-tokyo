@@ -1,16 +1,17 @@
 ﻿using ServeurKoT.Modele;
+using ServeurKoT.Reseau;
 using System.Collections.Generic;
 
 namespace ServeurKoT.Controleur
 {
     public class GTour
     {
-        private Queue<MonstreJeu> ListOrdonneJoueur { get; set; }
-        public MonstreJeu JoueurActuel { get; set; }
+        private Queue<Joueur> ListOrdonneJoueur { get; set; }
+        public Joueur JoueurActuel { get; set; }
 
-        public GTour(List<MonstreJeu> list)
+        public GTour(List<Joueur> list)
         {
-            ListOrdonneJoueur = new Queue<MonstreJeu>(list);
+            ListOrdonneJoueur = new Queue<Joueur>(list);
             JoueurActuel = ListOrdonneJoueur.Peek();
         }
         

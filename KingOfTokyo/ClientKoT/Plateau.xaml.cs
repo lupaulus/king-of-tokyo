@@ -37,10 +37,21 @@ namespace ClientKoT
             h.PartieStart += H_PartieStart;
             h.TourSuivant += H_TourSuivant;
             h.ResultatDes += H_ResultatDes;
+            h.UpdateInfo += H_UpdateInfo;
             actionTour = new ActionTour();
             listDesRoll = new bool[6];
             
         }
+
+        private void H_UpdateInfo(object sender, EventArgs args)
+        {
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                UpdateData();
+            }));
+        }
+
+        
 
         private void H_ResultatDes(object sender, EventDesArgs args)
         {
@@ -74,8 +85,10 @@ namespace ClientKoT
         {
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
+                
                 Debut_Tour();
                 UpdateMagasin();
+                
             }));
         }
 
@@ -85,7 +98,7 @@ namespace ClientKoT
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 Hide_Joueur();
-                Update_Data();
+                UpdateData();
                 Debut_Tour();
                 UpdateMagasin();
             }));
@@ -217,7 +230,7 @@ namespace ClientKoT
             }
         }
 
-        public void Update_Data()
+        public void UpdateData()
         {
             Thread.Sleep(1000);
             int actualPlayerPosition = (int)helperServeur.ActualPlayer;
@@ -231,7 +244,6 @@ namespace ClientKoT
                         NbViesJ1.Text = infoJoueur.PtsVie.ToString();
                         NbEnergieJ1.Text = infoJoueur.PtsEnergie.ToString();
                         NbVictoireJ1.Text = infoJoueur.PtsVictoire.ToString();
-
                         break;
                     case 2: // 2 joueurs
                         nomJoueur2.Text = infoJoueur.Pseudo;
@@ -486,9 +498,5 @@ namespace ClientKoT
             De6.Background = listDesRoll[5] ? Brushes.Violet : Brushes.Green;
         }
 
-        private void De1_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

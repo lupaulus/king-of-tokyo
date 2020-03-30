@@ -59,7 +59,7 @@
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="0" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="0" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ2" Text="10" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ2" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbVictoireJ2" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbEnergieJ2" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur2" Text="Joueur 2" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -90,7 +90,7 @@
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="0" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="0" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                
-                <TextBlock x:Name="NbViesJ4" Text="10" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ4" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbVictoireJ4" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbEnergieJ4" Text="0" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur4" Text="Joueur 4" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -118,7 +118,7 @@
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="1" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="1" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ1" Text="10" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ1" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbVictoireJ1" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbEnergieJ1" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur1" Text="Joueur 1" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -146,7 +146,7 @@
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="1" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ3" Text="10" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ3" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbVictoireJ3" Text="0" Foreground="#FFFFFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbEnergieJ3" Text="0" Foreground="#FFFFFF" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur3" Text="Joueur 3" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -173,7 +173,7 @@
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="2" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ5" Text="10" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ5" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbVictoireJ5" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbEnergieJ5" Text="0" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur5" Text="Joueur 5" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -201,7 +201,7 @@
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="0" Foreground="#C4151C" Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Foreground="#FFD100" Kind="Star" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="2" Foreground="#40FD14" Kind="LightningBolt" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="NbViesJ6" Text="10" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NbViesJ6" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbVictoireJ6" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="NbEnergieJ6" Text="0" Foreground="#FFFFFF" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="nomJoueur6" Text="Joueur 6" Foreground="#FFFFFF" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>

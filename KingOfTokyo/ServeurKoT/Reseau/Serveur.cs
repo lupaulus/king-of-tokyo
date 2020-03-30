@@ -235,6 +235,11 @@ namespace ServeurKoT.Reseau
                 {
                     Logger.Log(Logger.Level.Info, $"Reroll Des : {t.EtatDes.ToString()}");
                     t.RemplirDes(GPartie.Instance.PartieActuel.LancerDes());
+                    // SI dernier Lancer
+                    if(t.EtatDes == EtatLancerDes.TroisiemeLance)
+                    {
+                        GPartie.Instance.PartieActuel.ResolutionDes(t);
+                    }
                 }
             }
             else if(p.commandeType  == CommandeType.FINTOUR)

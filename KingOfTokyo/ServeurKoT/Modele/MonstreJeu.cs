@@ -23,7 +23,6 @@ namespace ServeurKoT.Modele{
 
         private static int POINT_VIE_MAX = 12;
 
-        private static int POINT_ENERGIE_MAX = 20;
 
         private static int POINT_ENERGIE_BASE = 0;
 
@@ -47,7 +46,7 @@ namespace ServeurKoT.Modele{
         #region Methods
 
 
-        public int PointVie { get => pointVie;}
+        public int PointVie { get => pointVie; }
         public int PointVictoire { get => pointVictoire; }
         public int Energie { get => energie; }
 
@@ -74,6 +73,11 @@ namespace ServeurKoT.Modele{
             {
                 pointVie = POINT_VIE_MAX;
             }
+        }
+
+        public void ajouterPtsVictoire(int value)
+        {
+            pointVictoire += value;
         }
 
         
@@ -109,6 +113,21 @@ namespace ServeurKoT.Modele{
         public bool monstreMort()
         {
             return pointVie == 0;
+        }
+
+        public void ajouterEnergie(int compteurEnergie)
+        {
+            energie += compteurEnergie;
+        }
+
+        public bool enleverEnergie(int value)
+        {
+            if(POINT_ENERGIE_BASE < (energie - value))
+            {
+                energie -= value;
+                return true;
+            }
+            return false;
         }
 
         #endregion Methods
