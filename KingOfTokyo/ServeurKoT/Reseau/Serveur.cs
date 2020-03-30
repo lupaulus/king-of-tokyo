@@ -172,15 +172,19 @@ namespace ServeurKoT.Reseau
 
                     HandleMessageReceive(client);
 
-                    Byte[] reply = Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
-                    stream.Write(reply, 0, reply.Length);
-                    Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
-                    Thread.Sleep(500);
+                    if(!updateTour)
+                    {
+                        Byte[] reply = Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
+                        stream.Write(reply, 0, reply.Length);
+                        Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
+                        Thread.Sleep(500);
+                    }
+                    
 
                     UpdateInfoAllPlayers();
                     if(updateTour)
                     {
-                        UpdateInfoTour();
+                        UpdateInfoTour(client);
                         updateTour = false;
                     }
                 }
@@ -232,18 +236,17 @@ namespace ServeurKoT.Reseau
                     Logger.Log(Logger.Level.Info, $"Reroll Des : {t.EtatDes.ToString()}");
                     t.RemplirDes(GPartie.Instance.PartieActuel.LancerDes());
                 }
-                else if(t.FinTour)
-                {
-                    Logger.Log(Logger.Level.Info, $"le tour est fini, un nouveau va commencer");
-                    GPartie.Instance.PartieActuel.ProchainTour();
-                    updateTour = true;
-                }
+            }
+            else if(p.commandeType  == CommandeType.FINTOUR)
+            {
+                GPartie.Instance.PartieActuel.ProchainTour();
+                updateTour = true;
             }
 
             ListClients[client].MessageToSend = p.ToString();
         }
 
-        private void UpdateInfoTour()
+        private void UpdateInfoTour(TcpClient client)
         {
             foreach (TcpClient tcpClient in ListClients.Keys)
             {
@@ -251,8 +254,8 @@ namespace ServeurKoT.Reseau
                 NetworkStream stream = tcpClient.GetStream();
 
                 // Clear list
-                ActionTour action = new ActionTour();
-                PaquetDonnees pa = new PaquetDonnees(Commande.POST, CommandeType.ACTIONTOUR, "SERVEUR", action);
+                TourFini action = new TourFini();
+                PaquetDonnees pa = new PaquetDonnees(Commande.POST, CommandeType.FINTOUR, "SERVEUR", action);
                 Byte[] send = Encoding.ASCII.GetBytes(pa.ToString());
                 stream.Write(send, 0, send.Length);
                 Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {pa.ToString()}");

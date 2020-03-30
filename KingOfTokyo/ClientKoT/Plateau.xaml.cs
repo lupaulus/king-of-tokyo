@@ -391,7 +391,7 @@ namespace ClientKoT
 
         private void btnFinTour_Click(object sender, RoutedEventArgs e)
         {
-            helperServeur.FinTour(actionTour);
+            helperServeur.FinTour();
         }
 
         private void LancerDes_Click(object sender, RoutedEventArgs e)
