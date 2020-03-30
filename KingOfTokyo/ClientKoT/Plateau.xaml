@@ -225,9 +225,9 @@
 
             <Button Margin="5" x:Name="Reroll" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="Coute 3 Énergies">Reroll</Button>
 
-            <Image x:Name="Carte1" Source="/Images/imgCartes/Card_72.png" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Image x:Name="Carte2" Source="/Images/imgCartes/Card_66.png" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Image x:Name="Carte3" Source="/Images/imgCartes/Card_2.png" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="Carte1" Source="/Images/deck_2.jpg" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="Carte2" Source="/Images/deck_2.jpg" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="Carte3" Source="/Images/deck_2.jpg" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Button Margin="5" x:Name="Acheter1" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter1</Button>
             <Button Margin="5" x:Name="Acheter2" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter2</Button>
             <Button Margin="5" x:Name="Acheter3" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Acheter3</Button>
