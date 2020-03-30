@@ -153,7 +153,7 @@ namespace ClientKoT
         
         private void Debut_Tour()
         {
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
 
             EnabledDes(false);
             InfoJoueur infoJoueur = FindJoueur(helperServeur.ActualPlayer);
@@ -219,6 +219,7 @@ namespace ClientKoT
 
         public void Update_Data()
         {
+            Thread.Sleep(1000);
             int actualPlayerPosition = (int)helperServeur.ActualPlayer;
             for(int i=0; i<helperServeur.ListInfoJoueur.Count;i++)
             {
@@ -427,6 +428,12 @@ namespace ClientKoT
 
             helperServeur.RollDes(actionTour);
             listDesRoll = new bool[6]; // Clear List;
+            De1.Background = Brushes.Green;
+            De2.Background = Brushes.Green;
+            De3.Background = Brushes.Green;
+            De4.Background = Brushes.Green;
+            De5.Background = Brushes.Green;
+            De6.Background = Brushes.Green;
 
             EnabledDes(true);
 
@@ -477,6 +484,11 @@ namespace ClientKoT
         {
             listDesRoll[5] = listDesRoll[5] ? false : true;
             De6.Background = listDesRoll[5] ? Brushes.Violet : Brushes.Green;
+        }
+
+        private void De1_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
