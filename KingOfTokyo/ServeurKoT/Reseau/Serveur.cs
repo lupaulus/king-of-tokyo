@@ -97,6 +97,7 @@ namespace ServeurKoT.Reseau
             Server = new TcpListener(localAddr, port);
             updateTour = false;
             gestionDes = false;
+            gestionVictoire = false;
         }
 
         #endregion Ctor
