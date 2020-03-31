@@ -155,6 +155,7 @@ namespace Client.Reseau
                 while (true)
                 {
                     ReceptionPaquet();
+                    Thread.Sleep(100);
                 }
 
 

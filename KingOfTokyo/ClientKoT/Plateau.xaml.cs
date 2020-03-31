@@ -47,8 +47,15 @@ namespace ClientKoT
         private void H_PartieFini(object sender, EventFinPartieArgs args)
         {
             string etat = helperServeur.ActualPlayer == args.FPartie.JoueurGagnant ? "Gagné" : "Perdu";
-            MessageBox.Show($"Vous avez {etat}");
-            Application.Current.Shutdown();
+            UpdateLabelInfos($"Vous avez {etat}");
+            btnFinTour.IsEnabled = false;
+            Acheter1.IsEnabled = false;
+            Acheter2.IsEnabled = false;
+            Acheter3.IsEnabled = false;
+            EntrerBay.IsEnabled = false;
+            EntrerVille.IsEnabled = false;
+            LancerDes.IsEnabled = false;
+            Reroll.IsEnabled = false;
         }
 
         private void H_UpdateInfo(object sender, EventArgs args)
@@ -61,7 +68,10 @@ namespace ClientKoT
 
        
 
-        
+        public void UpdateLabelInfos(string s)
+        {
+            QuiLeTour.Text = s;
+        }
 
         private void H_ResultatDes(object sender, EventDesArgs args)
         {
@@ -103,7 +113,7 @@ namespace ClientKoT
 
         private void H_PartieStart(object sender, EventArgs e)
         {
-            MessageBox.Show("La partie va commencer");
+            UpdateLabelInfos("La partie va commencer");
             Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 Hide_Joueur();
@@ -207,7 +217,7 @@ namespace ClientKoT
                 EntrerVille.IsEnabled = false;
                 LancerDes.IsEnabled = false;
                 Reroll.IsEnabled = false;
-                MessageBox.Show($"C'est au tour de {FindJoueurAToiJouer().Pseudo} de jouer");
+                UpdateLabelInfos($"C'est au tour de {FindJoueurAToiJouer().Pseudo} de jouer");
                 return;
             }
 
@@ -221,7 +231,7 @@ namespace ClientKoT
             Reroll.IsEnabled = true;
 
             // Alerte message
-            MessageBox.Show("C'est à votre tour de jouer");
+            UpdateLabelInfos("C'est à votre tour de jouer");
 
         }
 

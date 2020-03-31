@@ -39,7 +39,7 @@
                 <Image x:Name="Carte3View" Source="{Binding ElementName=Carte3, Path=Source}"/>
             </Popup>
 
-            <TextBlock x:Name="quiLeTour" Foreground="#FFFFFF" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="QuiLeTour" Foreground="#FFFFFF" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
         
 
