@@ -59,6 +59,8 @@ namespace ClientKoT
             }));
         }
 
+       
+
         
 
         private void H_ResultatDes(object sender, EventDesArgs args)
@@ -95,6 +97,7 @@ namespace ClientKoT
             {
                 Debut_Tour();
                 UpdateMagasin();
+                UpdateVille();
             }));
         }
 
@@ -107,9 +110,26 @@ namespace ClientKoT
                 UpdateData();
                 Debut_Tour();
                 UpdateMagasin();
+                UpdateVille();
             }));
         }
 
+        private void UpdateVille()
+        {
+            JoueurVille.Text = String.Empty;
+            JoueurBay.Text = String.Empty;
+            foreach(InfoJoueur j in helperServeur.ListInfoJoueur)
+            {
+                if(j.EstDansVille)
+                {
+                    Ville.Text += j.Pseudo + " ";
+                }
+                else
+                {
+                    Bay.Text += j.Pseudo + " ";
+                }
+            }
+        }
         
         private void UpdateMagasin()
         {
