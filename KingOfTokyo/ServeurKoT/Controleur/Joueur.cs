@@ -40,6 +40,7 @@ namespace ServeurKoT.Reseau
 
         private static int POINT_VIE_MAX = 10;
 
+        public static int POINT_VICTOIRE = 20;
 
         private static int POINT_ENERGIE_BASE = 0;
 

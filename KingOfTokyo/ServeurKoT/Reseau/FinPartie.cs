@@ -8,20 +8,25 @@ namespace ServeurKoT.Reseau
 
     public class FinPartie : StreamObject
     {
-        private string s;
+        public string Pseudo { get; set; }
+        public Monstre JoueurGagnant { get; set; }
 
         public FinPartie()
         {
+            this.Pseudo = " ";
+            this.JoueurGagnant = Monstre.UNKNOWN;
         }
 
         public FinPartie(string s)
         {
-            this.s = s;
+            string[] tab = s.Split('|');
+            Pseudo = tab[0];
+            JoueurGagnant = (Monstre)int.Parse(tab[1]);
         }
 
         public override string IntoString()
         {
-            return $"";
+            return $"{Pseudo}|{JoueurGagnant}";
         }
 
        
