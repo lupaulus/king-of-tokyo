@@ -218,7 +218,10 @@ namespace Client.Reseau
                     OnPartieStart(new EventArgs());
                     partieLancer = true;
                 }
-                
+                if(partieLancer)
+                {
+                    OnUpdateInfo(new EventArgs());
+                }
             }
             else if(p.commandeType == CommandeType.ACTIONTOUR)
             {
@@ -227,7 +230,7 @@ namespace Client.Reseau
                 {
                     OnResultatDes(new EventDesArgs(t));
                 }
-                OnUpdateInfo(new EventArgs());
+                
             }
             else if(p.commandeType == CommandeType.FINTOUR)
             {
