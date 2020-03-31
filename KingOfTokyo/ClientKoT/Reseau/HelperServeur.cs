@@ -32,7 +32,7 @@ namespace Client.Reseau
         /// <summary>
         /// Nombre de joueur actuellement
         /// </summary>
-        public int NbrJoueur {get; private set;}
+        public int NbrJoueur {get;private set;}
 
         /// <summary>
         /// Etat du serveur actuellement
@@ -197,8 +197,8 @@ namespace Client.Reseau
             else if(p.commandeType == CommandeType.LANCEMENTPARTIE)
             {
                 LancementPartie c = (LancementPartie)p.data;
-                ActualPlayer = c.JoueurActuel; 
-                
+                ActualPlayer = c.JoueurActuel;
+                NbrJoueur = c.NbrJoueur;      
             }
 
             else if (p.commandeType == CommandeType.INFOJOUEUR)
@@ -360,7 +360,7 @@ namespace Client.Reseau
 
 
         public int NombreJoueurs() {
-            return ListInfoJoueur.Count;
+            return NbrJoueur;
         }
 
         public void RollDes(ActionTour a)
