@@ -173,6 +173,18 @@ namespace ServeurKoT.Controleur{
             }
             GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterVie(compteurSoin);
             GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterEnergie(compteurEnergie);
+            if(compteurBaffe > 0)
+            {
+                if(GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.EstEnVille)
+                {
+                    GPartie.Instance.PartieActuel.Plateau.frapperHorsVille(GPartie.Instance.PartieActuel.DicJeuMonstre, compteurBaffe);
+                }
+                else
+                {
+                    GPartie.Instance.PartieActuel.Plateau.frapperLaVille(GPartie.Instance.PartieActuel.DicJeuMonstre, compteurBaffe);
+                }
+            }
+                
         }
 
         #endregion Methodes
