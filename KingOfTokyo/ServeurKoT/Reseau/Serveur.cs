@@ -240,6 +240,17 @@ namespace ServeurKoT.Reseau
                     {
                         GPartie.Instance.PartieActuel.ResolutionDes(t);
                     }
+                    // Test Joueur Gagnant 
+                    Joueur joueurGagnant = GPartie.Instance.PartieActuel.CheckSiPartieFini();
+                    if(joueurGagnant.IdJoueur != Monstre.UNKNOWN)
+                    {
+                        FinPartie f = new FinPartie();
+                        f.Pseudo = joueurGagnant.Pseudo;
+                        f.JoueurGagnant = joueurGagnant.IdJoueur;
+                        Logger.Log(Logger.Level.Info, $"La partie est fini, {joueurGagnant.IdJoueur} à gagné");
+                        p.commandeType = CommandeType.FINPARTIE;
+                        p.data = f;
+                    }
                 }
             }
             else if(p.commandeType  == CommandeType.FINTOUR)

@@ -38,9 +38,17 @@ namespace ClientKoT
             h.TourSuivant += H_TourSuivant;
             h.ResultatDes += H_ResultatDes;
             h.UpdateInfo += H_UpdateInfo;
+            h.PartieFini += H_PartieFini;
             actionTour = new ActionTour();
             listDesRoll = new bool[6];
             
+        }
+
+        private void H_PartieFini(object sender, EventFinPartieArgs args)
+        {
+            string etat = helperServeur.ActualPlayer == args.FPartie.JoueurGagnant ? "Gagné" : "Perdu";
+            MessageBox.Show($"Vous avez {etat}");
+            Application.Current.Shutdown();
         }
 
         private void H_UpdateInfo(object sender, EventArgs args)

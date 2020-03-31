@@ -23,6 +23,11 @@ namespace ServeurKoT
             .AddHandler(new ConsoleLoggerHandler())
             .AddHandler(new FileLoggerHandler());
 
+            if (args.Length == 1)
+            {
+                ADRESSE_SERVEUR = args[0];
+            }
+
             // Lancement de l'application
             Logger.Log(Logger.Level.Info, "*** Serveur King Of Tokyo ***");
 
@@ -31,7 +36,7 @@ namespace ServeurKoT
             Serveur.Init(ADRESSE_SERVEUR, PORT_SERVEUR);
             Serveur.Instance.StartServer();
 
-            GPartie.Instance.CreerPartie("TEST1",6);
+            GPartie.Instance.CreerPartie("PARTIEGEN",6);
 
 
 

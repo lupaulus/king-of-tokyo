@@ -70,8 +70,31 @@ namespace ServeurKoT.Controleur{
             GestionnaireDesTours.ProchainTour();
             GestionnaireDesTours.JoueurActuel.AToiDeJouer = true;
         }
-        public void FinirPartie() {
-            // Renvoyer le gagnant.
+        
+        public Joueur CheckSiPartieFini()
+        {
+            int nbrAlive = 0;
+            Joueur res = new Joueur(99,"PersoTest");
+            // Check Point de victoire
+            foreach(Joueur j in DicJeuMonstre)
+            {
+                if(j.PtsVictoire >= Joueur.POINT_VICTOIRE && !j.monstreMort())
+                {
+                    return j;
+                }
+                if(!j.monstreMort())
+                {
+                    nbrAlive++;
+                    res = j;
+                }
+            }
+
+            if(nbrAlive == 1)
+            {
+                return res;
+            }
+            res = new Joueur(99, "PersoTest");
+            return res;
         }
 
         public string[] ListCheminImgCartesPlateau()

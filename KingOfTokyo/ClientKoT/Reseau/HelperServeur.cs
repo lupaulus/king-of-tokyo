@@ -53,6 +53,9 @@ namespace Client.Reseau
         public event UpdateInfoJoueur_EventHandler UpdateInfo;
         public delegate void UpdateInfoJoueur_EventHandler(object sender, EventArgs args);
 
+        public event EventFinPartie_EventHandler PartieFini;
+        public delegate void EventFinPartie_EventHandler(object sender, EventFinPartieArgs args);
+
         public Monstre ActualPlayer { get; set; }
 
         private TcpClient ClientTCP;
@@ -230,8 +233,15 @@ namespace Client.Reseau
             {
                 OnProchainTour(new EventArgs());
             }
+            else if(p.commandeType == CommandeType.FINPARTIE)
+            {
+                FinPartie t = (FinPartie)p.data;
+                OnFinPartie(new EventFinPartieArgs(t));
+            }
             
         }
+
+        
 
         public bool CheckIfAllPlayerAreReady()
         {
@@ -338,6 +348,12 @@ namespace Client.Reseau
             handler?.Invoke(this, e);
         }
 
+        protected virtual void OnFinPartie(EventFinPartieArgs eventFinPartieArgs)
+        {
+            EventFinPartie_EventHandler handler = PartieFini;
+            handler?.Invoke(this, eventFinPartieArgs);
+        }
+
 
         public int NombreJoueurs() {
             return ListInfoJoueur.Count;
@@ -368,6 +384,15 @@ namespace Client.Reseau
         public EventDesArgs(ActionTour a)
         {
             Action = a;
+        }
+    }
+
+    public class EventFinPartieArgs : EventArgs
+    {
+        public FinPartie FPartie { get; }
+        public EventFinPartieArgs(FinPartie p)
+        {
+            FPartie = p;
         }
     }
 }

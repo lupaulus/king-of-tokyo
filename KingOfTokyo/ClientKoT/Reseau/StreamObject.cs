@@ -35,6 +35,9 @@ namespace Client.Reseau
                 case CommandeType.FINTOUR:
                     res = new TourFini(s);
                     break;
+                case CommandeType.FINPARTIE:
+                    res = new FinPartie(s);
+                    break;
                 default:
                     throw new Exception("PAQUET INCONNU");
             }
