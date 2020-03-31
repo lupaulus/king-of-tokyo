@@ -38,6 +38,8 @@
             <Popup Name="popupCarte3" IsOpen="{Binding ElementName=Carte3, Path=IsMouseOver, Mode=OneWay}">
                 <Image x:Name="Carte3View" Source="{Binding ElementName=Carte3, Path=Source}"/>
             </Popup>
+
+            <TextBlock x:Name="quiLeTour" Foreground="#FFFFFF" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
         
 
