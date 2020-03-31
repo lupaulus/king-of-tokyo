@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Reseau\ActionPartie.cs" />
     <Compile Include="Reseau\ActionTour.cs" />
+    <Compile Include="Reseau\FinPartie.cs" />
     <Compile Include="Reseau\InfoJoueur.cs" />
     <Compile Include="Reseau\LancementPartie.cs" />
     <Compile Include="Reseau\ConnexionServeur.cs" />
