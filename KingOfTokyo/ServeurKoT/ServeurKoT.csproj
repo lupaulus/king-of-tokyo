@@ -66,8 +66,6 @@
     <Compile Include="Controleur\GDes.cs" />
     <Compile Include="Controleur\GPartie.cs" />
     <Compile Include="Controleur\Partie.cs" />
-    <Compile Include="Modele\Tour.cs" />
-    <Compile Include="Controleur\Utilitaire.cs" />
     <Compile Include="Modele\ApplicationEffet.cs" />
     <Compile Include="Modele\Carte.cs" />
     <Compile Include="Modele\CarteAction.cs" />
@@ -77,7 +75,6 @@
     <Compile Include="Modele\EffetJeton.cs" />
     <Compile Include="Modele\ICarte.cs" />
     <Compile Include="Modele\Jeton.cs" />
-    <Compile Include="Modele\MonstreJeu.cs" />
     <Compile Include="Modele\NomMonstre.cs" />
     <Compile Include="Controleur\Plateau.cs" />
     <Compile Include="Program.cs" />
