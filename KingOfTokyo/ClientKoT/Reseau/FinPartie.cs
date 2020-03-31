@@ -24,7 +24,7 @@ namespace Client.Reseau
 
         public override string IntoString()
         {
-            return $"{Pseudo}|{JoueurGagnant}";
+            return $"{Pseudo}|{(int)JoueurGagnant}";
         }
 
 
