@@ -56,6 +56,7 @@ namespace ClientKoT
             EntrerVille.IsEnabled = false;
             LancerDes.IsEnabled = false;
             Reroll.IsEnabled = false;
+            btnFinTour.IsEnabled = false;
         }
 
         private void H_UpdateInfo(object sender, EventArgs args)
