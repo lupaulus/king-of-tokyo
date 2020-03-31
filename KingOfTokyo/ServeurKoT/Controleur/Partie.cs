@@ -93,7 +93,7 @@ namespace ServeurKoT.Controleur{
             {
                 return res;
             }
-
+            res = new Joueur(99, "PersoTest");
             return res;
         }
 

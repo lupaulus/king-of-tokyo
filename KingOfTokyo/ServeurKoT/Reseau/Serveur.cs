@@ -248,7 +248,7 @@ namespace ServeurKoT.Reseau
                         f.Pseudo = joueurGagnant.Pseudo;
                         f.JoueurGagnant = joueurGagnant.IdJoueur;
                         Logger.Log(Logger.Level.Info, $"La partie est fini, {joueurGagnant.IdJoueur} à gagné");
-                        p.commandeType = CommandeType.FINTOUR;
+                        p.commandeType = CommandeType.FINPARTIE;
                         p.data = f;
                     }
                 }
