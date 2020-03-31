@@ -171,7 +171,13 @@ namespace ServeurKoT.Controleur{
                 int value = 3 + (compteurTrois - 3);
                 GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterPtsVictoire(value);
             }
-            GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterVie(compteurSoin);
+
+
+            if(!GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.EstEnVille)
+            {
+                GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterVie(compteurSoin);
+            }
+            
             GPartie.Instance.PartieActuel.GestionnaireDesTours.JoueurActuel.ajouterEnergie(compteurEnergie);
             if(compteurBaffe > 0)
             {
