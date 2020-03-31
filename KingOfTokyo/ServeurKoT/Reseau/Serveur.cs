@@ -76,6 +76,7 @@ namespace ServeurKoT.Reseau
         private int nextIdJoueur = 1;
         private bool updateTour;
         private bool gestionDes;
+        private bool gestionVictoire;
 
         #endregion Properties
 
@@ -176,10 +177,10 @@ namespace ServeurKoT.Reseau
 
                     if(!updateTour)
                     {
-                        if(gestionDes)
+                        if(gestionDes || gestionVictoire)
                         {
                             gestionDes = false;
-                            UpdateInfoDes(ListClients[client].MessageToSend);
+                            UpdateInfo(ListClients[client].MessageToSend);
                         }
                         else
                         {
@@ -206,7 +207,7 @@ namespace ServeurKoT.Reseau
             }
         }
 
-        private void UpdateInfoDes(string msg)
+        private void UpdateInfo(string msg)
         {
             foreach (TcpClient tcpClient in ListClients.Keys)
             {
@@ -276,6 +277,7 @@ namespace ServeurKoT.Reseau
                         Logger.Log(Logger.Level.Info, $"La partie est fini, {joueurGagnant.IdJoueur} à gagné");
                         p.commandeType = CommandeType.FINPARTIE;
                         p.data = f;
+                        gestionVictoire = true;
                     }
                 }
             }
