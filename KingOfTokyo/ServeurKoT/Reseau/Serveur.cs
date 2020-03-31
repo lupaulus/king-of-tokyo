@@ -75,6 +75,7 @@ namespace ServeurKoT.Reseau
         public int BYTES_SIZE = 256;
         private int nextIdJoueur = 1;
         private bool updateTour;
+        private bool gestionDes;
 
         #endregion Properties
 
@@ -94,6 +95,7 @@ namespace ServeurKoT.Reseau
             // TcpListener server = new TcpListener(port);
             Server = new TcpListener(localAddr, port);
             updateTour = false;
+            gestionDes = false;
         }
 
         #endregion Ctor
@@ -174,10 +176,18 @@ namespace ServeurKoT.Reseau
 
                     if(!updateTour)
                     {
-                        Byte[] reply = Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
-                        stream.Write(reply, 0, reply.Length);
-                        Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
-                        Thread.Sleep(500);
+                        if(gestionDes)
+                        {
+                            gestionDes = false;
+                            UpdateInfoDes(ListClients[client].MessageToSend);
+                        }
+                        else
+                        {
+                            Byte[] reply = Encoding.ASCII.GetBytes(ListClients[client].MessageToSend);
+                            stream.Write(reply, 0, reply.Length);
+                            Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {ListClients[client].MessageToSend}");
+                            Thread.Sleep(500);
+                        }
                     }
                     
 
@@ -193,6 +203,20 @@ namespace ServeurKoT.Reseau
             {
                 Console.WriteLine("Exception: {0}", e.ToString());
                 client.Close();
+            }
+        }
+
+        private void UpdateInfoDes(string msg)
+        {
+            foreach (TcpClient tcpClient in ListClients.Keys)
+            {
+                //Get stream
+                NetworkStream stream = tcpClient.GetStream();
+
+                Byte[] reply = Encoding.ASCII.GetBytes(msg.ToString());
+                stream.Write(reply, 0, reply.Length);
+                Logger.Log(Logger.Level.Debug, $"{Thread.CurrentThread.ManagedThreadId}: Sent: {msg.ToString()}");
+                Thread.Sleep(200);
             }
         }
 
@@ -234,6 +258,7 @@ namespace ServeurKoT.Reseau
                 ActionTour t = (ActionTour)p.data;
                 if(t.RerollDes)
                 {
+                    gestionDes = true;
                     Logger.Log(Logger.Level.Info, $"Reroll Des : {t.EtatDes.ToString()}");
                     t.RemplirDes(GPartie.Instance.PartieActuel.LancerDes());
                     // SI dernier Lancer
