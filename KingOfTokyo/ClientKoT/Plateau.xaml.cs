@@ -122,11 +122,11 @@ namespace ClientKoT
             {
                 if(j.EstDansVille)
                 {
-                    Ville.Text += j.Pseudo + " ";
+                    JoueurVille.Text += j.Pseudo + " ";
                 }
                 else
                 {
-                    Bay.Text += j.Pseudo + " ";
+                    JoueurBay.Text += j.Pseudo + " ";
                 }
             }
         }
