@@ -26,7 +26,7 @@ namespace ServeurKoT.Reseau
 
         public override string IntoString()
         {
-            return $"{Pseudo}|{JoueurGagnant}";
+            return $"{Pseudo}|{(int)JoueurGagnant}";
         }
 
        
