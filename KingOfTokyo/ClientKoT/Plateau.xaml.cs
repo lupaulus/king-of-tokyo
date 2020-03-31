@@ -70,7 +70,10 @@ namespace ClientKoT
 
         public void UpdateLabelInfos(string s)
         {
-            QuiLeTour.Text = s;
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                QuiLeTour.Text = s;
+            }));
         }
 
         private void H_ResultatDes(object sender, EventDesArgs args)
