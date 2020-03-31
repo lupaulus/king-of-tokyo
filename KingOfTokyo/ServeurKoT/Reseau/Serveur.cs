@@ -226,6 +226,7 @@ namespace ServeurKoT.Reseau
                 }
                 // Indique le Joueur actuel
                 c.JoueurActuel = ListClients[client].IdJoueur;
+                c.NbrJoueur = ListClients.Count;
             }
 
             else if (p.commandeType == CommandeType.ACTIONTOUR)
