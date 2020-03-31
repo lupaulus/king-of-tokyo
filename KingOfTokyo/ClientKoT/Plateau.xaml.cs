@@ -32,7 +32,9 @@ namespace ClientKoT
 
         public Plateau(HelperServeur h)
         {
-            InitializeComponent();
+            Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                InitializeComponent();
             helperServeur = h;
             h.PartieStart += H_PartieStart;
             h.TourSuivant += H_TourSuivant;
@@ -41,6 +43,7 @@ namespace ClientKoT
             h.PartieFini += H_PartieFini;
             actionTour = new ActionTour();
             listDesRoll = new bool[6];
+        }));
             
         }
 
